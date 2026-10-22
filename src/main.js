@@ -321,7 +321,7 @@ if (terminalRoot) {
     });
   }
 
-  // Économiseur d'écran après une minute sans activité : un secret, et un bonus si le logo touche un coin.
+  // Économiseur d'écran après trois minutes sans activité : un secret, et un bonus si le logo touche un coin.
   new ScreensaverController(new ScreensaverView(), {
     reducedMotion,
     onStart: () => {

@@ -9,7 +9,7 @@ const LOGO_CLASSES =
 const ACTIVITY = ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart', 'scroll'];
 
 /**
- * Économiseur d'écran : après un moment sans activité, le logo « P/ » rebondit
+ * Économiseur d'écran : après un moment sans activité, le logo « Pp » rebondit
  * sur les bords comme le vieux logo DVD. Le moindre mouvement le fait disparaître.
  */
 export default class ScreensaverView {
@@ -42,7 +42,7 @@ export default class ScreensaverView {
     root.className = ROOT_CLASSES;
     root.setAttribute('aria-hidden', 'true');
     const logo = document.createElement('div');
-    logo.textContent = 'P/';
+    logo.textContent = 'Pp';
     root.append(logo);
     document.body.append(root);
     this.#root = root;
