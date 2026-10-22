@@ -8,7 +8,7 @@ const COVER_CLASSES =
 const CHIP_CLASSES =
   'rounded-full border border-muted/30 px-2.5 py-1 font-mono text-xs text-muted data-match:border-accent data-match:text-accent';
 
-// Chemin relatif au site (images/…) : préfixé par la base de Vite (/portfolio/).
+// Chemin relatif au site (images/…) : préfixé par la base de Vite (/).
 const assetUrl = (src) => (/^(?:[a-z]+:|\/)/i.test(src) ? src : `${import.meta.env.BASE_URL}${src}`);
 
 /**

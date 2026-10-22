@@ -6,7 +6,7 @@
 import htmlSection, { escape } from './htmlSection.js';
 
 const FILES = { contact: 'src/data/contact.json', profile: 'src/data/profile.json', seo: 'src/data/seo.json' };
-const SITE = 'https://pideillou.github.io/portfolio/';
+const SITE = 'https://pideillou.github.io/';
 
 // L'image de partage (dans public/) doit faire 1200 × 630 : le format attendu par LinkedIn, Discord, WhatsApp…
 const IMAGE = { width: 1200, height: 630 };

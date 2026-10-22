@@ -9,8 +9,8 @@ import contactSection, { siteFooter } from './build/contactSection.js';
 import seoHead from './build/seoHead.js';
 
 export default defineConfig({
-  // Le site sera servi sur https://pideillou.github.io/portfolio/ (GitHub Pages).
-  base: '/portfolio/',
+  // Le site est servi à la racine de https://pideillou.github.io/ (dépôt pideillou.github.io sur GitHub Pages).
+  base: '/',
   // Plugins maison (dossier build/) : une fiche HTML par projet, les sections
   // « Profil », « Mon parcours » et « Contact » de l'accueil, son pied de page et son en-tête SEO, fabriqués depuis src/data/.
   plugins: [tailwindcss(), projectPages(), profileSection(), educationSection(), contactSection(), siteFooter(), seoHead()],
