@@ -1,5 +1,5 @@
 // Fiches projet : une page HTML par projet, fabriquée depuis src/data/projects.json.
-// En développement, la page est construite à chaque visite de /portfolio/projets/<slug>/.
+// En développement, la page est construite à chaque visite de /projets/<slug>/.
 // Au build, elle est écrite dans dist/projets/<slug>/index.html, avec son titre, sa description,
 // ses balises de partage et ses données structurées. Le contenu est donc dans le HTML servi
 // (référencement) ; le JS de la page (src/project.js) ajoute le thème, le dino et le sommaire actif.
@@ -289,7 +289,7 @@ export default function projectPages() {
       config = resolved;
     },
 
-    // Développement : /portfolio/projets/<slug>/ renvoie la fiche, fabriquée à la volée.
+    // Développement : /projets/<slug>/ renvoie la fiche, fabriquée à la volée.
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         const path = req.url?.split('?')[0] ?? '';
