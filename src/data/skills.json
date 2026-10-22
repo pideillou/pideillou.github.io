@@ -1,0 +1,16 @@
+{
+  "skills": [
+    { "name": "HTML", "logo": "html" },
+    { "name": "CSS", "logo": "css" },
+    { "name": "JavaScript", "logo": "javascript" },
+    { "name": "Tailwind", "logo": "tailwind" },
+    { "name": "Vite", "logo": "vite" },
+    { "name": "Git", "logo": "git" },
+    { "name": "Figma", "logo": "figma" },
+    { "name": "Adobe tools", "logo": "adobe" },
+    { "name": "Canva tools", "logo": "canva" },
+    { "name": "AI", "logo": "ai" },
+    { "name": "Python", "logo": "python" },
+    { "name": "SEO", "logo": "seo" }
+  ]
+}

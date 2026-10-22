@@ -1,0 +1,136 @@
+{
+  "categories": [
+    { "id": "web", "label": "Web" },
+    { "id": "ux", "label": "UX" },
+    { "id": "communication", "label": "Communication" },
+    { "id": "audiovisuel", "label": "Audiovisuel" }
+  ],
+  "projects": [
+    {
+      "slug": "portfolio",
+      "title": "Ce portfolio",
+      "summary": "Le site que vous visitez. Une machine à sous tire trois compétences à chaque visite et un terminal caché garde 18 secrets.",
+      "category": "web",
+      "date": "2026-10",
+      "role": "Conception et développement",
+      "stack": ["HTML", "CSS", "JavaScript", "Tailwind", "Vite", "Git", "SEO"],
+      "example": false,
+      "links": {},
+      "caseStudy": {
+        "kicker": "Projet personnel",
+        "titleAccent": "à la machine à sous",
+        "intro": "Un portfolio qui se visite comme un jeu : chaque visite tire trois compétences, et chaque tirage change les projets mis en avant.",
+        "duration": "En cours",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Un portfolio dont on se souvient",
+            "paragraphs": [
+              "Étudiant en deuxième année de BUT MMI, j’avais besoin d’un site pour présenter mes projets. Un recruteur en voit beaucoup : je voulais que le mien se distingue dès les premières secondes, sans rien perdre en clarté."
+            ]
+          },
+          {
+            "label": "Objectifs",
+            "title": "Surprendre sans gêner",
+            "paragraphs": [
+              "Le jeu reste un bonus : les projets, le profil et le contact doivent se trouver tout de suite. Le site est pensé d’abord pour le mobile, accessible au niveau AA du RGAA, valide au W3C, et son contenu doit pouvoir se modifier sans toucher au code."
+            ]
+          },
+          {
+            "label": "Mon rôle",
+            "title": "De l’idée à la mise en ligne",
+            "paragraphs": [
+              "Projet personnel : je m’occupe du concept, du design, de l’intégration, du JavaScript et des textes."
+            ]
+          },
+          {
+            "label": "Conception",
+            "title": "Une méthode en quatre temps",
+            "paragraphs": [
+              "Chaque idée de jeu passe par les mêmes étapes avant d’arriver sur le site."
+            ],
+            "steps": [
+              { "title": "Cadrer", "text": "Règles du projet : mobile d’abord, accessibilité, code valide." },
+              { "title": "Designer", "text": "Palette maison, six thèmes, tous contrôlés en contraste AA." },
+              { "title": "Développer", "text": "Vite, Tailwind CSS et JavaScript natif organisé en MVC." },
+              { "title": "Tester", "text": "Trois largeurs d’écran, clavier, animations réduites, validateur du W3C." }
+            ]
+          },
+          {
+            "label": "Résultat",
+            "title": "Un site qui se joue",
+            "paragraphs": [
+              "Une machine à sous au chargement, un terminal d’une trentaine de commandes, 18 secrets, six thèmes et deux mini-jeux. Sans souris ou sans animation, le site reste entièrement utilisable."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "exemple-site-vitrine",
+      "title": "Site vitrine d'un commerce",
+      "summary": "Projet d'exemple, à remplacer. Maquette sur Figma puis intégration d'un site d'une page, pensé pour le mobile et le référencement local.",
+      "category": "web",
+      "date": "2026-05",
+      "role": "Design et intégration",
+      "stack": ["Figma", "HTML", "CSS", "SEO"],
+      "example": true,
+      "links": {}
+    },
+    {
+      "slug": "exemple-application-mobile",
+      "title": "Maquette d'une application mobile",
+      "summary": "Projet d'exemple, à remplacer. Parcours utilisateur, maquettes et prototype cliquable d'une application de covoiturage étudiant.",
+      "category": "ux",
+      "date": "2026-03",
+      "role": "Design UX et UI",
+      "stack": ["Figma", "Adobe tools"],
+      "example": true,
+      "links": {}
+    },
+    {
+      "slug": "exemple-teaser-video",
+      "title": "Teaser vidéo d'un événement",
+      "summary": "Projet d'exemple, à remplacer. Tournage, montage et habillage d'un teaser de quarante secondes, sous-titré pour les réseaux sociaux.",
+      "category": "audiovisuel",
+      "date": "2026-02",
+      "role": "Réalisation et montage",
+      "stack": ["Adobe tools", "AI"],
+      "example": true,
+      "links": {}
+    },
+    {
+      "slug": "exemple-campagne-affiches",
+      "title": "Affiches pour un festival",
+      "summary": "Projet d'exemple, à remplacer. Série d'affiches et de visuels pour les réseaux sociaux, déclinés dans plusieurs formats.",
+      "category": "communication",
+      "date": "2025-12",
+      "role": "Graphisme",
+      "stack": ["Adobe tools", "Canva tools"],
+      "example": true,
+      "links": {}
+    },
+    {
+      "slug": "exemple-infographie-donnees",
+      "title": "Infographie à partir de données ouvertes",
+      "summary": "Projet d'exemple, à remplacer. Un script Python trie un jeu de données public, puis les chiffres clés deviennent une infographie.",
+      "category": "communication",
+      "date": "2025-11",
+      "role": "Analyse et mise en forme",
+      "stack": ["Python", "Canva tools", "Git"],
+      "example": true,
+      "links": {}
+    },
+    {
+      "slug": "exemple-assistant-ia",
+      "title": "Petit assistant avec une IA",
+      "summary": "Projet d'exemple, à remplacer. Page web qui envoie une question à une API d'IA et affiche la réponse, avec une gestion des erreurs.",
+      "category": "web",
+      "date": "2025-09",
+      "role": "Développement",
+      "stack": ["JavaScript", "AI", "Python"],
+      "example": true,
+      "links": {}
+    }
+  ]
+}

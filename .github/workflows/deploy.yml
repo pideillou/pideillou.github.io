@@ -1,0 +1,60 @@
+# Mise en ligne automatique sur GitHub Pages (https://pideillou.github.io/portfolio/).
+# À chaque push sur main, GitHub installe les dépendances, lance « npm run build »
+# et publie le dossier dist/. On peut aussi la relancer à la main depuis l'onglet Actions.
+name: Mise en ligne
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Droits minimum : lire le code, publier sur Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Une seule mise en ligne à la fois ; celle en cours va jusqu'au bout.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Construire le site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v5
+
+      - name: Installer Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Installer les dépendances (versions exactes de package-lock.json)
+        run: npm ci
+
+      - name: Construire le site
+        run: npm run build
+
+      - name: Préparer Pages
+        uses: actions/configure-pages@v5
+
+      - name: Envoyer le dossier dist/
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    name: Publier
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publier sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

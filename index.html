@@ -1,0 +1,423 @@
+<!doctype html>
+<!--
+  Tu lis le code source ? Tu es des nôtres.
+  Ouvre le terminal (Ctrl + K, ou la barre ~/portfolio en bas à droite),
+  puis tape « bonjour ». Les autres secrets t'attendent dans secrets.txt.
+-->
+<html lang="fr" class="scheme-dark motion-safe:scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- seo:head -->
+  <meta name="theme-color" content="#151C20">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <script type="module" src="/src/main.js"></script>
+  <!-- Préchargement des fiches projet au survol d'un lien (Chrome, Edge) : elles s'ouvrent sans attente -->
+  <script type="speculationrules">{"prefetch":[{"where":{"href_matches":"projets/*"},"eagerness":"moderate"}]}</script>
+</head>
+<body class="min-h-dvh bg-surface font-sans text-ink antialiased">
+  <a href="#contenu" class="sr-only rounded-full bg-accent px-4 py-2 font-semibold text-surface focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50">Aller au contenu</a>
+
+  <!-- En-tête en pilule flottante : présentation courte + navigation (src/js/views/NavView.js) -->
+  <header class="fixed inset-x-0 top-0 z-40 px-4 pt-4 md:pt-6">
+    <div data-nav class="group mx-auto flex max-w-md flex-wrap items-center gap-x-3 gap-y-2 rounded-4xl border border-muted/30 bg-surface/95 p-2 backdrop-blur-md md:w-fit md:max-w-none md:flex-nowrap md:gap-x-8 md:py-2.5 md:pr-3 md:pl-2.5">
+      <a href="#accueil" class="flex min-w-0 flex-1 items-center gap-3 rounded-full pr-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:flex-none">
+        <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent font-display text-lg font-bold text-surface" aria-hidden="true">Pp</span>
+        <span class="flex min-w-0 flex-col leading-tight">
+          <span class="font-display font-bold">Paul PIDEILL</span>
+          <span class="text-xs text-muted">Développeur &amp; designer</span>
+        </span>
+      </a>
+
+      <button type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-panel" class="flex size-11 shrink-0 items-center justify-center rounded-full text-ink hover:bg-ink/10 focus-visible:outline-2 focus-visible:outline-accent md:hidden">
+        <span class="sr-only">Menu</span>
+        <span class="relative block h-3 w-4" aria-hidden="true">
+          <span class="absolute top-0 left-0 h-0.5 w-4 rounded-full bg-current motion-safe:transition-transform group-data-open:translate-y-1.25 group-data-open:rotate-45"></span>
+          <span class="absolute bottom-0 left-0 h-0.5 w-4 rounded-full bg-current motion-safe:transition-transform group-data-open:-translate-y-1.25 group-data-open:-rotate-45"></span>
+        </span>
+      </button>
+
+      <div id="nav-panel" class="hidden basis-full flex-col gap-4 px-2 pt-2 pb-3 group-data-open:flex motion-safe:transition-[opacity,translate] motion-safe:duration-300 starting:opacity-0 motion-safe:starting:-translate-y-2 md:flex md:basis-auto md:flex-row md:items-center md:gap-6 md:p-0">
+        <nav aria-label="Navigation principale" class="relative">
+          <span data-nav-indicator class="absolute inset-y-0 left-0 hidden w-(--indicator-w) translate-x-(--indicator-x) rounded-full bg-ink/10 opacity-0 motion-safe:transition-[translate,width,opacity] motion-safe:duration-300 group-data-active:opacity-100 md:block" aria-hidden="true"></span>
+          <ul class="relative flex flex-col gap-1 md:flex-row md:gap-2">
+            <li><a href="#projets" data-nav-link class="block rounded-full px-4 py-2 font-display text-xl text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-accent aria-[current=location]:text-ink md:font-sans md:text-sm md:font-semibold">Projets</a></li>
+            <li><a href="#profil" data-nav-link class="block rounded-full px-4 py-2 font-display text-xl text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-accent aria-[current=location]:text-ink md:font-sans md:text-sm md:font-semibold">Profil</a></li>
+            <li><a href="#parcours" data-nav-link class="block rounded-full px-4 py-2 font-display text-xl text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-accent aria-[current=location]:text-ink md:font-sans md:text-sm md:font-semibold">Parcours</a></li>
+            <li><a href="#contact" data-nav-link class="block rounded-full px-4 py-2 font-display text-xl text-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-accent aria-[current=location]:text-ink md:font-sans md:text-sm md:font-semibold">Contact</a></li>
+          </ul>
+        </nav>
+
+        <p class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 text-xs text-muted md:hidden lg:flex lg:border-l lg:border-muted/30 lg:pr-2 lg:pl-6">
+          <span class="flex items-center gap-2 text-ink">
+            <span class="relative flex size-2" aria-hidden="true">
+              <span class="absolute size-full rounded-full bg-online opacity-75 motion-safe:animate-ping"></span>
+              <span class="relative size-2 rounded-full bg-online shadow-[0_0_8px_var(--color-online)]"></span>
+            </span>
+            Ouvert aux opportunités
+          </span>
+          <span>Limoges <span data-clock data-timezone="Europe/Paris" class="tabular-nums"></span></span>
+        </p>
+
+        <!-- Interrupteur de la lampe : seulement avec une souris (src/js/views/SpotlightView.js) -->
+        <button type="button" data-lamp-toggle aria-pressed="false" title="Lampe : révéler les coulisses" class="hidden size-9 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-ink/10 hover:text-ink focus-visible:outline-2 focus-visible:outline-accent aria-pressed:bg-accent/15 aria-pressed:text-accent pointer-fine:md:flex">
+          <svg class="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.9V16h5v-.2c0-.8.4-1.5 1-1.9A6 6 0 0 0 12 3z"/></svg>
+          <span class="sr-only">Lampe : révéler les coulisses</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Fond décoratif : grille, et lampe qui suit la souris (src/js/views/SpotlightView.js).
+       La lampe révèle les « coulisses » : la grille de mise en page et des annotations
+       (code, design, audiovisuel), dont l'indice de l'easter egg. -->
+  <div class="pointer-events-none fixed inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+  <div data-spotlight class="pointer-events-none fixed inset-0 -z-10 bg-spotlight opacity-0 motion-safe:transition-opacity motion-safe:duration-500 data-active:data-on:opacity-100" aria-hidden="true"></div>
+  <!-- Coulisses : posées en haut du document, elles défilent avec la page -->
+  <div data-reveal class="pointer-events-none absolute inset-x-0 top-0 -z-10 hidden h-dvh font-mono text-xs text-support mask-spotlight pointer-fine:data-on:block" aria-hidden="true">
+      <!-- Grille de 12 colonnes, alignée sur le contenu -->
+      <div class="mx-auto grid h-full max-w-6xl grid-cols-12 gap-6 px-4 md:px-8">
+        <span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span>
+      </div>
+
+      <!-- Positions pensées pour tomber dans les vides de l'accueil sur desktop -->
+      <span class="absolute top-[13%] left-[2%]">console.log("Bonjour, recruteur !");</span>
+      <span class="absolute top-[13%] right-[3%]">z-index: 9999; <span class="text-muted">/* jamais */</span></span>
+      <span class="absolute top-[14%] left-[44%]">&lt;!-- dev + design --&gt;</span>
+      <span class="absolute top-[24%] left-[30%]">grid: 12 col / 24px <span class="text-muted">/* gouttière */</span></span>
+      <span class="absolute top-[31%] left-[52%] text-accent">// TODO : dormir</span>
+      <span class="absolute top-[21%] left-[52%] text-accent">// Ctrl+K : terminal</span>
+      <span class="absolute top-[40%] right-[3%]">letter-spacing: -0.025em;</span>
+      <span class="absolute top-[49%] right-[3%]">display: grid; <span class="text-muted">/* toujours */</span></span>
+      <span class="absolute top-[52%] left-[22%]">#D17A55 <span class="text-muted">/* l'accent */</span></span>
+      <span class="absolute top-[52%] left-[50%]">Ctrl+Z Ctrl+Z Ctrl+Z</span>
+      <span class="absolute top-[57%] right-[4%]">const curious = true;</span>
+      <span class="absolute top-[63%] right-[4%] text-accent">// psst… tape « dino »</span>
+      <span class="absolute right-[30%] bottom-[2%]">contraste 7.9:1 <span class="text-muted">/* AA ✓ */</span></span>
+      <span class="absolute top-[82%] left-[7%]">● REC 00:00:24:12</span>
+      <span class="absolute top-[82%] left-[36%]">ffmpeg -i rush.mov final_v3_vraiment_final.mp4</span>
+      <span class="absolute top-[88%] left-[52%]">git commit -m "encore un café"</span>
+      <span class="absolute bottom-[2%] left-[7%]">alt="" <span class="text-muted">/* décoratif */</span></span>
+      <span class="absolute bottom-[2%] left-[22%]">margin: 0 auto; <span class="text-muted">/* bien centré */</span></span>
+  </div>
+
+  <main id="contenu" class="mx-auto max-w-6xl px-4 md:px-8">
+    <section id="accueil" aria-labelledby="accueil-title" class="flex min-h-dvh flex-col justify-center gap-12 pt-32 pb-12 md:pt-40 lg:justify-between lg:gap-8 lg:pt-32 lg:pb-8">
+      <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start">
+        <p class="inline-flex w-fit items-center gap-2.5 rounded-full border border-online/40 bg-online/10 px-4 py-2 text-xs tracking-widest text-ink uppercase">
+          <span class="relative flex size-2.5" aria-hidden="true">
+            <span class="absolute size-full rounded-full bg-online opacity-75 motion-safe:animate-ping"></span>
+            <span class="relative size-2.5 rounded-full bg-online shadow-[0_0_10px_var(--color-online)]"></span>
+          </span>
+          Ouvert aux opportunités
+        </p>
+
+        <!-- Citation : sous le nom sur mobile, en haut à droite sur desktop -->
+        <figure class="relative order-last max-w-xs pl-9 lg:order-0 lg:col-start-2 lg:row-start-1 lg:mt-2">
+          <span class="absolute -top-2 left-0 font-display text-6xl leading-none text-accent" aria-hidden="true">«</span>
+          <blockquote>
+            <p class="font-display text-lg leading-snug text-ink italic sm:text-xl">La simplicité est la sophistication suprême.</p>
+          </blockquote>
+          <figcaption class="mt-3 flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase">
+            <span class="h-px w-6 bg-accent" aria-hidden="true"></span>
+            Léonard de Vinci
+          </figcaption>
+        </figure>
+
+        <div class="lg:col-span-2">
+          <h1 id="accueil-title" class="font-display text-hero tracking-tight">Paul <span class="whitespace-nowrap">PIDEILL<span class="ml-[0.08em] inline-block h-[0.75em] w-[0.06em] bg-accent motion-safe:animate-blink" aria-hidden="true"></span></span></h1>
+          <span class="mt-6 block h-1 w-24 rounded-full bg-accent" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-10 lg:grid-cols-[minmax(0,1.4fr)_auto_minmax(0,1fr)]">
+        <p class="font-display text-xl leading-snug sm:text-2xl">Étudiant en 2ème année de <a href="https://www.iut.unilim.fr/les-formations/but/metiers-du-multimedia-et-de-linternet/" target="_blank" rel="noopener noreferrer" class="underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">BUT MMI<span class="sr-only"> (nouvel onglet)</span></a>. Développement web, design UX, communication et création audiovisuelle.</p>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="#projets" class="group inline-flex min-h-12 items-center gap-3 rounded-full bg-accent px-6 font-semibold text-surface transition-colors hover:bg-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            Voir les projets
+            <svg class="size-4 motion-safe:transition-transform motion-safe:group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+          </a>
+          <a href="#contact" class="group inline-flex min-h-12 items-center gap-3 rounded-full border border-muted/60 px-6 font-semibold text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            Me contacter
+            <svg class="size-4 motion-safe:transition-transform motion-safe:group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+          </a>
+        </div>
+
+        <p class="border-l border-accent pl-4 text-sm leading-relaxed text-muted md:col-span-2 lg:col-span-1">Je transforme des idées en expériences utiles, lisibles et sensibles.</p>
+      </div>
+
+      <!-- Infos en police mono, « décodées » à l'arrivée et au survol (src/js/views/ScrambleView.js) -->
+      <p class="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-muted uppercase">
+        <span data-scramble>Limoges, France</span>
+        <span class="h-px w-8 bg-muted/50" aria-hidden="true"></span>
+        <span data-scramble>45.83°N 1.26°E</span>
+        <span class="h-px w-8 bg-muted/50" aria-hidden="true"></span>
+        <span data-scramble>Développement web &amp; design</span>
+      </p>
+    </section>
+
+    <!-- Projets : données dans src/data/projects.json. Les trois projets mis en avant
+         changent à chaque tirage de la machine à sous (src/js/views/FeaturedProjectsView.js). -->
+    <section id="projets" aria-labelledby="projets-title" class="relative scroll-mt-28 py-24">
+      <!-- Coulisses de la section, révélées par la lampe (desktop) -->
+      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-28 left-0">Math.random() &lt; 1 / 30</span>
+        <span class="absolute top-36 left-0 text-muted">/* hasard maîtrisé */</span>
+        <span class="absolute top-28 right-0">transform-style: preserve-3d;</span>
+        <span class="absolute bottom-8 left-0 text-accent">// la prochaine main sera peut-être la bonne</span>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-section lg:items-end lg:gap-10">
+        <p class="flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase lg:pb-3"><span class="text-accent">01</span><span data-scramble>Projets choisis</span></p>
+        <h2 id="projets-title" class="font-display text-5xl leading-none tracking-tight sm:text-6xl lg:text-7xl">
+          <span data-featured-line="1" class="block">Trois projets,</span>
+          <span data-featured-line="2" class="block text-accent italic">trois façons de créer.</span>
+        </h2>
+        <p class="max-w-xs leading-relaxed text-muted lg:pb-3">De l’idée à la réalisation, je cherche le bon équilibre entre usage, forme et technique.</p>
+        <p class="flex items-center gap-2 font-mono text-xs text-support lg:col-start-2"><span class="text-accent" aria-hidden="true">◆</span><span data-featured-status aria-live="polite">Les trois projets les plus récents.</span></p>
+      </div>
+
+      <ol data-featured class="mt-16 grid gap-20 md:gap-28"></ol>
+
+      <!-- Carte retournable : data-face-down (posé par le JS après un tirage) montre le dos,
+           puis la carte se retourne quand elle entre à l'écran. -->
+      <template id="featured-card">
+        <li class="group grid gap-6 md:grid-cols-[3fr_2fr] md:items-center md:gap-12 md:even:grid-cols-[2fr_3fr]">
+          <div class="perspective-distant md:group-even:order-last">
+            <div class="relative aspect-16/10 transition-transform duration-700 ease-out transform-3d group-data-face-down:rotate-y-180 motion-reduce:transition-none">
+              <div data-cover class="absolute inset-0 overflow-hidden rounded-lg border border-muted/30 bg-ink/5 backface-hidden">
+                <span data-number class="absolute top-4 left-4 rounded-full bg-surface/80 px-2 py-1 font-mono text-xs text-accent"></span>
+              </div>
+              <div class="absolute inset-0 flex rotate-y-180 items-center justify-center overflow-hidden rounded-lg border border-accent/60 bg-surface backface-hidden" aria-hidden="true">
+                <div class="absolute inset-3 rounded-md border border-accent/30 bg-grid"></div>
+                <span class="absolute top-6 left-7 flex flex-col items-center font-mono text-xs leading-tight text-accent"><span data-back-number></span>◆</span>
+                <span class="relative flex size-20 items-center justify-center rounded-full border border-accent bg-surface font-display text-3xl text-accent">P/</span>
+                <span class="absolute right-7 bottom-6 flex rotate-180 flex-col items-center font-mono text-xs leading-tight text-accent"><span data-back-number></span>◆</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col items-start gap-4 transition-opacity delay-300 duration-500 group-data-face-down:opacity-0 motion-reduce:transition-none">
+            <p data-meta class="font-mono text-xs tracking-widest text-support uppercase"></p>
+            <h3 data-title class="font-display text-4xl leading-tight text-ink sm:text-5xl"></h3>
+            <p data-summary class="max-w-md text-lg leading-relaxed text-muted"></p>
+            <p data-match class="flex items-center gap-2 font-mono text-xs text-accent"><span aria-hidden="true">◆</span><span data-match-text></span></p>
+            <a href="projets/" data-project-link data-transition="cover" class="group/open mt-2 inline-flex min-h-11 items-center gap-3 font-semibold text-ink transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+              Voir le projet<span data-open-name class="sr-only"></span>
+              <svg class="size-4 text-accent motion-safe:transition-transform motion-safe:group-hover/open:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+            </a>
+          </div>
+        </li>
+      </template>
+    </section>
+
+    <!-- Bandeau des outils (src/js/views/SkillMarqueeView.js) : liste dans src/data/skills.json,
+         logos dans le sprite SVG en bas de page. -->
+    <section data-marquee aria-labelledby="outils-title" class="group/marquee relative -mx-4 border-y border-muted/20 py-8 md:-mx-8">
+      <div class="flex items-center justify-between gap-4 px-4 md:px-8">
+        <h2 id="outils-title" class="flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase"><span class="text-accent" aria-hidden="true">◆</span><span data-scramble>Boîte à outils</span></h2>
+      </div>
+      <!-- Coulisses de la section, révélées par la lampe (desktop) -->
+      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-8 right-8">animation: marquee 45s linear infinite;</span>
+        <span class="absolute bottom-1 left-8 text-muted">/* survol, toucher ou focus : pause */</span>
+      </div>
+
+      <!-- Défilement arrêté au survol, au focus clavier, ou d'un toucher (data-paused) -->
+      <div data-marquee-viewport tabindex="0" role="group" aria-label="Bandeau défilant : il s’arrête au survol, au toucher ou au focus" class="relative mt-6 overflow-hidden focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent">
+        <div class="flex w-max motion-safe:animate-marquee group-focus-within/marquee:[animation-play-state:paused] group-hover/marquee:[animation-play-state:paused] group-data-paused/marquee:[animation-play-state:paused] motion-reduce:w-full">
+          <ul data-marquee-list aria-label="Outils et compétences" class="flex shrink-0 motion-reduce:shrink motion-reduce:flex-wrap motion-reduce:justify-center"></ul>
+          <ul data-marquee-list aria-hidden="true" class="flex shrink-0 motion-reduce:hidden"></ul>
+        </div>
+        <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-linear-to-r from-surface to-transparent motion-reduce:hidden" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-linear-to-l from-surface to-transparent motion-reduce:hidden" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Tous les projets, filtrés par catégorie (src/js/views/ProjectListView.js) -->
+    <section id="tous-les-projets" aria-labelledby="tous-les-projets-title" class="relative scroll-mt-28 py-24">
+      <!-- Coulisses de la section, révélées par la lampe (desktop) -->
+      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-28 left-0">projects.filter(byCategory)</span>
+        <span class="absolute top-36 left-0 text-muted">/* rater proprement ✓ */</span>
+        <span class="absolute top-28 right-0">border-top: 1px solid;</span>
+        <span class="absolute right-0 bottom-8 text-accent">// tout vu ? tape « tirage » dans le terminal</span>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-section lg:items-end lg:gap-10">
+        <p class="flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase lg:pb-3"><span class="text-accent">02</span><span data-scramble>Tous les projets</span></p>
+        <h2 id="tous-les-projets-title" class="font-display text-5xl leading-none tracking-tight sm:text-6xl lg:text-7xl">
+          <span class="block">Le travail</span>
+          <span class="block text-accent italic">sur la table.</span>
+        </h2>
+        <p class="max-w-xs leading-relaxed text-muted lg:pb-3">Une sélection de réalisations universitaires et personnelles. Chaque projet est une occasion de tester, rater proprement, puis mieux faire.</p>
+        <div data-project-filters role="group" aria-label="Filtrer les projets par catégorie" class="flex flex-wrap gap-2 lg:col-start-2 lg:pt-4"></div>
+      </div>
+
+      <p data-project-list-status aria-live="polite" class="sr-only"></p>
+      <ul data-project-list class="mt-12 border-b border-muted/30"></ul>
+
+      <template id="project-row">
+        <li class="group flex flex-col gap-5 border-t border-muted/30 py-8 md:grid md:grid-cols-[2rem_14rem_minmax(0,1fr)_auto] md:items-center md:gap-8 lg:grid-cols-[2rem_18rem_minmax(0,1fr)_auto]">
+          <span data-number class="font-mono text-xs text-accent md:self-start"></span>
+          <div data-cover class="aspect-16/10 overflow-hidden rounded-lg border border-muted/30 bg-ink/5"></div>
+          <div class="flex flex-col items-start gap-3">
+            <p data-meta class="font-mono text-xs tracking-widest text-support uppercase"></p>
+            <h3 data-title class="font-display text-3xl leading-tight text-ink"></h3>
+            <p data-summary class="max-w-xl leading-relaxed text-muted"></p>
+            <ul data-stack aria-label="Compétences utilisées" class="flex flex-wrap gap-1.5 pt-1"></ul>
+          </div>
+          <a href="projets/" data-project-link data-transition="cover" class="inline-flex size-14 shrink-0 items-center justify-center self-end rounded-full border border-muted/40 text-accent transition-colors hover:border-accent hover:bg-accent hover:text-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:self-center">
+            <span data-open-label class="sr-only"></span>
+            <svg class="size-5 motion-safe:transition-transform motion-safe:group-hover:-rotate-45" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+          </a>
+        </li>
+      </template>
+    </section>
+
+    <!-- Profil et parcours : fabriqués au build (et en développement) par build/profileSection.js
+         et build/educationSection.js, depuis src/data/ : le contenu est donc dans le HTML servi. -->
+    <!-- profile:section -->
+
+    <!-- education:section -->
+
+    <!-- Contact : formulaire « mode coop », fabriqué au build par build/contactSection.js
+         depuis src/data/contact.json. Le JS (src/js/views/ContactView.js) ajoute la vérification,
+         l'enveloppe, les codes de récompense et le pigeon. -->
+    <!-- contact:section -->
+  </main>
+
+  <!-- Pied de page en écran de fin, fabriqué au build par build/contactSection.js.
+       Le score du visiteur est rempli par src/js/views/FooterView.js. -->
+  <!-- site:footer -->
+
+  <!-- Mini-carte (grands écrans) : un niveau par section, le dino suit la section visible
+       (src/js/views/MiniMapView.js). Raccourci à la souris, masqué aux lecteurs d'écran :
+       la navigation principale reste la référence. -->
+  <div data-minimap class="fixed top-1/2 right-5 z-30 hidden -translate-y-1/2 xl:block" aria-hidden="true">
+    <div class="relative">
+      <span class="absolute inset-y-1.5 left-1/2 -translate-x-1/2 border-l border-dashed border-muted/50"></span>
+      <span class="absolute top-1.5 left-1/2 h-(--map-progress) w-px -translate-x-1/2 bg-accent motion-safe:transition-[height] motion-safe:duration-500"></span>
+      <ol class="flex flex-col items-center gap-8">
+        <li><a href="#accueil" tabindex="-1" data-minimap-link class="group relative flex size-3 items-center justify-center"><span class="size-2.5 rotate-45 border border-muted bg-surface transition-[background-color,border-color,scale] group-hover:border-accent group-data-current:scale-150 group-data-reached:border-accent group-data-reached:bg-accent"></span><span class="pointer-events-none absolute right-6 rounded border border-muted/30 bg-surface px-2 py-1 font-mono text-2xs whitespace-nowrap text-ink opacity-0 transition-opacity group-hover:opacity-100">Accueil</span></a></li>
+        <li><a href="#projets" tabindex="-1" data-minimap-link class="group relative flex size-3 items-center justify-center"><span class="size-2.5 rotate-45 border border-muted bg-surface transition-[background-color,border-color,scale] group-hover:border-accent group-data-current:scale-150 group-data-reached:border-accent group-data-reached:bg-accent"></span><span class="pointer-events-none absolute right-6 rounded border border-muted/30 bg-surface px-2 py-1 font-mono text-2xs whitespace-nowrap text-ink opacity-0 transition-opacity group-hover:opacity-100">Projets</span></a></li>
+        <li><a href="#profil" tabindex="-1" data-minimap-link class="group relative flex size-3 items-center justify-center"><span class="size-2.5 rotate-45 border border-muted bg-surface transition-[background-color,border-color,scale] group-hover:border-accent group-data-current:scale-150 group-data-reached:border-accent group-data-reached:bg-accent"></span><span class="pointer-events-none absolute right-6 rounded border border-muted/30 bg-surface px-2 py-1 font-mono text-2xs whitespace-nowrap text-ink opacity-0 transition-opacity group-hover:opacity-100">Profil</span></a></li>
+        <li><a href="#parcours" tabindex="-1" data-minimap-link class="group relative flex size-3 items-center justify-center"><span class="size-2.5 rotate-45 border border-muted bg-surface transition-[background-color,border-color,scale] group-hover:border-accent group-data-current:scale-150 group-data-reached:border-accent group-data-reached:bg-accent"></span><span class="pointer-events-none absolute right-6 rounded border border-muted/30 bg-surface px-2 py-1 font-mono text-2xs whitespace-nowrap text-ink opacity-0 transition-opacity group-hover:opacity-100">Parcours</span></a></li>
+        <li><a href="#contact" tabindex="-1" data-minimap-link class="group relative flex size-3 items-center justify-center"><span class="size-2.5 rotate-45 border border-muted bg-surface transition-[background-color,border-color,scale] group-hover:border-accent group-data-current:scale-150 group-data-reached:border-accent group-data-reached:bg-accent"></span><span class="pointer-events-none absolute right-6 rounded border border-muted/30 bg-surface px-2 py-1 font-mono text-2xs whitespace-nowrap text-ink opacity-0 transition-opacity group-hover:opacity-100">Contact</span></a></li>
+      </ol>
+      <svg class="absolute top-(--map-dino) right-full mr-2 size-5 -translate-y-1/2 fill-accent stroke-surface motion-safe:transition-[top] motion-safe:duration-500" viewBox="-1 -1 14 14" shape-rendering="crispEdges" aria-hidden="true"><use href="#dino"></use></svg>
+    </div>
+  </div>
+
+  <!-- Terminal fixe en bas à droite, replié par défaut (src/js/views/TerminalView.js).
+       S'ouvre au clic, ou avec Ctrl + K ou la touche ². Commandes dans src/js/models/commands.js. -->
+  <aside data-terminal aria-label="Terminal du portfolio" class="group/console fixed right-4 bottom-4 z-30 w-80 max-w-[calc(100vw-2rem)] overflow-hidden rounded-xl border border-muted/30 bg-surface/95 font-mono text-xs text-muted shadow-2xl backdrop-blur-md data-open:w-md">
+    <button type="button" data-console-toggle aria-expanded="false" aria-controls="console-panel" class="flex min-h-11 w-full items-center gap-3 px-3 text-left transition-colors hover:bg-ink/5 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent">
+      <span class="flex gap-1" aria-hidden="true">
+        <span class="size-2 rounded-full bg-accent"></span>
+        <span class="size-2 rounded-full bg-muted/50"></span>
+        <span class="size-2 rounded-full bg-online"></span>
+      </span>
+      <span class="flex-1 text-ink">~/portfolio</span>
+      <kbd class="hidden rounded border border-muted/40 px-1 font-mono text-2xs pointer-fine:inline">Ctrl K</kbd>
+      <span data-mini-draw><span class="sr-only">Collection : </span><span data-mini-found>0</span>/<span data-mini-total>0</span></span>
+      <span data-mini-draw><span data-mini-tokens>0</span> <span aria-hidden="true">◆</span><span class="sr-only">jetons</span></span>
+      <svg class="size-3.5 motion-safe:transition-transform group-data-open/console:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 10l4-4 4 4"/></svg>
+    </button>
+
+    <div id="console-panel" data-console-panel hidden class="border-t border-muted/20">
+      <!-- Sortie du terminal, remplie par JS -->
+      <div data-terminal-scroll role="log" aria-live="polite" aria-label="Sortie du terminal" class="max-h-[min(18rem,50dvh)] overflow-y-auto px-3 pt-2 pb-1">
+        <ol data-terminal-output class="leading-relaxed whitespace-pre-wrap"></ol>
+      </div>
+
+      <form data-terminal-form class="mx-3 mb-2 flex items-center gap-2 rounded-md border border-muted/20 px-2 focus-within:border-accent">
+        <label for="terminal-input" class="sr-only">Commande</label>
+        <span class="text-accent" aria-hidden="true">$</span>
+        <input id="terminal-input" data-terminal-input type="text" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="send" placeholder="tape help" class="min-h-9 w-full bg-transparent text-base text-ink outline-none placeholder:text-muted/70 md:text-xs">
+      </form>
+
+      <!-- Raccourcis cliquables (utiles sur mobile) -->
+      <p class="flex flex-wrap gap-1.5 px-3 pb-3">
+        <button type="button" data-terminal-run="help" class="min-h-8 rounded-full border border-muted/30 px-2.5 transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent">help</button>
+        <button type="button" data-terminal-run="tirage" data-mini-draw class="min-h-8 rounded-full border border-muted/30 px-2.5 transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent">tirage</button>
+        <button type="button" data-terminal-run="theme" class="min-h-8 rounded-full border border-muted/30 px-2.5 transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent">theme</button>
+        <button type="button" data-terminal-run="neofetch" class="min-h-8 rounded-full border border-muted/30 px-2.5 transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent">neofetch</button>
+        <button type="button" data-terminal-run="cat secrets.txt" class="min-h-8 rounded-full border border-muted/30 px-2.5 transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent">secrets.txt</button>
+      </p>
+    </div>
+  </aside>
+
+  <!-- Écran de chargement en machine à sous : ouvert par JS (src/js/views/SlotLoaderView.js) -->
+  <dialog data-slot-loader aria-labelledby="slot-loader-title" class="m-0 size-full max-h-none max-w-none bg-surface p-0 text-ink backdrop:bg-surface">
+    <!-- Jetons du jackpot (easter egg), ajoutés par JS -->
+    <div data-slot-coins class="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true"></div>
+
+    <div class="flex min-h-full flex-col items-center justify-center gap-8 px-4 py-12">
+      <h2 id="slot-loader-title" class="text-center font-display text-2xl font-bold sm:text-3xl">Chargement du portfolio</h2>
+
+      <div data-slot-machine class="w-full max-w-md rounded-3xl border-2 border-muted p-3 sm:p-5">
+        <div class="mb-3 flex justify-between px-2" aria-hidden="true">
+          <span class="size-2 rounded-full bg-accent motion-safe:animate-pulse"></span>
+          <span class="size-2 rounded-full bg-support"></span>
+          <span class="size-2 rounded-full bg-accent motion-safe:animate-pulse"></span>
+          <span class="size-2 rounded-full bg-support"></span>
+          <span class="size-2 rounded-full bg-accent motion-safe:animate-pulse"></span>
+          <span class="size-2 rounded-full bg-support"></span>
+          <span class="size-2 rounded-full bg-accent motion-safe:animate-pulse"></span>
+        </div>
+
+        <div class="relative grid grid-cols-3 gap-2" aria-hidden="true">
+          <div class="relative h-42 overflow-hidden rounded-lg bg-ink">
+            <ul data-reel></ul>
+            <div class="pointer-events-none absolute inset-x-0 top-0 h-14 bg-linear-to-b from-ink to-transparent"></div>
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-linear-to-t from-ink to-transparent"></div>
+          </div>
+          <div class="relative h-42 overflow-hidden rounded-lg bg-ink">
+            <ul data-reel></ul>
+            <div class="pointer-events-none absolute inset-x-0 top-0 h-14 bg-linear-to-b from-ink to-transparent"></div>
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-linear-to-t from-ink to-transparent"></div>
+          </div>
+          <div class="relative h-42 overflow-hidden rounded-lg bg-ink">
+            <ul data-reel></ul>
+            <div class="pointer-events-none absolute inset-x-0 top-0 h-14 bg-linear-to-b from-ink to-transparent"></div>
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-linear-to-t from-ink to-transparent"></div>
+          </div>
+          <!-- Ligne de gain -->
+          <div data-slot-payline class="pointer-events-none absolute inset-x-0 top-14 h-14 border-y-2 border-accent"></div>
+        </div>
+      </div>
+
+      <p role="status" data-slot-status class="min-h-6 text-center text-muted"></p>
+
+      <button type="button" data-slot-skip class="min-h-11 rounded-full border-2 border-accent px-5 py-2 font-semibold text-accent transition-colors hover:bg-accent hover:text-surface focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink">
+        Passer l'animation
+      </button>
+      <p class="text-sm text-muted">ou appuyez sur Échap</p>
+    </div>
+  </dialog>
+
+  <!-- Logos du bandeau « Boîte à outils », appelés par <use href="#logo-…">.
+       Tracés de Simple Icons (licence CC0), sauf « ai » et « seo », dessinés pour le site. -->
+  <svg class="hidden" aria-hidden="true">
+    <symbol id="logo-html" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></symbol>
+    <symbol id="logo-css" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></symbol>
+    <symbol id="logo-javascript" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></symbol>
+    <symbol id="logo-tailwind" viewBox="0 0 24 24"><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/></symbol>
+    <symbol id="logo-vite" viewBox="0 0 24 24"><path d="m8.286 10.578.512-8.657a.306.306 0 0 1 .247-.282L17.377.006a.306.306 0 0 1 .353.385l-1.558 5.403a.306.306 0 0 0 .352.385l2.388-.46a.306.306 0 0 1 .332.438l-6.79 13.55-.123.19a.294.294 0 0 1-.252.14c-.177 0-.35-.152-.305-.369l1.095-5.301a.306.306 0 0 0-.388-.355l-1.433.435a.306.306 0 0 1-.389-.354l.69-3.375a.306.306 0 0 0-.37-.36l-2.32.536a.306.306 0 0 1-.374-.316zm14.976-7.926L17.284 3.74l-.544 1.887 2.077-.4a.8.8 0 0 1 .84.369.8.8 0 0 1 .034.783L12.9 19.93l-.013.025-.015.023-.122.19a.801.801 0 0 1-.672.37.826.826 0 0 1-.634-.302.8.8 0 0 1-.16-.67l1.029-4.981-1.12.34a.81.81 0 0 1-.86-.262.802.802 0 0 1-.165-.67l.63-3.08-2.027.468a.808.808 0 0 1-.768-.233.81.81 0 0 1-.217-.6l.389-6.57-7.44-1.33a.612.612 0 0 0-.64.906L11.58 23.691a.612.612 0 0 0 1.066-.004l11.26-20.135a.612.612 0 0 0-.644-.9z"/></symbol>
+    <symbol id="logo-git" viewBox="0 0 24 24"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></symbol>
+    <symbol id="logo-figma" viewBox="0 0 24 24"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></symbol>
+    <symbol id="logo-adobe" viewBox="0 0 24 24"><path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624Z"/></symbol>
+    <symbol id="logo-canva" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z"/></symbol>
+    <symbol id="logo-ai" viewBox="0 0 24 24"><path d="M10 2l2.2 6.8L19 11l-6.8 2.2L10 20l-2.2-6.8L1 11l6.8-2.2zM19 1l1 3 3 1-3 1-1 3-1-3-3-1 3-1zM19 15l.7 2.3 2.3.7-2.3.7L19 21l-.7-2.3L16 18l2.3-.7z"/></symbol>
+    <symbol id="logo-python" viewBox="0 0 24 24"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></symbol>
+    <symbol id="logo-seo" viewBox="0 0 24 24"><path d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.39-1.42 1.42-5.39-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM7 12h2v2H7zm3-3h2v5h-2z"/></symbol>
+    <!-- Le dino du site (même dessin que le curseur), pour la mini-carte -->
+    <!-- Le pigeon de Limoges (oiseau du jeu du dino), ailes levées et baissées, pour le formulaire de contact -->
+    <symbol id="pigeon-up" viewBox="0 0 10 8"><path d="M4 0h1v1H4zM4 1h2v1H4zM1 2h1v1H1zM4 2h3v1H4zM0 3h10v1H0zM3 4h6v1H3z"/></symbol>
+    <symbol id="pigeon-down" viewBox="0 0 10 8"><path d="M1 2h1v1H1zM0 3h10v1H0zM3 4h6v1H3zM4 5h3v1H4zM4 6h2v1H4zM4 7h1v1H4z"/></symbol>
+    <symbol id="dino" viewBox="-1 -1 14 14"><path stroke-width="0.25" paint-order="stroke" d="M6 0h6v1H6zM5 1h2v1H5zM8 1h4v1H8zM5 2h7v1H5zM5 3h4v1H5zM5 4h6v1H5zM0 5h1v1H0zM4 5h4v1H4zM0 6h2v1H0zM3 6h6v1H3zM0 7h8v1H0zM1 8h6v1H1zM2 9h4v1H2zM2 10h2v1H2zM5 10h1v1H5zM2 11h2v1H2zM5 11h2v1H5z"/></symbol>
+  </svg>
+</body>
+</html>
