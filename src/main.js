@@ -12,6 +12,7 @@ import ContactView from './js/views/ContactView.js';
 import ContactController from './js/controllers/ContactController.js';
 import ContactService from './js/services/ContactService.js';
 import FooterView from './js/views/FooterView.js';
+import AvatarView from './js/views/AvatarView.js';
 import FooterController from './js/controllers/FooterController.js';
 import ProjectModel from './js/models/ProjectModel.js';
 import FeaturedProjectsView from './js/views/FeaturedProjectsView.js';
@@ -292,6 +293,8 @@ if (terminalRoot) {
 
   // Pied de page : score de la partie du visiteur, et raccourcis vers le terminal et le générique.
   const footer = document.querySelector('[data-footer]');
+  const footerAvatar = footer?.querySelector('[data-avatar="footer"]');
+  if (footerAvatar) new AvatarView(footerAvatar).playWhenVisible();
   if (footer) {
     new FooterController(new FooterView(footer), {
       sources: [tokens, collection],
@@ -354,8 +357,12 @@ if (loader && !backFromProject) {
   transitions.enter();
 }
 
-// Les textes se décodent quand la page devient visible : à la fermeture de la machine à sous.
-waitForPage().then(() => scramble.start());
+// Les textes se décodent et l'avatar salue quand la page devient visible : à la fermeture de la machine à sous.
+const heroAvatar = document.querySelector('[data-avatar="hero"]');
+waitForPage().then(() => {
+  scramble.start();
+  if (heroAvatar) new AvatarView(heroAvatar).play();
+});
 
 // Retire le cache posé par le CSS : la machine à sous est ouverte (ou ne s'ouvrira pas).
 document.documentElement.dataset.ready = '';
