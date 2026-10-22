@@ -14,10 +14,3 @@ npm run dev       # lance le site sur http://localhost:5173/portfolio/
 npm run build     # génère le site final dans dist/
 npm run preview   # affiche le site final pour le tester
 ```
-
-## Travailler avec Claude Code
-
-- `AGENTS.md` décrit le projet et ses règles. `CLAUDE.md` l'importe, avec la mémoire.
-- `.claude/rules/` contient les règles chargées à chaque session.
-- `.claude/skills/` contient les savoir-faire (Tailwind, MVC, accessibilité, SEO, W3C…).
-- `.claude/memoire.md` garde le contexte d'une session à l'autre. Tapez `/sauvegarde` avant de quitter Claude Code : il y écrit un résumé court, relu automatiquement à la session suivante.
