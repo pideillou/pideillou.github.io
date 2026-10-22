@@ -24,6 +24,8 @@
     <!-- « 404 » en pixels : le JS remplace ce texte par des blocs qui tombent et s'empilent
          (src/js/views/GameOverView.js) -->
     <div data-pixels class="font-mono text-6xl font-bold text-accent" aria-hidden="true">404</div>
+    <!-- Avatar assis, dépité : il soupire lentement (rien si animations réduites) -->
+    <img src="/src/assets/avatar/game-over-1x.webp" srcset="/src/assets/avatar/game-over-1x.webp 1x, /src/assets/avatar/game-over-2x.webp 2x" width="159" height="168" alt="" decoding="async" class="h-36 w-auto origin-bottom motion-safe:animate-sigh sm:h-44">
     <p class="font-mono text-xs font-semibold tracking-widest text-accent uppercase"><span class="sr-only">Erreur 404 : </span>Page introuvable</p>
     <h1 data-title class="font-display text-6xl leading-none tracking-tight sm:text-8xl">Game over</h1>
     <p class="max-w-md text-lg leading-relaxed text-muted">Cette page n’existe pas, ou plus. Tu es sorti de la carte.</p>

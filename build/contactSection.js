@@ -78,7 +78,11 @@ function renderSection({ contact, profile }) {
           <span class="block">Rejoindre la partie,</span>
           <span class="block text-accent italic">en mode coop.</span>
         </h2>
-        <p class="max-w-xs leading-relaxed text-muted lg:pb-3">${escape(contact.intro)}</p>
+        <div class="flex items-end gap-5 lg:flex-col lg:items-start lg:pb-3">
+          <!-- Avatar qui tient la lettre, le pigeon sur l'épaule : c'est lui qui part à l'envoi -->
+          <img src="/src/assets/avatar/letter-1x.webp" srcset="/src/assets/avatar/letter-1x.webp 1x, /src/assets/avatar/letter-2x.webp 2x" width="110" height="295" alt="" loading="lazy" decoding="async" class="h-40 w-auto shrink-0 lg:h-52">
+          <p class="max-w-xs leading-relaxed text-muted">${escape(contact.intro)}</p>
+        </div>
         <p class="flex items-center gap-2 font-mono text-xs text-support lg:col-start-2"><span class="text-accent" aria-hidden="true">◆</span>${escape(contact.response)}</p>
       </div>
 
@@ -208,9 +212,13 @@ function renderFooter({ contact, profile }) {
   return `<footer data-footer class="border-t border-muted/20">
     <div class="mx-auto max-w-6xl px-4 pt-16 pb-28 md:px-8">
       <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
-        <div>
-          <p class="flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase"><span class="text-accent" aria-hidden="true">◆</span>Fin de la partie</p>
-          <p class="mt-5 font-display text-5xl leading-none tracking-tight sm:text-6xl">Merci d’avoir joué.<span class="block text-accent italic">La suite au prochain niveau.</span></p>
+        <div class="flex items-end justify-between gap-6 lg:justify-start">
+          <div class="min-w-0">
+            <p class="flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase"><span class="text-accent" aria-hidden="true">◆</span>Fin de la partie</p>
+            <p class="mt-5 font-display text-5xl leading-none tracking-tight sm:text-6xl">Merci d’avoir joué.<span class="block text-accent italic">La suite au prochain niveau.</span></p>
+          </div>
+          <!-- Avatar qui fête la fin de partie : deux sauts quand il apparaît à l'écran (src/js/views/AvatarView.js) -->
+          <img data-avatar="footer" src="/src/assets/avatar/cheers-1x.webp" srcset="/src/assets/avatar/cheers-1x.webp 1x, /src/assets/avatar/cheers-2x.webp 2x" width="144" height="288" alt="" loading="lazy" decoding="async" class="h-36 w-auto shrink-0 data-on:motion-safe:animate-cheer sm:h-48">
         </div>
 
         <section data-footer-score aria-labelledby="footer-score-title" class="rounded-xl border border-muted/30 p-5 font-mono text-xs" hidden>

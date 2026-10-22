@@ -64,6 +64,33 @@
     }
   }
 
+  /* Avatar de l'accueil : il se balance pour saluer, deux fois à l'arrivée */
+  --animate-wave: wave 1.4s ease-in-out 2;
+  @keyframes wave {
+    25% {
+      transform: rotate(-4deg);
+    }
+    75% {
+      transform: rotate(4deg);
+    }
+  }
+
+  /* Avatar du pied de page : deux sauts de joie quand on arrive en bas */
+  --animate-cheer: cheer 0.7s ease-out 2;
+  @keyframes cheer {
+    40% {
+      transform: translateY(-16px);
+    }
+  }
+
+  /* Avatar assis (404, économiseur d'écran) : il respire lentement */
+  --animate-sigh: sigh 3.2s ease-in-out infinite;
+  @keyframes sigh {
+    50% {
+      transform: scaleY(0.97);
+    }
+  }
+
   /* Dino de la carte du parcours : il sautille sur place en attendant la suite */
   --animate-hop: hop 1.4s ease-in-out infinite;
   @keyframes hop {

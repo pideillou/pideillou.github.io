@@ -125,9 +125,13 @@
           </figcaption>
         </figure>
 
-        <div class="lg:col-span-2">
-          <h1 id="accueil-title" class="font-display text-hero tracking-tight">Paul <span class="whitespace-nowrap">PIDEILL<span class="ml-[0.08em] inline-block h-[0.75em] w-[0.06em] bg-accent motion-safe:animate-blink" aria-hidden="true"></span></span></h1>
-          <span class="mt-6 block h-1 w-24 rounded-full bg-accent" aria-hidden="true"></span>
+        <div class="flex items-end justify-between gap-4 lg:col-span-2">
+          <div class="min-w-0">
+            <h1 id="accueil-title" class="font-display text-hero tracking-tight">Paul <span class="whitespace-nowrap">PIDEILL<span class="ml-[0.08em] inline-block h-[0.75em] w-[0.06em] bg-accent motion-safe:animate-blink" aria-hidden="true"></span></span></h1>
+            <span class="mt-6 block h-1 w-24 rounded-full bg-accent" aria-hidden="true"></span>
+          </div>
+          <!-- Avatar de Paul qui salue : il se balance quand la page apparaît (src/js/views/AvatarView.js) -->
+          <img data-avatar="hero" src="/src/assets/avatar/wave-1x.webp" srcset="/src/assets/avatar/wave-1x.webp 1x, /src/assets/avatar/wave-2x.webp 2x" width="114" height="305" alt="" decoding="async" class="h-36 w-auto shrink-0 origin-bottom data-on:motion-safe:animate-wave sm:h-48 lg:h-64">
         </div>
       </div>
 

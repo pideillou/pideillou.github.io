@@ -1,3 +1,7 @@
+// Avatar endormi, en deux tailles (écrans normaux et haute densité).
+import asleep1x from '../../assets/avatar/asleep-1x.webp';
+import asleep2x from '../../assets/avatar/asleep-2x.webp';
+
 // Vitesse du logo (pixels par seconde).
 const SPEED = 140;
 // Couleurs prises à chaque rebond (classes complètes, jamais construites dynamiquement).
@@ -5,6 +9,7 @@ const COLORS = ['bg-accent', 'bg-online', 'bg-support', 'bg-gold', 'bg-ink'];
 const ROOT_CLASSES = 'fixed inset-0 z-50 cursor-none bg-surface/95';
 const LOGO_CLASSES =
   'absolute top-0 left-0 flex size-24 items-center justify-center rounded-full font-display text-3xl text-surface italic shadow-2xl';
+const SLEEPER_CLASSES = 'absolute bottom-6 left-1/2 h-40 w-auto -translate-x-1/2 origin-bottom motion-safe:animate-sigh sm:h-52';
 // Événements qui réveillent la page.
 const ACTIVITY = ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart', 'scroll'];
 
@@ -43,7 +48,11 @@ export default class ScreensaverView {
     root.setAttribute('aria-hidden', 'true');
     const logo = document.createElement('div');
     logo.textContent = 'Pp';
-    root.append(logo);
+    // L'avatar s'est endormi en bas de l'écran, le temps que le logo rebondisse.
+    const sleeper = document.createElement('img');
+    Object.assign(sleeper, { src: asleep1x, srcset: `${asleep1x} 1x, ${asleep2x} 2x`, width: 133, height: 191, alt: '' });
+    sleeper.className = SLEEPER_CLASSES;
+    root.append(sleeper, logo);
     document.body.append(root);
     this.#root = root;
 
