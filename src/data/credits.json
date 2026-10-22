@@ -1,0 +1,24 @@
+{
+  "intro": "Il y a peu de temps, dans un IUT pas si lointain…",
+  "logo": "Paul PIDEILL",
+  "episode": "Épisode II",
+  "subtitle": "Un nouveau stagiaire",
+  "crawl": [
+    "C’est une période de recrutement intense. Partout dans la galaxie du web, des équipes cherchent quelqu’un capable de coder ET de designer.",
+    "Venu de Limoges, Paul PIDEILL, étudiant en deuxième année de BUT MMI, manie HTML, CSS, JavaScript et Figma. Il n’a pour arme qu’un terminal et une quantité déraisonnable de café.",
+    "Poursuivi par les bugs et les dates de rendu, il file vers la section Contact avec un portfolio qui pourrait bien ramener l’équilibre dans votre équipe…"
+  ],
+  "title": "Paul PIDEILL · portfolio",
+  "roles": [
+    { "role": "Réalisation", "names": ["Paul PIDEILL"] },
+    { "role": "Développement", "names": ["Paul PIDEILL"] },
+    { "role": "Design", "names": ["Paul PIDEILL"] },
+    { "role": "Outils", "names": ["Vite", "Tailwind CSS", "JavaScript", "Figma"] },
+    { "role": "Formation", "names": ["BUT MMI", "IUT du Limousin"] },
+    { "role": "Inspirations", "names": ["les vieux terminaux", "les salles d’arcade", "le web des années 2000"] },
+    { "role": "Carburant", "names": ["beaucoup de café"] },
+    { "role": "Remerciements", "names": ["toi, d’avoir regardé jusqu’ici"] }
+  ],
+  "thanks": "Merci d’avoir joué",
+  "ending": "Aucun pixel n’a été maltraité pendant le tournage."
+}

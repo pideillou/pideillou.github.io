@@ -1,0 +1,17 @@
+{
+  "collection": {
+    "title": "Collection complète",
+    "code": "12 sur 12",
+    "text": "Tu as découvert les 12 compétences. Glisse « 12 sur 12 » dans ton message : je te réponds en priorité."
+  },
+  "jackpot": {
+    "title": "Ticket doré",
+    "code": "ticket doré",
+    "text": "Trois fois la même compétence ! Glisse « ticket doré » dans ton message : le café est pour moi. ;)"
+  },
+  "secrets": {
+    "title": "Hacker",
+    "code": "sudo hire paul",
+    "text": "Tu as trouvé tous les secrets. Glisse « sudo hire paul » dans ton message : tu as gagné un entretien avec moi."
+  }
+}

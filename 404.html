@@ -1,0 +1,53 @@
+<!doctype html>
+<!--
+  Page 404 : GitHub Pages l'affiche pour toute adresse inconnue du site.
+  Tu es arrivé ici exprès ? Ça rapporte quand même un jeton.
+  Animation : les blocs du « 404 » tombent et s'empilent, façon jeu de blocs.
+-->
+<html lang="fr" class="scheme-dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game over : page introuvable | Paul PIDEILL</title>
+  <meta name="description" content="Cette page n’existe pas. Retour à l’accueil du portfolio de Paul PIDEILL.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#151C20">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <script type="module" src="/src/notfound.js"></script>
+</head>
+<body class="min-h-dvh bg-surface font-sans text-ink antialiased">
+  <div class="pointer-events-none fixed inset-0 -z-10 bg-grid" aria-hidden="true"></div>
+
+  <!-- %BASE_URL% est remplacé par Vite par l'adresse du site (/portfolio/) -->
+  <main id="contenu" data-game-over class="flex min-h-dvh flex-col items-center justify-center gap-6 px-4 py-16 text-center">
+    <!-- « 404 » en pixels : le JS remplace ce texte par des blocs qui tombent et s'empilent
+         (src/js/views/GameOverView.js) -->
+    <div data-pixels class="font-mono text-6xl font-bold text-accent" aria-hidden="true">404</div>
+    <p class="font-mono text-xs font-semibold tracking-widest text-accent uppercase"><span class="sr-only">Erreur 404 : </span>Page introuvable</p>
+    <h1 data-title class="font-display text-6xl leading-none tracking-tight sm:text-8xl">Game over</h1>
+    <p class="max-w-md text-lg leading-relaxed text-muted">Cette page n’existe pas, ou plus. Tu es sorti de la carte.</p>
+
+    <!-- Compte à rebours, affiché par le JS (src/js/views/GameOverView.js) -->
+    <div data-countdown hidden class="flex flex-col items-center gap-2 font-mono">
+      <span class="text-xs tracking-widest text-muted uppercase motion-safe:animate-blink">Continuer ?</span>
+      <span class="relative flex size-20 items-center justify-center">
+        <svg class="absolute inset-0 size-full -rotate-90" viewBox="0 0 80 80">
+          <circle cx="40" cy="40" r="34" fill="none" stroke-width="4" class="stroke-muted/20"></circle>
+          <circle data-countdown-ring cx="40" cy="40" r="34" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="213.6" class="stroke-accent [stroke-dashoffset:var(--ring)] motion-safe:transition-[stroke-dashoffset] motion-safe:duration-1000 motion-safe:ease-linear"></circle>
+        </svg>
+        <span data-countdown-number class="text-2xl font-bold text-accent">10</span>
+      </span>
+    </div>
+    <p data-countdown-status role="status" class="sr-only"></p>
+
+    <p class="flex flex-wrap items-center justify-center gap-3">
+      <a href="%BASE_URL%" class="inline-flex min-h-12 items-center gap-3 rounded-full bg-accent px-6 font-semibold text-surface transition-colors hover:bg-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Continuer</a>
+      <a href="%BASE_URL%#tous-les-projets" class="inline-flex min-h-12 items-center gap-3 rounded-full border border-muted/60 px-6 font-semibold text-ink transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Voir les projets</a>
+      <button type="button" data-countdown-stop hidden class="inline-flex min-h-12 items-center px-4 font-mono text-xs text-muted underline decoration-accent underline-offset-4 transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Rester ici</button>
+    </p>
+
+    <p data-hint class="max-w-md font-mono text-xs text-support empty:hidden"></p>
+  </main>
+</body>
+</html>

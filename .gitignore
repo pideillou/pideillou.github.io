@@ -1,0 +1,14 @@
+# Dépendances installées par npm
+node_modules/
+# Site généré par « npm run build »
+dist/
+# Configuration de Claude Code (gardée en local, non publiée)
+.claude/
+AGENTS.md
+CLAUDE.md
+CLAUDE.local.md
+# Solutions des secrets du terminal (gardées en local)
+docs/terminal.md
+# Fichiers système
+.DS_Store
+Thumbs.db

@@ -1,0 +1,32 @@
+{
+  "kicker": "Formation · 2022–2028",
+  "world": "Monde 1 : du lycée au BUT MMI",
+  "intro": "Du bac au BUT MMI : un profil polyvalent, avec un cap de plus en plus précis.",
+  "steps": [
+    {
+      "tutorial": true,
+      "years": "2022–2025",
+      "title": "Lycée Edmond-Perrier · Tulle",
+      "text": "Bac général, spécialités NSI et AMC (anglais, monde contemporain). Les maths de spécialité laissées en terminale au profit de l’option maths complémentaires. Mention assez bien.",
+      "status": "done"
+    },
+    {
+      "years": "2025–2026",
+      "title": "BUT MMI · Première année",
+      "text": "Découverte des fondamentaux : web, design, communication, audiovisuel et culture numérique.",
+      "status": "done"
+    },
+    {
+      "years": "2026–2027",
+      "title": "BUT MMI · Deuxième année",
+      "text": "Approfondissement en développement web et UX, projets collectifs et premiers cas complets.",
+      "status": "current"
+    },
+    {
+      "years": "2027–2028",
+      "title": "BUT MMI · Troisième année",
+      "text": "Spécialisation, alternance et projet de fin d’études pour consolider une pratique professionnelle.",
+      "status": "next"
+    }
+  ]
+}
