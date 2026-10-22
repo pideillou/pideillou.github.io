@@ -21,11 +21,12 @@ import XpController from './controllers/XpController.js';
 
 /**
  * @param {{ reducedMotion: boolean, onSecret?: (id: string) => void, levels?: string[],
- *   level?: { slug: string, next: { slug: string, title: string } } | null }} options
+ *   level?: { slug: string, next: { slug: string, title: string } } | null, xp?: boolean }} options
  *   onSecret : prévenu la première fois qu'un secret est trouvé sur la page (l'accueil l'annonce dans le terminal).
  *   levels : identifiants de toutes les fiches projet. level : la fiche affichée (absente hors des fiches).
+ *   xp : barre de lecture et jeton de fin de page (désactivés sur les mentions légales, qui ne sont pas un niveau).
  */
-export function setupSite({ reducedMotion, onSecret = () => {}, levels: levelSlugs = [], level = null }) {
+export function setupSite({ reducedMotion, onSecret = () => {}, levels: levelSlugs = [], level = null, xp = true }) {
   const skillNames = skillsData.skills.map((skill) => skill.name);
   const collection = new CollectionModel(skillNames, new StorageService('portfolio:collection'));
   const tokens = new TokenModel(new StorageService('portfolio:tokens'));
@@ -63,7 +64,7 @@ export function setupSite({ reducedMotion, onSecret = () => {}, levels: levelSlu
   // Barre d'XP de lecture : la première page lue jusqu'au bout rapporte un jeton.
   // Sur une fiche projet, la fiche compte comme un niveau fini ; les finir toutes rapporte un jeton de plus.
   const levels = new LevelModel(new StorageService('portfolio:levels'), levelSlugs);
-  new XpController(new XpModel(), new XpBarView({ reducedMotion }), {
+  if (xp) new XpController(new XpModel(), new XpBarView({ reducedMotion }), {
     onComplete: () => {
       let gained = tokens.hasClaimed('xp') ? 0 : 1;
       tokens.earn('xp');
