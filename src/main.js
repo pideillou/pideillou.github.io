@@ -65,7 +65,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 
 // Indice discret pour les curieux qui ouvrent la console du navigateur.
 console.info(
-  '%cP/%c  Tu fouilles la console ? Bon réflexe.\nOuvre le terminal (Ctrl + K) et tape : cat secrets.txt',
+  '%cPp%c  Tu fouilles la console ? Bon réflexe.\nOuvre le terminal (Ctrl + K) et tape : cat secrets.txt',
   'background:#d17a55;color:#151c20;font:bold 16px Georgia,serif;padding:4px 8px;border-radius:999px',
   'font:12px monospace',
 );
