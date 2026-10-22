@@ -81,25 +81,6 @@ const OBSTACLES = [
     ],
   },
   {
-    cause: 'un vase en porcelaine de Limoges',
-    rows: [
-      '..#####..',
-      '...###...',
-      '...###...',
-      '..#####..',
-      '.#######.',
-      '#########',
-      '##+#+#+##',
-      '#+#+#+#+#',
-      '#########',
-      '#########',
-      '.#######.',
-      '..#####..',
-      '...###...',
-      '..#####..',
-    ],
-  },
-  {
     cause: 'un point-virgule oublié',
     rows: [
       '.###.',
@@ -130,6 +111,56 @@ const OBSTACLES = [
       '##########',
     ],
   },
+  {
+    cause: 'la deadline de la SAÉ',
+    rows: [
+      '.##.....##.',
+      '###..#..###',
+      '...#####...',
+      '..#..+..#..',
+      '.#...#...#.',
+      '.#+..#..+#.',
+      '.#...##..#.',
+      '.#.......#.',
+      '..#..+..#..',
+      '...#####...',
+      '..#.....#..',
+      '.#.......#.',
+    ],
+  },
+  {
+    // Le bloc reste coincé dans un coin, loin des repères du centre.
+    cause: 'une div impossible à centrer',
+    rows: [
+      '###########',
+      '#....+....#',
+      '#.###.....#',
+      '#.###+....#',
+      '#.###.....#',
+      '#+.+.+.+.+#',
+      '#.........#',
+      '#....+....#',
+      '#.........#',
+      '#....+....#',
+      '###########',
+    ],
+  },
+  {
+    // Ondes atténuées, barrées : plus de réseau.
+    cause: 'le Wi-Fi de l’IUT',
+    rows: [
+      '..+++++++.#',
+      '.+.......#.',
+      '+..+++++#.+',
+      '..+....#+..',
+      '....++#....',
+      '...+.#.+...',
+      '....#......',
+      '...#.+.....',
+      '..#.+++....',
+      '.#...+.....',
+    ],
+  },
 ].map(({ cause, rows }) => ({
   cause,
   shape: sprite(rows),
@@ -139,7 +170,8 @@ const OBSTACLES = [
   solidFrom: rows.findIndex((row) => row.includes('#')) * SCALE,
 }));
 // Hauteur du haut du dessin. Bas : il faut sauter. Milieu : sauter ou se baisser. Haut : ne surtout pas sauter.
-const BIRD_HEIGHTS = [82, 70, 50];
+// L'oiseau du haut vole au niveau du sommet du saut (le dino monte d'environ 75 px) : impossible de passer au-dessus.
+const BIRD_HEIGHTS = [82, 70, 16];
 const BIRD_CAUSE = 'un pigeon de Limoges';
 
 /**
