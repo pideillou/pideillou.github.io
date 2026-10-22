@@ -1,5 +1,6 @@
 {
   "entries": [
+    { "date": "2026-10-22", "message": "feat: la borne d’arcade devient le thème par défaut, la palette d’origine passe en secret" },
     { "date": "2026-10-20", "message": "feat: célébration du jackpot" },
     { "date": "2026-10-20", "message": "feat: jeu du dino, inspect, rec, palette et succès" },
     { "date": "2026-10-20", "message": "feat: thèmes secrets arcade et vaporwave" },

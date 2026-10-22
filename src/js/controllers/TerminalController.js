@@ -59,22 +59,22 @@ export default class TerminalController {
       terminal.print([{ text: 'Toi aussi tu codes tard ? L’atelier est ouvert.', tone: 'accent' }, ...(isNew ? secretFoundLines(tokens) : [])]);
     }
 
-    // Code Konami tapé sur la page : thème arcade. Le retaper ramène le thème d'avant.
-    let themeBeforeArcade = 'defaut';
+    // Code Konami tapé sur la page : thème « origine » (la palette d'origine du site). Le retaper ramène le thème d'avant.
+    let themeBeforeKonami = 'defaut';
     konami.addEventListener('change', () => {
       view.setOpen(true);
-      if (theme.current === 'arcade') {
-        theme.set(themeBeforeArcade);
-        terminal.print([{ text: `Code Konami : retour au thème « ${themeBeforeArcade} ».`, tone: 'muted' }]);
+      if (theme.current === 'origine') {
+        theme.set(themeBeforeKonami);
+        terminal.print([{ text: `Code Konami : retour au thème « ${themeBeforeKonami} ».`, tone: 'muted' }]);
         return;
       }
       const isNew = !tokens.hasClaimed('secret:konami');
       tokens.earn('secret:konami');
-      themeBeforeArcade = theme.current;
-      theme.set('arcade');
+      themeBeforeKonami = theme.current;
+      theme.set('origine');
       terminal.print([
         { text: '↑ ↑ ↓ ↓ ← → ← → B A', tone: 'muted' },
-        { text: 'Code Konami ! Thème « arcade » activé.', tone: 'accent' },
+        { text: 'Code Konami ! Thème « origine » activé : la palette des débuts du site.', tone: 'accent' },
         { text: 'Pour revenir : retape le code, ou tape theme defaut.', tone: 'muted' },
         ...(isNew ? secretFoundLines(tokens) : []),
       ]);

@@ -66,7 +66,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 // Indice discret pour les curieux qui ouvrent la console du navigateur.
 console.info(
   '%cPp%c  Tu fouilles la console ? Bon réflexe.\nOuvre le terminal (Ctrl + K) et tape : cat secrets.txt',
-  'background:#d17a55;color:#151c20;font:bold 16px Georgia,serif;padding:4px 8px;border-radius:999px',
+  'background:#ffcc00;color:#0b0b1a;font:bold 16px monospace;padding:4px 8px',
   'font:12px monospace',
 );
 const hasMouse = window.matchMedia('(pointer: fine)').matches;
@@ -192,7 +192,7 @@ if (spotlight && reveals.length && lampToggle) {
 
 const scramble = new ScrambleController(new ScrambleView(document), { reducedMotion });
 
-// Code Konami au clavier (thème arcade). Le code « dino » est géré par src/js/site.js.
+// Code Konami au clavier (thème secret « origine »). Le code « dino » est géré par src/js/site.js.
 const konami = new EasterEggModel(KONAMI);
 new KeyboardView().bindKeys((key) => konami.type(key));
 

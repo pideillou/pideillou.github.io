@@ -7,12 +7,13 @@
 @theme {
   /* Palette exclusive : on retire les couleurs par défaut de Tailwind */
   --color-*: initial;
-  --color-surface: #151c20; /* fond */
-  --color-ink: #e5e5df; /* texte principal et surfaces claires */
-  --color-muted: #929da0; /* texte secondaire, bordures, légendes */
-  --color-support: #668b88; /* étiquettes, icônes, états secondaires */
-  --color-accent: #d17a55; /* accent */
-  --color-online: #5fd68e; /* pastille « disponible » */
+  /* Thème par défaut : borne d'arcade (la palette d'origine est devenue le thème secret « origine ») */
+  --color-surface: #0b0b1a; /* fond */
+  --color-ink: #ffffff; /* texte principal et surfaces claires */
+  --color-muted: #a9a9d9; /* texte secondaire, bordures, légendes */
+  --color-support: #ff5c93; /* étiquettes, icônes, états secondaires */
+  --color-accent: #ffcc00; /* accent */
+  --color-online: #39ff14; /* pastille « disponible » */
   --color-gold-light: #fff1a8; /* jackpot : reflet */
   --color-gold: #e8b923; /* jackpot : or */
   --color-gold-dark: #9a6a00; /* jackpot : ombre */
@@ -132,14 +133,9 @@
   --color-online: #7dd99a;
 }
 
-/* Thème secret débloqué par le code Konami : borne d'arcade, titres en mono et angles carrés */
-:root[data-theme="arcade"] {
-  --color-surface: #0b0b1a;
-  --color-ink: #ffffff;
-  --color-muted: #a9a9d9;
-  --color-support: #ff5c93;
-  --color-accent: #ffcc00;
-  --color-online: #39ff14;
+/* Thème par défaut (sans data-theme) : borne d'arcade, titres en mono et angles carrés.
+   Les autres thèmes gardent les titres serif et les angles arrondis du @theme. */
+:root:not([data-theme]) {
   --font-display: var(--font-mono);
   --radius-sm: 0;
   --radius-md: 0;
@@ -147,6 +143,16 @@
   --radius-xl: 0;
   --radius-2xl: 0;
   --radius-4xl: 0;
+}
+
+/* Thème secret débloqué par le code Konami : la palette d'origine du site, sombre et serif */
+:root[data-theme="origine"] {
+  --color-surface: #151c20;
+  --color-ink: #e5e5df;
+  --color-muted: #929da0;
+  --color-support: #668b88;
+  --color-accent: #d17a55;
+  --color-online: #5fd68e;
 }
 
 /* Changement de thème en fondu (posé quelques instants par src/js/views/ThemeView.js) */
