@@ -209,8 +209,9 @@ ${
     </article>
   </main>
 
-  <footer class="mx-auto max-w-6xl px-4 py-10 font-mono text-xs text-muted md:px-8">
+  <footer class="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-2 px-4 py-10 font-mono text-xs text-muted md:px-8">
     <a href="${base}" data-transition="back" class="rounded underline decoration-accent underline-offset-4 hover:text-ink ${FOCUS}">Retour à l’accueil</a>
+    <a href="${base}mentions-legales/" class="rounded underline decoration-accent underline-offset-4 hover:text-ink ${FOCUS}">Mentions légales</a>
   </footer>
 `;
 }

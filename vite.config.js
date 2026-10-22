@@ -17,12 +17,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     // Pages : l'accueil, le gabarit des fiches projet (remplacé par une page par projet)
-    // et la page 404, que GitHub Pages affiche pour toute adresse inconnue.
+    // la page 404, que GitHub Pages affiche pour toute adresse inconnue, et les mentions légales.
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
         projet: resolve(import.meta.dirname, 'projet.html'),
         notfound: resolve(import.meta.dirname, '404.html'),
+        legal: resolve(import.meta.dirname, 'mentions-legales/index.html'),
       },
     },
   },

@@ -265,7 +265,7 @@ function renderFooter({ contact, profile }) {
       </div>
 
       <div class="mt-16 flex flex-col gap-4 border-t border-muted/20 pt-8 font-mono text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-        <p>© ${year} ${escape(profile.name)} · Fait main à Limoges avec Vite, Tailwind CSS et JavaScript natif.</p>
+        <p>© ${year} ${escape(profile.name)} · Fait main à Limoges avec Vite, Tailwind CSS et JavaScript natif. · <a href="mentions-legales/" class="${FOOTER_LINK} underline decoration-accent underline-offset-4">Mentions légales</a></p>
         <a href="#accueil" class="group inline-flex min-h-11 items-center gap-2 self-start rounded-full text-ink transition-colors hover:text-accent sm:self-auto ${FOCUS}">Continuer ? Revenir au début<svg class="size-4 text-accent motion-safe:transition-transform motion-safe:group-hover:-translate-y-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 14V2M3 7l5-5 5 5"/></svg></a>
       </div>
     </div>
