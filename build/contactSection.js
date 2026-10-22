@@ -110,10 +110,11 @@ function renderSection({ contact, profile }) {
               </div>
             </fieldset>
 
-            <!-- Piège à robots : invisible et ignoré par les lecteurs d'écran, seuls les robots le remplissent -->
+            <!-- Piège à robots : invisible et ignoré par les lecteurs d'écran, seuls les robots le remplissent.
+                 Nommé « _gotcha » pour que Formspree rejette aussi les robots qui envoient le formulaire sans JavaScript. -->
             <p class="sr-only" aria-hidden="true">
               <label for="contact-website">Ne pas remplir ce champ</label>
-              <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" data-contact-field="website">
+              <input id="contact-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off" data-contact-field="website">
             </p>
             <input type="hidden" name="_subject" value="${escape(first.subject)}" data-contact-subject>
 

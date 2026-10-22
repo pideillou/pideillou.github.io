@@ -2,7 +2,7 @@
   "kicker": "Contact · Mode coop",
   "intro": "Un stage, une alternance, un projet ou juste un bonjour : choisis ta quête, j’envoie la réponse sous 48 h.",
   "response": "Réponse sous 48 h, en semaine comme le week-end.",
-  "endpoint": "",
+  "endpoint": "https://formspree.io/f/xwlvgjwv",
   "email": "",
   "privacy": "Ton nom, ton e-mail et ton message servent seulement à te répondre. Ils ne sont ni revendus ni ajoutés à une liste de diffusion.",
   "maxLength": 2000,
