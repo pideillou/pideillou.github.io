@@ -40,7 +40,10 @@ function render({ contact, profile, seo }) {
   <meta property="og:image:height" content="${IMAGE.height}">
   <meta property="og:image:alt" content="${escape(seo.imageAlt)}">
   <meta property="og:locale" content="fr_FR">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary_large_image">${
+    // Preuve que le site appartient à Paul, demandée par Google Search Console.
+    seo.googleVerification ? `\n  <meta name="google-site-verification" content="${escape(seo.googleVerification)}">` : ''
+  }
   <script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
 }
 
