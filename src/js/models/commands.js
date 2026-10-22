@@ -96,7 +96,7 @@ const HINTS = {
   top: 'regarde ce qui tourne en ce moment sur le site.',
   konami: '↑ ↑ ↓ ↓ ← → ← → B A, sur la page.',
   nuit: 'reviens dans le terminal entre minuit et 5 h.',
-  veille: 'laisse la souris tranquille pendant une minute.',
+  veille: 'laisse la souris tranquille pendant trois minutes.',
   jackpot: 'tape le mot que tout le monde espère à la machine à sous.',
   extinction: 'en mode dino, rugis encore et encore : le ciel finira par répondre.',
 };
