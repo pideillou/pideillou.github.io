@@ -61,7 +61,9 @@ export default class ContactModel extends EventTarget {
 
   /**
    * @returns {{ fields: typeof EMPTY, quest: Quest, codes: { code: string, title: string, verified: boolean }[],
-   *   errors: Record<string, string>, status: Status, error: string, length: number, maxLength: number }}
+   *   errors: Record<string, string>, valid: Record<string, boolean>, status: Status, error: string,
+   *   length: number, maxLength: number }}
+   *   valid : champs remplis et corrects (le ✓ de la fiche), selon les mêmes règles que l'envoi.
    */
   get state() {
     return {
@@ -69,6 +71,7 @@ export default class ContactModel extends EventTarget {
       quest: this.#quest,
       codes: this.#found,
       errors: { ...this.#errors },
+      valid: Object.fromEntries(['name', 'email', 'organization'].map((field) => [field, this.#fields[field].trim() !== '' && !this.#check(field)])),
       status: this.#status,
       error: this.#error,
       length: this.#fields.message.length,
@@ -163,6 +166,7 @@ export default class ContactModel extends EventTarget {
       if (!value) return 'Indique ton e-mail : c’est là que j’enverrai la réponse.';
       if (!EMAIL.test(value) || value.length > LIMITS.email) return 'Cet e-mail semble incomplet. Exemple : prenom@entreprise.fr';
     }
+    if (field === 'organization' && value.length > LIMITS.organization) return `Le nom dépasse ${LIMITS.organization} caractères.`;
     if (field === 'message') {
       if (value.length < MIN_MESSAGE) return `Ton message est un peu court : ${MIN_MESSAGE} caractères minimum.`;
       if (value.length > this.#maxLength) return `Ton message dépasse ${this.#maxLength} caractères.`;
