@@ -220,6 +220,19 @@
   grid-template-columns: 11rem minmax(0, 1fr) 17rem;
 }
 
+/* Coins de viseur autour des champs du formulaire de contact (fiche de personnage).
+   Couleur des coins : --corner (atténuée par défaut, accent avec corner-accent). */
+@utility frame-corners {
+  --corner-line: linear-gradient(var(--corner, var(--color-muted)), var(--corner, var(--color-muted)));
+  background-image: var(--corner-line), var(--corner-line), var(--corner-line), var(--corner-line), var(--corner-line), var(--corner-line), var(--corner-line), var(--corner-line);
+  background-position: top left, top left, top right, top right, bottom left, bottom left, bottom right, bottom right;
+  background-size: 0.75rem 2px, 2px 0.75rem, 0.75rem 2px, 2px 0.75rem, 0.75rem 2px, 2px 0.75rem, 0.75rem 2px, 2px 0.75rem;
+  background-repeat: no-repeat;
+}
+@utility corner-accent {
+  --corner: var(--color-accent);
+}
+
 /* Calque des « coulisses » : visible seulement dans le rond de la lampe.
    Position relative au calque, qui défile avec la page (--reveal-x, --reveal-y). */
 @utility mask-spotlight {

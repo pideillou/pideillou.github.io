@@ -21,6 +21,7 @@ export default class ContactView {
   #form;
   #fields;
   #errors;
+  #valid;
   #message;
   #subject;
   #count;
@@ -48,6 +49,7 @@ export default class ContactView {
     this.#form = $('[data-contact-form]');
     this.#fields = [...root.querySelectorAll('[data-contact-field]')];
     this.#errors = Object.fromEntries([...root.querySelectorAll('[data-contact-error]')].map((el) => [el.dataset.contactError, el]));
+    this.#valid = [...root.querySelectorAll('[data-contact-valid]')];
     this.#message = $('textarea[data-contact-field="message"]');
     this.#subject = $('[data-contact-subject]');
     this.#count = $('[data-contact-count]');
@@ -112,7 +114,7 @@ export default class ContactView {
   }
 
   /** @param {import('../models/ContactModel.js').default['state']} state */
-  render({ fields, quest, codes, errors, status, error, length, maxLength }) {
+  render({ fields, quest, codes, errors, valid, status, error, length, maxLength }) {
     // Champs : remplis depuis le brouillon, ou vidés après un envoi.
     for (const field of this.#fields) {
       const value = fields[field.dataset.contactField] ?? '';
@@ -129,6 +131,8 @@ export default class ContactView {
       if (errors[name]) field.setAttribute('aria-invalid', 'true');
       else field.removeAttribute('aria-invalid');
     }
+    // ✓ décoratif : l'état du champ est déjà donné par les erreurs.
+    for (const badge of this.#valid) badge.toggleAttribute('data-on', Boolean(valid[badge.dataset.contactValid]));
 
     this.#count.textContent = String(length);
     this.#meter.style.setProperty('--fill', String(Math.min(length / maxLength, 1)));
@@ -213,9 +217,9 @@ export default class ContactView {
     flight.style.setProperty('--fly-y', `${from.top - 24}px`);
 
     const bird = document.createElementNS(SVG, 'svg');
-    bird.setAttribute('viewBox', '0 0 10 8');
-    bird.setAttribute('shape-rendering', 'crispEdges');
-    bird.setAttribute('class', 'w-12 -scale-x-100 fill-current');
+    // Pas de classe fill-* : les reflets du dessin (sans couleur, donc noirs et transparents) doivent la garder.
+    bird.setAttribute('viewBox', '0 0 64 48');
+    bird.setAttribute('class', 'w-14');
     // Deux positions d'ailes qui alternent.
     for (const [id, className] of [['pigeon-up', 'animate-flap'], ['pigeon-down', 'animate-flap-alt']]) {
       const use = document.createElementNS(SVG, 'use');

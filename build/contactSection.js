@@ -7,24 +7,36 @@ import htmlSection, { escape, pad } from './htmlSection.js';
 const FILES = { contact: 'src/data/contact.json', profile: 'src/data/profile.json' };
 const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
 const LEGEND = 'flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase';
-const LABEL = 'text-sm font-semibold text-ink';
+// Champs façon fiche de personnage : libellé de jeu, coins de viseur (accent quand le champ est actif ou en erreur),
+// ▶ qui clignote dans le champ actif, ✓ quand le champ est bien rempli. Le focus se voit au trait du bas, aux coins et au ▶.
+const LABEL = 'font-mono text-xs tracking-widest text-ink uppercase';
+const HINT = 'tracking-normal text-muted normal-case';
+const FRAME = 'group relative mt-2 frame-corners p-1 focus-within:corner-accent has-aria-invalid:corner-accent';
 const FIELD =
-  'mt-2 block w-full rounded-lg border border-muted/40 bg-ink/5 px-4 text-base text-ink transition-colors placeholder:text-muted hover:border-muted focus-visible:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent aria-invalid:border-accent';
+  'block w-full rounded-sm border-b-2 border-muted/40 bg-ink/5 pl-10 text-base text-ink transition-colors placeholder:text-muted hover:border-muted focus:border-accent focus:outline-none aria-invalid:border-accent';
+const CARET = 'pointer-events-none absolute left-5 font-mono text-sm text-accent opacity-0 group-focus-within:opacity-100 motion-safe:group-focus-within:animate-blink';
+const VALID =
+  'pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 scale-75 font-mono text-xs text-online opacity-0 data-on:scale-100 data-on:opacity-100 motion-safe:transition';
 const ERROR = 'mt-2 flex gap-2 text-sm text-accent';
 const FOOTER_TITLE = 'font-mono text-xs font-normal tracking-widest text-muted uppercase';
 const FOOTER_LINK = `rounded text-muted transition-colors hover:text-ink ${FOCUS}`;
 const CHIP = `min-h-9 rounded-full border border-muted/30 px-3 transition-colors hover:border-accent hover:text-accent ${FOCUS}`;
 
-// Pigeon pixel (même dessin que les oiseaux du jeu du dino), symboles dans index.html.
-const pigeon = (className) => `<svg class="${className}" viewBox="0 0 10 8" shape-rendering="crispEdges" aria-hidden="true"><use href="#pigeon-up"></use></svg>`;
+// Pigeon posé (symbole dans index.html), de la couleur du texte autour.
+const pigeon = (className) => `<svg class="${className}" viewBox="0 0 64 48" aria-hidden="true"><use href="#pigeon"></use></svg>`;
 
-/** Champ texte avec son libellé et sa zone d'erreur (remplie par le JS). */
-function renderField({ id, name, label, optional = false, type = 'text', autocomplete, maxlength, extra = '', wide = false }) {
+/** Champ texte avec son libellé, son cadre et sa zone d'erreur (remplie par le JS). */
+function renderField({ id, name, label, hint = '', optional = false, type = 'text', autocomplete, maxlength, extra = '', wide = false }) {
   const required = optional ? '' : ' required';
+  const note = [hint, optional ? 'facultatif' : ''].filter(Boolean).join(', ');
   return `
             <div${wide ? ' class="sm:col-span-2"' : ''}>
-              <label for="contact-${id}" class="${LABEL}">${label}${optional ? ' <span class="font-normal text-muted">(facultatif)</span>' : ''}</label>
-              <input id="contact-${id}" name="${name}" type="${type}" autocomplete="${autocomplete}" maxlength="${maxlength}"${required}${extra} aria-describedby="contact-${id}-error" data-contact-field="${name}" class="${FIELD} min-h-12">
+              <label for="contact-${id}" class="${LABEL}">${label}${note ? ` <span class="${HINT}">· ${note}</span>` : ''}</label>
+              <div class="${FRAME}">
+                <span class="${CARET} top-1/2 -translate-y-1/2" aria-hidden="true">▶</span>
+                <input id="contact-${id}" name="${name}" type="${type}" autocomplete="${autocomplete}" maxlength="${maxlength}"${required}${extra} aria-describedby="contact-${id}-error" data-contact-field="${name}" class="${FIELD} min-h-12 pr-20">
+                <span data-contact-valid="${name}" class="${VALID}" aria-hidden="true">✓ +XP</span>
+              </div>
               <p id="contact-${id}-error" data-contact-error="${name}" class="${ERROR}" hidden></p>
             </div>`;
 }
@@ -81,15 +93,16 @@ function renderSection({ contact, profile }) {
 
             <fieldset>
               <legend class="${LEGEND}"><span class="text-accent">2</span>Présente-toi</legend>
-              <div class="mt-5 grid gap-6 sm:grid-cols-2">${renderField({ id: 'name', name: 'name', label: 'Ton nom', autocomplete: 'name', maxlength: 80 })}${renderField({
+              <div class="mt-5 grid gap-6 sm:grid-cols-2">${renderField({ id: 'name', name: 'name', label: 'Nom du joueur', autocomplete: 'name', maxlength: 80 })}${renderField({
                 id: 'email',
                 name: 'email',
-                label: 'Ton e-mail',
+                label: 'Canal de contact',
+                hint: 'ton e-mail',
                 type: 'email',
                 autocomplete: 'email',
                 maxlength: 120,
                 extra: ' inputmode="email" spellcheck="false"',
-              })}${renderField({ id: 'organization', name: 'organization', label: 'Ton entreprise ou ton école', optional: true, autocomplete: 'organization', maxlength: 100, wide: true })}
+              })}${renderField({ id: 'organization', name: 'organization', label: 'Guilde', hint: 'ton entreprise ou ton école', optional: true, autocomplete: 'organization', maxlength: 100, wide: true })}
               </div>
             </fieldset>
 
@@ -97,7 +110,10 @@ function renderSection({ contact, profile }) {
               <legend class="${LEGEND}"><span class="text-accent">3</span>Écris ton message</legend>
               <div class="mt-5">
                 <label for="contact-message" class="${LABEL}">Ton message</label>
-                <textarea id="contact-message" name="message" rows="7" minlength="10" maxlength="${contact.maxLength}" required aria-describedby="contact-message-hint contact-message-error contact-codes" placeholder="${escape(first.placeholder)}" data-contact-field="message" class="${FIELD} min-h-40 resize-y py-3 leading-relaxed"></textarea>
+                <div class="${FRAME}">
+                  <span class="${CARET} top-4" aria-hidden="true">▶</span>
+                  <textarea id="contact-message" name="message" rows="7" minlength="10" maxlength="${contact.maxLength}" required aria-describedby="contact-message-hint contact-message-error contact-codes" placeholder="${escape(first.placeholder)}" data-contact-field="message" class="${FIELD} min-h-40 resize-y py-3 pr-4 leading-relaxed"></textarea>
+                </div>
                 <p id="contact-message-error" data-contact-error="message" class="${ERROR}" hidden></p>
                 <div class="mt-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
                   <p id="contact-message-hint" class="text-sm text-muted">Un code de récompense glissé dans le message est vérifié tout seul.</p>
@@ -123,7 +139,7 @@ function renderSection({ contact, profile }) {
               <div class="flex flex-col items-start gap-2 sm:items-end">
                 <button type="submit" data-contact-submit class="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-accent px-6 font-semibold text-surface transition-colors hover:bg-ink disabled:cursor-wait disabled:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
                   <span data-contact-submit-label>Envoyer le pigeon</span>
-                  ${pigeon('w-6 -scale-x-100 fill-current motion-safe:transition-transform motion-safe:group-hover:-translate-y-0.5')}
+                  ${pigeon('w-7 motion-safe:transition-transform motion-safe:group-hover:-translate-y-0.5')}
                 </button>
                 <p class="hidden font-mono text-xs text-muted pointer-fine:block">ou <kbd class="rounded border border-muted/40 px-1 text-2xs">Ctrl</kbd> + <kbd class="rounded border border-muted/40 px-1 text-2xs">Entrée</kbd></p>
               </div>
@@ -148,7 +164,7 @@ function renderSection({ contact, profile }) {
               <svg class="absolute inset-x-0 top-0 h-20 w-full text-muted/30" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0 0L50 19L100 0" fill="none" stroke="currentColor" vector-effect="non-scaling-stroke"/></svg>
               <div class="relative flex items-start justify-between">
                 <p class="flex size-18 -rotate-12 flex-col items-center justify-center rounded-full border-2 border-dashed border-support font-mono text-2xs leading-tight text-support"><span>LIMOGES</span><span data-contact-date>87000</span></p>
-                <p class="flex w-18 flex-col items-center gap-1 border-2 border-dotted border-accent bg-surface p-2">${pigeon('w-10 fill-accent')}<span class="font-mono text-2xs text-accent">MMI · 87</span></p>
+                <p class="flex w-18 flex-col items-center gap-1 border-2 border-dotted border-accent bg-surface p-2">${pigeon('w-12 text-accent')}<span class="font-mono text-2xs text-accent">MMI · 87</span></p>
               </div>
               <dl class="relative mt-8 grid gap-3 font-mono text-xs">
                 <div class="flex gap-3"><dt class="w-12 shrink-0 text-muted">À</dt><dd class="text-ink">${escape(profile.name)}, ${escape(profile.city.split(',')[0])}</dd></div>
