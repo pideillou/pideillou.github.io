@@ -19,7 +19,7 @@ const SLIDES = {
 /**
  * Transitions entre l'accueil et les fiches projet, sans écran de chargement :
  * - ouvrir un projet : son visuel s'agrandit jusqu'à remplir l'écran,
- *   puis, sur la fiche, le même visuel se range à sa place (sur mobile, il s'efface sur place) ;
+ *   puis, sur la fiche, le même visuel se range à sa place (sur mobile : simple fondu) ;
  * - passer d'une fiche à l'autre : la page glisse comme une page qu'on tourne.
  * Sans animation (prefers-reduced-motion), la navigation est immédiate.
  */
@@ -71,6 +71,11 @@ export default class PageTransitionView {
   async expand(cover) {
     const art = cover?.querySelector('svg, img');
     if (this.#reducedMotion || !art) return;
+    // Sur mobile, pas de zoom : la page s'efface simplement.
+    if (this.#isMobile()) {
+      await Promise.all(this.#pageParts().map((part) => this.#play(part, [{ opacity: 1 }, { opacity: 0 }], { duration: SLIDE, fill: 'forwards' })));
+      return;
+    }
     const box = cover.getBoundingClientRect();
     const layer = this.#layer(art);
     await this.#play(layer, [this.#frame(box, '0.5rem'), this.#fullScreen()], { duration: EXPAND, fill: 'forwards' });
@@ -84,15 +89,17 @@ export default class PageTransitionView {
   async shrink(hero, parts) {
     const art = hero?.querySelector('svg, img');
     if (this.#reducedMotion || !art) return;
+    // Sur mobile, le visuel est sous le titre, hors de l'écran : pas de zoom,
+    // la fiche apparaît en fondu, visuel compris, dans l'ordre de la page.
+    if (this.#isMobile()) {
+      const blocks = [...parts, hero].sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1));
+      this.#reveal(blocks, 0);
+      return;
+    }
     const layer = this.#layer(art);
     this.#play(hero, [{ opacity: 0 }, { opacity: 0 }], { duration: SHRINK });
     this.#reveal(parts, SHRINK * 0.6);
-    // Sur mobile, le visuel est sous le titre, hors de l'écran : il s'efface sur place
-    // au lieu de glisser vers le bas et de sortir du cadre.
-    const keyframes = window.matchMedia(MOBILE).matches
-      ? [{ ...this.#fullScreen(), opacity: 1 }, { ...this.#fullScreen(), opacity: 0 }]
-      : [this.#fullScreen(), this.#frame(hero.getBoundingClientRect(), '0.5rem')];
-    await this.#play(layer, keyframes, { duration: SHRINK });
+    await this.#play(layer, [this.#fullScreen(), this.#frame(hero.getBoundingClientRect(), '0.5rem')], { duration: SHRINK });
     layer.remove();
   }
 
@@ -162,6 +169,10 @@ export default class PageTransitionView {
 
   #frame(box, radius) {
     return { top: `${box.top}px`, left: `${box.left}px`, width: `${box.width}px`, height: `${box.height}px`, borderRadius: radius };
+  }
+
+  #isMobile() {
+    return window.matchMedia(MOBILE).matches;
   }
 
   #fullScreen() {
