@@ -4,14 +4,24 @@
   "school": "BUT MMI, 2e année",
   "institution": "IUT du Limousin",
   "city": "Limoges, France",
-  "dev": ["HTML", "CSS", "JavaScript", "Tailwind", "Vite", "Git"],
-  "design": ["Figma", "Adobe", "Canva"],
+  "dev": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Tailwind",
+    "Vite",
+    "Git"
+  ],
+  "design": [
+    "Figma",
+    "Adobe",
+    "Canva"
+  ],
   "whoami": [
     "Paul PIDEILL, étudiant en 2e année de BUT MMI à Limoges.",
-    "Je code des interfaces et je les dessine aussi : développement web, design UX, communication et audiovisuel.",
+    "Je construit des interfaces du raisonnement jusqu'au code : développement web, design UX, communication et audiovisuel.",
     "Ouvert aux opportunités."
   ],
-  "cv": "",
   "about": {
     "intro": "Ce qui ne tient pas dans un CV : ce qui m’occupe quand l’écran s’éteint, et ma façon de travailler.",
     "menu": [
@@ -20,9 +30,21 @@
         "label": "Quêtes annexes",
         "title": "Mes loisirs",
         "items": [
-          { "title": "Premier loisir", "text": "En une phrase : ce que tu fais, et ce que ça t’apporte.", "todo": true },
-          { "title": "Deuxième loisir", "text": "Un sport, un instrument, un jeu, une collection…", "todo": true },
-          { "title": "Troisième loisir", "text": "Un détail précis vaut mieux qu’une liste : « je monte des courts-métrages avec des amis ».", "todo": true }
+          {
+            "title": "Premier loisir",
+            "text": "En une phrase : ce que tu fais, et ce que ça t’apporte.",
+            "todo": true
+          },
+          {
+            "title": "Deuxième loisir",
+            "text": "Un sport, un instrument, un jeu, une collection…",
+            "todo": true
+          },
+          {
+            "title": "Troisième loisir",
+            "text": "Un détail précis vaut mieux qu’une liste : « je monte des courts-métrages avec des amis ».",
+            "todo": true
+          }
         ]
       },
       {
@@ -30,10 +52,26 @@
         "label": "En ce moment",
         "title": "Ce qui m’occupe en ce moment",
         "items": [
-          { "title": "J’apprends", "text": "Une techno, un logiciel, une langue…", "todo": true },
-          { "title": "Je joue à", "text": "Un jeu vidéo ou de société.", "todo": true },
-          { "title": "J’écoute", "text": "Un album, un podcast, une playlist de travail.", "todo": true },
-          { "title": "Je lis", "text": "Un livre, une BD, un blog, une newsletter.", "todo": true }
+          {
+            "title": "J’apprends",
+            "text": "Une techno, un logiciel, une langue…",
+            "todo": true
+          },
+          {
+            "title": "Je joue à",
+            "text": "Un jeu vidéo ou de société.",
+            "todo": true
+          },
+          {
+            "title": "J’écoute",
+            "text": "Un album, un podcast, une playlist de travail.",
+            "todo": true
+          },
+          {
+            "title": "Je lis",
+            "text": "Un livre, une BD, un blog, une newsletter.",
+            "todo": true
+          }
         ]
       },
       {
@@ -41,9 +79,21 @@
         "label": "Ma façon de jouer",
         "title": "Comment je travaille",
         "items": [
-          { "title": "Première qualité", "text": "Une qualité, avec un exemple vécu en projet.", "todo": true },
-          { "title": "Deuxième qualité", "text": "Par exemple : comment tu t’organises en équipe.", "todo": true },
-          { "title": "Ce que j’aime", "text": "Le type de tâche qui te fait perdre la notion du temps.", "todo": true }
+          {
+            "title": "Première qualité",
+            "text": "Une qualité, avec un exemple vécu en projet.",
+            "todo": true
+          },
+          {
+            "title": "Deuxième qualité",
+            "text": "Par exemple : comment tu t’organises en équipe.",
+            "todo": true
+          },
+          {
+            "title": "Ce que j’aime",
+            "text": "Le type de tâche qui te fait perdre la notion du temps.",
+            "todo": true
+          }
         ]
       },
       {
@@ -51,8 +101,16 @@
         "label": "Hauts faits",
         "title": "Ce dont je suis fier",
         "items": [
-          { "title": "Premier haut fait", "text": "Une réussite hors cours : concours, bénévolat, projet perso, job d’été…", "todo": true },
-          { "title": "Deuxième haut fait", "text": "Un défi relevé, même petit, et ce que tu en as tiré.", "todo": true }
+          {
+            "title": "Premier haut fait",
+            "text": "Une réussite hors cours : concours, bénévolat, projet perso, job d’été…",
+            "todo": true
+          },
+          {
+            "title": "Deuxième haut fait",
+            "text": "Un défi relevé, même petit, et ce que tu en as tiré.",
+            "todo": true
+          }
         ]
       }
     ]
