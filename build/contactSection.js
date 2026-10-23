@@ -63,9 +63,9 @@ function renderSection({ contact, profile }) {
   return `<section id="contact" aria-labelledby="contact-title" class="relative scroll-mt-28 py-24">
       <!-- Coulisses de la section, révélées par la lampe (desktop) -->
       <div data-reveal class="pointer-events-none absolute inset-y-0 -inset-x-8 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
-        <span class="absolute top-28 left-8">fetch(endpoint, { method: "POST" })</span>
+        <span class="absolute top-28 left-8">fetch(url, { method })</span>
         <span class="absolute top-36 left-8 text-muted">/* pigeon voyageur */</span>
-        <span class="absolute top-28 right-8">input:focus-visible { outline: 2px; }</span>
+        <span class="absolute top-44 left-8">:focus-visible ✓</span>
         <span class="absolute bottom-8 left-8 text-accent">// les codes de récompense sont vérifiés, pas la peine de tricher</span>
         <span class="absolute top-52 left-8 text-accent">// joueur 2 : START</span>
         <!-- Entre le formulaire et l'enveloppe -->

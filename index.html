@@ -71,43 +71,35 @@
   </header>
 
   <!-- Fond décoratif : grille, et lampe qui suit la souris (src/js/views/SpotlightView.js).
-       La lampe révèle les « coulisses » : la grille de mise en page et des annotations
-       (code, design, audiovisuel), dont l'indice de l'easter egg. -->
+       La lampe révèle les « coulisses » : des annotations (code, design, audiovisuel)
+       posées dans chaque section, dont l'indice de l'easter egg. -->
   <div class="pointer-events-none fixed inset-0 -z-10 bg-grid" aria-hidden="true"></div>
   <div data-spotlight class="pointer-events-none fixed inset-0 -z-10 bg-spotlight opacity-0 motion-safe:transition-opacity motion-safe:duration-500 data-active:data-on:opacity-100" aria-hidden="true"></div>
-  <!-- Coulisses : posées en haut du document, elles défilent avec la page -->
-  <div data-reveal class="pointer-events-none absolute inset-x-0 top-0 -z-10 hidden h-dvh font-mono text-xs text-support mask-spotlight pointer-fine:data-on:block" aria-hidden="true">
-      <!-- Notes verticales dans les marges, alignées sur le contenu -->
-      <div class="relative mx-auto h-full max-w-6xl">
-        <span class="absolute top-48 left-2 rotate-180 text-vertical">padding-block: clamp(2rem, 8vh, 8rem);</span>
-        <span class="absolute top-[60%] left-2 rotate-180 text-vertical">font-family: monospace; <span class="text-muted">/* thème arcade */</span></span>
-        <span class="absolute top-[28%] right-2 text-vertical">&lt;h1&gt; unique sur la page ✓</span>
-        <span class="absolute top-[66%] right-2 text-vertical text-accent">srcset: 1x, 2x <span class="text-muted">/* avatar net */</span></span>
+  <main id="contenu" class="mx-auto max-w-6xl px-4 md:px-8">
+    <section id="accueil" aria-labelledby="accueil-title" class="relative flex min-h-dvh flex-col justify-center gap-12 pt-32 pb-12 md:pt-40 lg:justify-between lg:gap-8 lg:pt-32 lg:pb-8">
+      <!-- Coulisses de l'accueil, révélées par la lampe (desktop). Le contenu se répartit
+           selon la hauteur de l'écran : les notes restent dans les zones toujours vides
+           (entre le badge et la citation, sous la dernière ligne, dans les marges). -->
+      <div data-reveal class="pointer-events-none absolute inset-y-0 -inset-x-8 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-46 left-8">console.log("Bonjour, recruteur !");</span>
+        <span class="absolute top-52 left-8">z-index: 9999; <span class="text-muted">/* jamais */</span></span>
+        <span class="absolute top-32 left-100">&lt;!-- dev + design --&gt;</span>
+        <span class="absolute top-38 left-100 text-accent">// Ctrl+K : terminal</span>
+        <span class="absolute top-44 left-100">grid: 12 col / 24px <span class="text-muted">/* gouttière */</span></span>
+        <span class="absolute top-50 left-100 text-accent">// TODO : dormir</span>
+        <!-- Sous la dernière ligne -->
+        <span class="absolute bottom-2 left-8">● REC 00:00:24:12</span>
+        <span class="absolute bottom-2 left-48">#FFCC00 <span class="text-muted">/* l'accent */</span></span>
+        <span class="absolute bottom-2 left-104">Ctrl+Z Ctrl+Z Ctrl+Z</span>
+        <span class="absolute right-8 bottom-2">git commit -m "encore un café"</span>
+        <!-- Marges -->
+        <span class="absolute top-36 left-2 rotate-180 text-vertical">letter-spacing: -0.025em;</span>
+        <span class="absolute top-104 left-2 rotate-180 text-vertical">ffmpeg -i rush.mov final_v3_vraiment_final.mp4</span>
+        <span class="absolute top-36 right-2 text-vertical">&lt;h1&gt; unique sur la page ✓</span>
+        <span class="absolute top-84 right-2 text-vertical text-accent">// psst… tape « dino »</span>
+        <span class="absolute top-126 right-2 text-vertical">srcset: 1x, 2x <span class="text-muted">/* avatar net */</span></span>
       </div>
 
-      <!-- Positions pensées pour tomber dans les vides de l'accueil sur desktop -->
-      <span class="absolute top-[13%] left-[2%]">console.log("Bonjour, recruteur !");</span>
-      <span class="absolute top-[13%] right-[3%]">z-index: 9999; <span class="text-muted">/* jamais */</span></span>
-      <span class="absolute top-[14%] left-[44%]">&lt;!-- dev + design --&gt;</span>
-      <span class="absolute top-[24%] left-[30%]">grid: 12 col / 24px <span class="text-muted">/* gouttière */</span></span>
-      <span class="absolute top-[31%] left-[52%] text-accent">// TODO : dormir</span>
-      <span class="absolute top-[21%] left-[52%] text-accent">// Ctrl+K : terminal</span>
-      <span class="absolute top-[40%] right-[3%]">letter-spacing: -0.025em;</span>
-      <span class="absolute top-[49%] right-[3%]">display: grid; <span class="text-muted">/* toujours */</span></span>
-      <span class="absolute top-[52%] left-[22%]">#FFCC00 <span class="text-muted">/* l'accent */</span></span>
-      <span class="absolute top-[52%] left-[50%]">Ctrl+Z Ctrl+Z Ctrl+Z</span>
-      <span class="absolute top-[57%] right-[4%]">const curious = true;</span>
-      <span class="absolute top-[63%] right-[4%] text-accent">// psst… tape « dino »</span>
-      <span class="absolute right-[30%] bottom-[2%]">contraste 7.9:1 <span class="text-muted">/* AA ✓ */</span></span>
-      <span class="absolute top-[82%] left-[7%]">● REC 00:00:24:12</span>
-      <span class="absolute top-[82%] left-[36%]">ffmpeg -i rush.mov final_v3_vraiment_final.mp4</span>
-      <span class="absolute top-[88%] left-[52%]">git commit -m "encore un café"</span>
-      <span class="absolute bottom-[2%] left-[7%]">alt="" <span class="text-muted">/* décoratif */</span></span>
-      <span class="absolute bottom-[2%] left-[22%]">margin: 0 auto; <span class="text-muted">/* bien centré */</span></span>
-  </div>
-
-  <main id="contenu" class="mx-auto max-w-6xl px-4 md:px-8">
-    <section id="accueil" aria-labelledby="accueil-title" class="flex min-h-dvh flex-col justify-center gap-12 pt-32 pb-12 md:pt-40 lg:justify-between lg:gap-8 lg:pt-32 lg:pb-8">
       <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start">
         <p class="inline-flex w-fit items-center gap-2.5 rounded-full border border-online/40 bg-online/10 px-4 py-2 text-xs tracking-widest text-ink uppercase">
           <span class="relative flex size-2.5" aria-hidden="true">
@@ -261,7 +253,7 @@
       <div data-reveal class="pointer-events-none absolute inset-y-0 -inset-x-8 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
         <span class="absolute top-28 left-8">projects.filter(byCategory)</span>
         <span class="absolute top-36 left-8 text-muted">/* rater proprement ✓ */</span>
-        <span class="absolute top-28 right-8">border-top: 1px solid;</span>
+        <span class="absolute top-16 right-8">border-top: 1px solid;</span>
         <span class="absolute right-8 bottom-8 text-accent">// tout vu ? tape « tirage » dans le terminal</span>
         <!-- Marges -->
         <span class="absolute top-120 left-2 rotate-180 text-vertical">projects.map(renderRow)</span>
@@ -271,7 +263,7 @@
         <span class="absolute top-176 right-2 text-vertical">loading="lazy"</span>
         <span class="absolute top-288 right-2 text-vertical">font-variant-numeric: tabular-nums;</span>
         <span class="absolute top-400 right-2 text-vertical">data-category="web"</span>
-        <span class="absolute top-512 right-2 text-vertical text-accent">// 01, 02, 03… comme des pistes</span>
+        <span class="absolute top-448 right-2 text-vertical text-accent">// 01, 02, 03… comme des pistes</span>
       </div>
 
       <div class="grid gap-6 lg:grid-cols-section lg:items-end lg:gap-10">
