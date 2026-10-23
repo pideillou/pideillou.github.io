@@ -7,23 +7,16 @@
   "maxLength": 2000,
   "quests": [
     {
-      "id": "stage",
-      "label": "Stage",
-      "tag": "Quête principale",
-      "subject": "Proposition de stage",
-      "placeholder": "Les dates, la mission, l’équipe… Je suis disponible pour un stage de 2e année de BUT MMI."
-    },
-    {
       "id": "alternance",
       "label": "Alternance",
       "tag": "Quête longue",
       "subject": "Proposition d’alternance",
-      "placeholder": "Le rythme, le poste, ce que l’alternant apprendrait chez vous…"
+      "placeholder": "Le rythme, le poste, ce que j'apprendrais chez vous…"
     },
     {
       "id": "projet",
       "label": "Projet",
-      "tag": "Quête secondaire",
+      "tag": "Quête principale",
       "subject": "Un projet à réaliser",
       "placeholder": "Un site, une maquette, une vidéo ? Raconte-moi l’idée, le délai et le budget si tu l’as."
     },
@@ -32,13 +25,17 @@
       "label": "Juste bonjour",
       "tag": "Dialogue libre",
       "subject": "Un petit bonjour",
-      "placeholder": "Un avis sur le portfolio, un secret trouvé, un bug repéré… Tout me fait plaisir."
+      "placeholder": "Un avis sur le portfolio, un secret trouvé, un bug repéré… Tout me fait plaisir et aide à mon développement personnel."
     }
   ],
   "links": [
     {
       "label": "GitHub",
       "url": "https://github.com/pideillou"
+    },
+    {
+      "label": "Linkedin",
+      "url": "https://www.linkedin.com/in/paul-pideill-27a520384/"
     }
   ]
 }
