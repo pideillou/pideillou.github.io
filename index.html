@@ -77,9 +77,12 @@
   <div data-spotlight class="pointer-events-none fixed inset-0 -z-10 bg-spotlight opacity-0 motion-safe:transition-opacity motion-safe:duration-500 data-active:data-on:opacity-100" aria-hidden="true"></div>
   <!-- Coulisses : posées en haut du document, elles défilent avec la page -->
   <div data-reveal class="pointer-events-none absolute inset-x-0 top-0 -z-10 hidden h-dvh font-mono text-xs text-support mask-spotlight pointer-fine:data-on:block" aria-hidden="true">
-      <!-- Grille de 12 colonnes, alignée sur le contenu -->
-      <div class="mx-auto grid h-full max-w-6xl grid-cols-12 gap-6 px-4 md:px-8">
-        <span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span><span class="border-x border-accent/20 bg-accent/5"></span>
+      <!-- Notes verticales dans les marges, alignées sur le contenu -->
+      <div class="relative mx-auto h-full max-w-6xl">
+        <span class="absolute top-48 left-2 rotate-180 text-vertical">padding-block: clamp(2rem, 8vh, 8rem);</span>
+        <span class="absolute top-[60%] left-2 rotate-180 text-vertical">font-family: monospace; <span class="text-muted">/* thème arcade */</span></span>
+        <span class="absolute top-[28%] right-2 text-vertical">&lt;h1&gt; unique sur la page ✓</span>
+        <span class="absolute top-[66%] right-2 text-vertical text-accent">srcset: 1x, 2x <span class="text-muted">/* avatar net */</span></span>
       </div>
 
       <!-- Positions pensées pour tomber dans les vides de l'accueil sur desktop -->
@@ -167,11 +170,23 @@
          changent à chaque tirage de la machine à sous (src/js/views/FeaturedProjectsView.js). -->
     <section id="projets" aria-labelledby="projets-title" class="relative scroll-mt-28 py-24">
       <!-- Coulisses de la section, révélées par la lampe (desktop) -->
-      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
-        <span class="absolute top-28 left-0">Math.random() &lt; 1 / 30</span>
-        <span class="absolute top-36 left-0 text-muted">/* hasard maîtrisé */</span>
-        <span class="absolute top-28 right-0">transform-style: preserve-3d;</span>
-        <span class="absolute bottom-8 left-0 text-accent">// la prochaine main sera peut-être la bonne</span>
+      <div data-reveal class="pointer-events-none absolute inset-y-0 -inset-x-8 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-28 left-8">Math.random() &lt; 1 / 30</span>
+        <span class="absolute top-36 left-8 text-muted">/* hasard maîtrisé */</span>
+        <span class="absolute top-28 right-8">transform-style: preserve-3d;</span>
+        <span class="absolute bottom-8 left-8 text-accent">// la prochaine main sera peut-être la bonne</span>
+        <!-- Entre les cartes : positions justes à partir de 1280 px (largeur maximale du contenu) -->
+        <span class="absolute top-216 left-8 hidden text-accent xl:block">// face cachée tant qu'elle n'est pas à l'écran</span>
+        <span class="absolute top-216 right-8 hidden xl:block">transition: transform 700ms ease-out;</span>
+        <span class="absolute top-342 left-8 hidden xl:block">git commit -m "carte suivante"</span>
+        <span class="absolute top-342 right-8 hidden xl:block">60 images/s <span class="text-muted">/* sans saccade */</span></span>
+        <!-- Marges -->
+        <span class="absolute top-120 left-2 rotate-180 text-vertical">Math.floor(Math.random() * 3)</span>
+        <span class="absolute top-248 left-2 rotate-180 text-vertical">aspect-ratio: 16 / 10;</span>
+        <span class="absolute top-376 left-2 rotate-180 text-vertical text-accent">// 3 cartes, 1 tirage, 0 triche</span>
+        <span class="absolute top-160 right-2 text-vertical">IntersectionObserver → la carte se retourne</span>
+        <span class="absolute top-296 right-2 text-vertical">perspective: 1000px;</span>
+        <span class="absolute top-416 right-2 text-vertical">backface-visibility: hidden;</span>
       </div>
 
       <div class="grid gap-6 lg:grid-cols-section lg:items-end lg:gap-10">
@@ -243,11 +258,20 @@
     <!-- Tous les projets, filtrés par catégorie (src/js/views/ProjectListView.js) -->
     <section id="tous-les-projets" aria-labelledby="tous-les-projets-title" class="relative scroll-mt-28 py-24">
       <!-- Coulisses de la section, révélées par la lampe (desktop) -->
-      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
-        <span class="absolute top-28 left-0">projects.filter(byCategory)</span>
-        <span class="absolute top-36 left-0 text-muted">/* rater proprement ✓ */</span>
-        <span class="absolute top-28 right-0">border-top: 1px solid;</span>
-        <span class="absolute right-0 bottom-8 text-accent">// tout vu ? tape « tirage » dans le terminal</span>
+      <div data-reveal class="pointer-events-none absolute inset-y-0 -inset-x-8 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-28 left-8">projects.filter(byCategory)</span>
+        <span class="absolute top-36 left-8 text-muted">/* rater proprement ✓ */</span>
+        <span class="absolute top-28 right-8">border-top: 1px solid;</span>
+        <span class="absolute right-8 bottom-8 text-accent">// tout vu ? tape « tirage » dans le terminal</span>
+        <!-- Marges -->
+        <span class="absolute top-120 left-2 rotate-180 text-vertical">projects.map(renderRow)</span>
+        <span class="absolute top-232 left-2 rotate-180 text-vertical">&lt;ol&gt; <span class="text-muted">/* l'ordre compte */</span></span>
+        <span class="absolute top-344 left-2 rotate-180 text-vertical">aria-pressed="true"</span>
+        <span class="absolute top-456 left-2 rotate-180 text-vertical text-accent">// la liste grandira</span>
+        <span class="absolute top-176 right-2 text-vertical">loading="lazy"</span>
+        <span class="absolute top-288 right-2 text-vertical">font-variant-numeric: tabular-nums;</span>
+        <span class="absolute top-400 right-2 text-vertical">data-category="web"</span>
+        <span class="absolute top-512 right-2 text-vertical text-accent">// 01, 02, 03… comme des pistes</span>
       </div>
 
       <div class="grid gap-6 lg:grid-cols-section lg:items-end lg:gap-10">

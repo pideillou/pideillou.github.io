@@ -95,11 +95,20 @@ function renderSection({ kicker, world, intro, steps }) {
   const labels = levelLabels(steps);
   return `<section id="parcours" aria-labelledby="parcours-title" class="relative scroll-mt-28 py-24">
       <!-- Coulisses de la section, révélées par la lampe (desktop) -->
-      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
-        <span class="absolute top-28 left-0">while (curieux) niveau++;</span>
-        <span class="absolute top-36 left-0 text-muted">/* sauvegarde automatique ✓ */</span>
-        <span class="absolute top-28 right-0">checkpoint: atteint</span>
-        <span class="absolute bottom-8 left-0 text-accent">// partie sauvegardée : on continue ?</span>
+      <div data-reveal class="pointer-events-none absolute inset-y-0 -inset-x-8 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-28 left-8">while (curieux) niveau++;</span>
+        <span class="absolute top-36 left-8 text-muted">/* sauvegarde automatique ✓ */</span>
+        <span class="absolute top-28 right-8">checkpoint: atteint</span>
+        <span class="absolute bottom-8 left-8 text-accent">// partie sauvegardée : on continue ?</span>
+        <!-- Au-dessus de la carte du parcours -->
+        <span class="absolute top-100 left-8">stroke-dasharray: 6 6; <span class="text-muted">/* le chemin */</span></span>
+        <span class="absolute top-100 right-8 text-accent">// monde 1, presque fini</span>
+        <!-- Marges -->
+        <span class="absolute top-120 left-2 rotate-180 text-vertical">&lt;path d="M 0 0 C …"&gt;</span>
+        <span class="absolute top-192 left-2 rotate-180 text-vertical">grid-template-columns: repeat(4, 1fr);</span>
+        <span class="absolute top-264 left-2 rotate-180 text-vertical text-accent">// boss final : le stage</span>
+        <span class="absolute top-156 right-2 text-vertical">XP += curiosité;</span>
+        <span class="absolute top-228 right-2 text-vertical">niveau 03 : verrouillé <span class="text-muted">/* pour l'instant */</span></span>
       </div>
 
       <div class="grid gap-6 lg:grid-cols-section lg:items-end lg:gap-10">
