@@ -1,0 +1,22 @@
+<!doctype html>
+<!--
+  Back-office du portfolio : Sveltia CMS, configuré dans config.yml (même dossier).
+  Connexion avec un jeton GitHub ; chaque enregistrement fait un commit sur main,
+  puis GitHub Actions reconstruit et met le site en ligne.
+  Le script est épinglé sur une version précise, avec son empreinte (integrity) :
+  pour mettre à jour, changer la version ET recalculer l'empreinte.
+-->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="same-origin">
+  <title>Back-office | Paul PIDEILL</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-96.png" sizes="96x96" type="image/png">
+</head>
+<body>
+  <script src="https://unpkg.com/@sveltia/cms@0.250.2/dist/sveltia-cms.js" integrity="sha384-C1+1L3qphgbrAxO2FdF1IFZO8lu9vKwl/r2HKwNT23T2pUQZzDzyXYRAm08skZ3Y" crossorigin="anonymous"></script>
+</body>
+</html>
