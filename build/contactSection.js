@@ -62,11 +62,21 @@ function renderSection({ contact, profile }) {
   const [first] = contact.quests;
   return `<section id="contact" aria-labelledby="contact-title" class="relative scroll-mt-28 py-24">
       <!-- Coulisses de la section, révélées par la lampe (desktop) -->
-      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
-        <span class="absolute top-28 left-0">fetch(endpoint, { method: "POST" })</span>
-        <span class="absolute top-36 left-0 text-muted">/* pigeon voyageur */</span>
-        <span class="absolute top-28 right-0">input:focus-visible { outline: 2px; }</span>
-        <span class="absolute bottom-8 left-0 text-accent">// les codes de récompense sont vérifiés, pas la peine de tricher</span>
+      <div data-reveal class="pointer-events-none absolute inset-y-0 -inset-x-8 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-28 left-8">fetch(endpoint, { method: "POST" })</span>
+        <span class="absolute top-36 left-8 text-muted">/* pigeon voyageur */</span>
+        <span class="absolute top-28 right-8">input:focus-visible { outline: 2px; }</span>
+        <span class="absolute bottom-8 left-8 text-accent">// les codes de récompense sont vérifiés, pas la peine de tricher</span>
+        <span class="absolute top-52 left-8 text-accent">// joueur 2 : START</span>
+        <!-- Entre le formulaire et l'enveloppe -->
+        <span class="absolute top-160 right-94 text-vertical">autocomplete="name"</span>
+        <span class="absolute top-264 right-94 text-vertical">maxlength="80"</span>
+        <!-- Marges -->
+        <span class="absolute top-120 left-2 rotate-180 text-vertical">&lt;form&gt; + &lt;label for&gt; = ✓</span>
+        <span class="absolute top-224 left-2 rotate-180 text-vertical">required <span class="text-muted">/* mais poli */</span></span>
+        <span class="absolute top-328 left-2 rotate-180 text-vertical text-accent">// réponse sous 48 h, promis</span>
+        <span class="absolute top-172 right-2 text-vertical">position: sticky; top: 7rem;</span>
+        <span class="absolute top-276 right-2 text-vertical">✉ timbre : 0,00 €</span>
       </div>
 
       <div class="grid gap-6 lg:grid-cols-section lg:items-end lg:gap-10">
@@ -210,7 +220,17 @@ function renderFooter({ contact, profile }) {
 
   // pb-28 : de la place sous la dernière ligne pour la barre du terminal, fixée en bas à droite.
   return `<footer data-footer class="border-t border-muted/20">
-    <div class="mx-auto max-w-6xl px-4 pt-16 pb-28 md:px-8">
+    <div class="relative mx-auto max-w-6xl px-4 pt-16 pb-28 md:px-8">
+      <!-- Coulisses du pied de page, révélées par la lampe (desktop) -->
+      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-6 left-8">&lt;footer&gt; <span class="text-muted">/* générique de fin */</span></span>
+        <span class="absolute right-8 bottom-12 text-accent">// tu as lu jusqu'en bas, respect</span>
+        <span class="absolute bottom-12 left-8">&lt;/body&gt; <span class="text-muted">/* game over, pas vraiment */</span></span>
+        <span class="absolute top-40 left-2 rotate-180 text-vertical">credits.json</span>
+        <span class="absolute top-120 left-2 rotate-180 text-vertical text-accent">// insert coin</span>
+        <span class="absolute top-24 right-2 text-vertical">score.save();</span>
+        <span class="absolute top-104 right-2 text-vertical">© fait main à Limoges</span>
+      </div>
       <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
         <div class="flex items-end justify-between gap-6 lg:justify-start">
           <div class="min-w-0">

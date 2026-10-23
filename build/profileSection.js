@@ -37,11 +37,17 @@ function renderSection({ profile }) {
 
   return `<section id="profil" aria-labelledby="profil-title" class="relative scroll-mt-28 py-24">
       <!-- Coulisses de la section, révélées par la lampe (desktop) -->
-      <div data-reveal class="pointer-events-none absolute inset-0 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
-        <span class="absolute top-28 left-0">game.pause();</span>
-        <span class="absolute top-36 left-0 text-muted">/* reprendre quand tu veux */</span>
-        <span class="absolute top-28 right-0">fps: 60 <span class="text-muted">/* stable */</span></span>
-        <span class="absolute bottom-8 left-0 text-accent">// options › son › café : max</span>
+      <div data-reveal class="pointer-events-none absolute inset-y-0 -inset-x-8 -z-10 hidden font-mono text-xs text-support mask-spotlight lg:pointer-fine:data-on:block" aria-hidden="true">
+        <span class="absolute top-28 left-8">game.pause();</span>
+        <span class="absolute top-36 left-8 text-muted">/* reprendre quand tu veux */</span>
+        <span class="absolute top-28 right-8">fps: 60 <span class="text-muted">/* stable */</span></span>
+        <span class="absolute bottom-8 left-8 text-accent">// options › son › café : max</span>
+        <span class="absolute right-8 bottom-8">inventaire : 4 catégories</span>
+        <!-- Marges -->
+        <span class="absolute top-80 left-2 rotate-180 text-vertical">role="tablist"</span>
+        <span class="absolute top-148 left-2 rotate-180 text-vertical text-accent">// pas game over, juste pause</span>
+        <span class="absolute top-64 right-2 text-vertical">aria-selected="true"</span>
+        <span class="absolute top-128 right-2 text-vertical">▶ reprendre <span class="text-muted">/* entrée */</span></span>
       </div>
 
       <div class="grid gap-6 lg:grid-cols-section lg:items-end lg:gap-10">

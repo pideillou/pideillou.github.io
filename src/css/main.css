@@ -276,6 +276,11 @@
   );
 }
 
+/* Notes verticales des coulisses, posées dans les marges le long du contenu */
+@utility text-vertical {
+  writing-mode: vertical-rl;
+}
+
 /* Halo qui suit la souris (position passée par src/js/views/SpotlightView.js) */
 @utility bg-spotlight {
   background-image: radial-gradient(
