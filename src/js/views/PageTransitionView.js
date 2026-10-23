@@ -5,6 +5,8 @@ const SLIDE = 220;
 const EASE = 'cubic-bezier(0.7, 0, 0.3, 1)';
 // Si la page suivante tarde, on rend la main au visiteur au lieu de le laisser devant un écran figé (ms).
 const SAFETY = 4000;
+// En dessous du point de rupture md de Tailwind (768 px), le visuel de la fiche est hors de l'écran à l'arrivée.
+const MOBILE = '(max-width: 47.99rem)';
 
 const OVERLAY_CLASSES = 'pointer-events-none fixed z-50 overflow-hidden border border-muted/30 bg-surface';
 // Décalage de la page à la sortie et à l'arrivée, selon le sens (fiche suivante, précédente, retour).
@@ -17,7 +19,7 @@ const SLIDES = {
 /**
  * Transitions entre l'accueil et les fiches projet, sans écran de chargement :
  * - ouvrir un projet : son visuel s'agrandit jusqu'à remplir l'écran,
- *   puis, sur la fiche, le même visuel se range à sa place ;
+ *   puis, sur la fiche, le même visuel se range à sa place (sur mobile, il s'efface sur place) ;
  * - passer d'une fiche à l'autre : la page glisse comme une page qu'on tourne.
  * Sans animation (prefers-reduced-motion), la navigation est immédiate.
  */
@@ -85,7 +87,12 @@ export default class PageTransitionView {
     const layer = this.#layer(art);
     this.#play(hero, [{ opacity: 0 }, { opacity: 0 }], { duration: SHRINK });
     this.#reveal(parts, SHRINK * 0.6);
-    await this.#play(layer, [this.#fullScreen(), this.#frame(hero.getBoundingClientRect(), '0.5rem')], { duration: SHRINK });
+    // Sur mobile, le visuel est sous le titre, hors de l'écran : il s'efface sur place
+    // au lieu de glisser vers le bas et de sortir du cadre.
+    const keyframes = window.matchMedia(MOBILE).matches
+      ? [{ ...this.#fullScreen(), opacity: 1 }, { ...this.#fullScreen(), opacity: 0 }]
+      : [this.#fullScreen(), this.#frame(hero.getBoundingClientRect(), '0.5rem')];
+    await this.#play(layer, keyframes, { duration: SHRINK });
     layer.remove();
   }
 
