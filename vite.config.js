@@ -2,6 +2,7 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
+import projectData from './build/projectData.js';
 import projectPages from './build/projectPages.js';
 import profileSection from './build/profileSection.js';
 import educationSection from './build/educationSection.js';
@@ -11,9 +12,10 @@ import seoHead from './build/seoHead.js';
 export default defineConfig({
   // Le site est servi à la racine de https://pideillou.github.io/ (dépôt pideillou.github.io sur GitHub Pages).
   base: '/',
-  // Plugins maison (dossier build/) : une fiche HTML par projet, les sections
-  // « Profil », « Mon parcours » et « Contact » de l'accueil, son pied de page et son en-tête SEO, fabriqués depuis src/data/.
-  plugins: [tailwindcss(), projectPages(), profileSection(), educationSection(), contactSection(), siteFooter(), seoHead()],
+  // Plugins maison (dossier build/) : les projets remis en forme (contenu modifié depuis le back-office),
+  // une fiche HTML par projet, les sections « Profil », « Mon parcours » et « Contact » de l'accueil,
+  // son pied de page et son en-tête SEO, fabriqués depuis src/data/.
+  plugins: [tailwindcss(), projectData(), projectPages(), profileSection(), educationSection(), contactSection(), siteFooter(), seoHead()],
   build: {
     outDir: 'dist',
     // Pages : l'accueil, le gabarit des fiches projet (remplacé par une page par projet)

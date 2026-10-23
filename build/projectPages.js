@@ -6,10 +6,10 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { COVER_VIEWBOX, coverShapes } from '../src/js/utils/coverArt.js';
+import { readProjectData } from './projectData.js';
 
 const SITE_URL = 'https://pideillou.github.io';
 const AUTHOR = 'Paul PIDEILL';
-const DATA_FILE = 'src/data/projects.json';
 const TEMPLATE = 'projet.html';
 
 // Textes guides des fiches sans étude de cas (projets d'exemple) : ils disent quoi écrire.
@@ -58,7 +58,7 @@ const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visi
 
 /** Projets triés du plus récent au plus ancien, avec leur libellé de catégorie. */
 function readProjects(root) {
-  const { projects, categories } = JSON.parse(readFileSync(resolve(root, DATA_FILE), 'utf8'));
+  const { projects, categories } = readProjectData(root);
   return [...projects]
     .sort((a, b) => b.date.localeCompare(a.date))
     .map((project) => ({ ...project, label: categories.find(({ id }) => id === project.category)?.label ?? project.category }));
