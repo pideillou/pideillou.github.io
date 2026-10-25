@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { COVER_VIEWBOX, coverShapes } from '../src/js/utils/coverArt.js';
+import { projectContext } from '../src/js/utils/projectContext.js';
 import { readProjectData } from './projectData.js';
 
 const SITE_URL = 'https://pideillou.github.io';
@@ -42,7 +43,6 @@ const GUIDE_SECTIONS = [
   },
 ];
 
-const LINKS = { demo: 'Voir le site en ligne', repo: 'Voir le code' };
 const ENTITIES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
 const escape = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ENTITIES[char]);
@@ -84,7 +84,7 @@ function renderCover(project, base) {
     ? ` srcset="${escape(cover.srcset.map(({ src, width }) => `${url(src)} ${width}w`).join(', '))}" sizes="(min-width: 72rem) 72rem, 100vw"`
     : '';
   // Image principale de la page : chargée tout de suite (pas de lazy), en priorité.
-  return `<img src="${escape(url(cover.src))}"${srcset} alt="${escape(cover.alt)}" width="${cover.width}" height="${cover.height}" fetchpriority="high" class="size-full object-cover">`;
+  return `<img src="${escape(url(cover.src))}"${srcset} alt="${escape(cover.alt)}" width="${cover.width}" height="${cover.height}" fetchpriority="high" class="size-full object-cover object-top">`;
 }
 
 function renderSection(section, index, isLast, project) {
@@ -103,11 +103,10 @@ function renderSection(section, index, isLast, project) {
         .join('')}</ol>`
     : '';
   const links = isLast
-    ? Object.entries(LINKS)
-        .filter(([key]) => project.links?.[key])
+    ? project.links
         .map(
-          ([key, text]) =>
-            `<a href="${escape(project.links[key])}" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 items-center gap-3 rounded-md border border-muted/40 px-6 font-semibold text-ink transition-colors hover:border-accent hover:text-accent ${FOCUS}">${text}<span class="sr-only"> (nouvel onglet)</span><svg class="size-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 3h4v4M13 3L7 9M11 9.5V13H3V5h3.5"/></svg></a>`,
+          ({ label, url }) =>
+            `<a href="${escape(url)}" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 items-center gap-3 rounded-md border border-muted/40 px-6 font-semibold text-ink transition-colors hover:border-accent hover:text-accent ${FOCUS}">${escape(label)}<span class="sr-only"> (nouvel onglet)</span><svg class="size-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 3h4v4M13 3L7 9M11 9.5V13H3V5h3.5"/></svg></a>`,
         )
         .join('')
     : '';
@@ -135,7 +134,9 @@ function renderBody(project, projects, base) {
   const study = project.caseStudy ?? {};
   const sections = study.sections?.length ? study.sections : GUIDE_SECTIONS;
   const caption = study.caption ?? (project.cover ? 'Interface principale' : 'Visuel provisoire');
+  const context = projectContext(project.context);
   const meta = [
+    ...(context ? [['Cadre', context.long]] : []),
     ['Année', project.date.slice(0, 4)],
     ['Rôle', project.role],
     ['Durée', study.duration ?? 'À préciser'],
@@ -166,7 +167,7 @@ function renderBody(project, projects, base) {
         </div>
         <div>
           <p class="text-lg leading-relaxed text-muted">${escape(study.intro ?? project.summary)}</p>
-          <dl class="mt-8 grid grid-cols-[auto_minmax(0,1fr)_auto] gap-6 border-t border-muted/30 pt-6">
+          <dl class="mt-8 grid grid-cols-2 gap-6 border-t border-muted/30 pt-6">
             ${meta
               .map(
                 ([term, value]) =>

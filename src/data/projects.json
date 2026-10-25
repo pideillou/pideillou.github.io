@@ -11,14 +11,15 @@
       "title": "Ce portfolio",
       "summary": "Le site que vous visitez, codé en JavaScript natif : une machine à sous tire trois compétences à chaque visite et un terminal garde 18 secrets.",
       "category": "web",
+      "context": "perso",
       "date": "2026-10",
       "role": "Conception et développement",
       "stack": ["HTML", "CSS", "JavaScript", "Tailwind", "Vite", "Git", "SEO"],
       "example": false,
-      "links": {
-        "demo": "https://pideillou.github.io/",
-        "repo": "https://github.com/pideillou/pideillou.github.io"
-      },
+      "links": [
+        { "label": "Voir le site en ligne", "url": "https://pideillou.github.io/" },
+        { "label": "Voir le code", "url": "https://github.com/pideillou/pideillou.github.io" }
+      ],
       "cover": {
         "src": "/images/projets/portfolio-1600.webp",
         "alt": "Page d’accueil du portfolio : le nom Paul PIDEILL en lettres pixel, l’avatar encapuchonné qui salue, et les boutons « Voir les projets » et « Me contacter ».",
@@ -95,13 +96,14 @@
       "title": "Razer Click & Collect",
       "summary": "SAé 3.01 : un site click & collect pour Razer, en PHP et JavaScript. 12 vrais produits, panier, commandes, stock vérifié en direct et back-office.",
       "category": "web",
+      "context": "ecole",
       "date": "2026-10",
       "role": "Conception et développement",
       "stack": ["HTML", "CSS", "JavaScript", "Tailwind", "Vite", "Git", "Figma", "PHP", "MySQL"],
       "example": false,
-      "links": {
-        "demo": "https://mmi.unilim.fr/~pideill2/sae-301/Base/"
-      },
+      "links": [
+        { "label": "Voir le site en ligne", "url": "https://mmi.unilim.fr/~pideill2/sae-301/Base/" }
+      ],
       "cover": {
         "src": "/images/projets/sae-301-980.webp",
         "alt": "Catalogue du site Razer Click & Collect : en-tête avec le logo Razer, filtres Souris, Claviers et Casques, et les premières souris avec leur photo.",
@@ -180,7 +182,7 @@
       "role": "Design et intégration",
       "stack": ["Figma", "HTML", "CSS", "SEO"],
       "example": true,
-      "links": {}
+      "links": []
     },
     {
       "slug": "exemple-application-mobile",
@@ -191,7 +193,7 @@
       "role": "Design UX et UI",
       "stack": ["Figma", "Adobe tools"],
       "example": true,
-      "links": {}
+      "links": []
     },
     {
       "slug": "exemple-teaser-video",
@@ -202,7 +204,7 @@
       "role": "Réalisation et montage",
       "stack": ["Adobe tools", "AI"],
       "example": true,
-      "links": {}
+      "links": []
     },
     {
       "slug": "exemple-campagne-affiches",
@@ -213,7 +215,7 @@
       "role": "Graphisme",
       "stack": ["Adobe tools", "Canva tools"],
       "example": true,
-      "links": {}
+      "links": []
     },
     {
       "slug": "exemple-infographie-donnees",
@@ -224,7 +226,7 @@
       "role": "Analyse et mise en forme",
       "stack": ["Python", "Canva tools", "Git"],
       "example": true,
-      "links": {}
+      "links": []
     },
     {
       "slug": "exemple-assistant-ia",
@@ -235,7 +237,7 @@
       "role": "Développement",
       "stack": ["JavaScript", "AI", "Python"],
       "example": true,
-      "links": {}
+      "links": []
     }
   ]
 }
