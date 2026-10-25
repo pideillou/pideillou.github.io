@@ -1,9 +1,21 @@
 {
   "categories": [
-    { "id": "web", "label": "Web" },
-    { "id": "ux", "label": "UX" },
-    { "id": "communication", "label": "Communication" },
-    { "id": "audiovisuel", "label": "Audiovisuel" }
+    {
+      "id": "web",
+      "label": "Web"
+    },
+    {
+      "id": "ux",
+      "label": "UX"
+    },
+    {
+      "id": "communication",
+      "label": "Communication"
+    },
+    {
+      "id": "audiovisuel",
+      "label": "Audiovisuel"
+    }
   ],
   "projects": [
     {
@@ -13,7 +25,15 @@
       "category": "web",
       "date": "2026-10",
       "role": "Conception et développement",
-      "stack": ["HTML", "CSS", "JavaScript", "Tailwind", "Vite", "Git", "SEO"],
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Tailwind",
+        "Vite",
+        "Git",
+        "SEO"
+      ],
       "example": false,
       "links": {
         "demo": "https://pideillou.github.io/",
@@ -23,13 +43,19 @@
         "src": "/images/projets/portfolio-1600.webp",
         "alt": "Page d’accueil du portfolio : le nom Paul PIDEILL en lettres pixel, l’avatar encapuchonné qui salue, et les boutons « Voir les projets » et « Me contacter ».",
         "srcset": [
-          { "src": "/images/projets/portfolio-800.webp", "width": 800 },
-          { "src": "/images/projets/portfolio-1600.webp", "width": 1600 }
+          {
+            "src": "/images/projets/portfolio-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/portfolio-1600.webp",
+            "width": 1600
+          }
         ]
       },
       "caseStudy": {
-        "kicker": "Projet personnel",
-        "titleAccent": "à la machine à sous",
+        "kicker": "Un portfolio",
+        "titleAccent": "qui me représente",
         "intro": "Un portfolio qui se visite comme un jeu : chaque visite tire trois compétences, et chaque tirage change les projets mis en avant.",
         "duration": "En cours",
         "caption": "Page d’accueil, thème arcade",
@@ -38,7 +64,7 @@
             "label": "Contexte",
             "title": "Un portfolio dont on se souvient",
             "paragraphs": [
-              "Étudiant en deuxième année de BUT MMI, j’avais besoin d’un site pour présenter mes projets. Un recruteur en voit beaucoup : je voulais que le mien se distingue dès les premières secondes, sans rien perdre en clarté.",
+              "Étudiant en deuxième année de BUT MMI, j’avais besoin d’un site pour présenter mes projets. Un recruteur en voit beaucoup : je voulais que le mien se distingue dès les premières secondes, sans rien perdre en clarté. Le plus compliqué pour moi était de retrouver ma personnalité tout en gardant la clarté et l'efficacité d'un portfolio professionnel.",
               "C’est un projet personnel. Je m’occupe seul du concept, du design, de l’intégration, du JavaScript et des textes."
             ]
           },
@@ -54,18 +80,30 @@
             "title": "Une méthode en quatre temps",
             "paragraphs": [
               "Chaque idée passe par les mêmes étapes avant d’arriver sur le site. Je travaille avec une branche Git par sujet, et chaque nouveauté entre par une pull request.",
-              "Je code avec un assistant IA, Claude. Il propose des solutions, je choisis, je relis et je teste avant de garder quoi que ce soit."
+              "Je code avec un assistant IA, Claude. Il propose des solutions quand je bloque, je choisis, je relis et je teste avant de garder quoi que ce soit. Claude travaille dans un environnement régis par de nombreux rules et skills et un agent.md qui le restreint au strict nécessaire."
             ],
             "steps": [
-              { "title": "Cadrer", "text": "Règles du projet : mobile d’abord, accessibilité, code valide." },
-              { "title": "Designer", "text": "Palette maison, six thèmes contrôlés en contraste AA, deux polices libres." },
-              { "title": "Développer", "text": "Vite, Tailwind CSS et JavaScript natif organisé en MVC." },
-              { "title": "Tester", "text": "Trois largeurs d’écran, clavier, animations réduites, validateur du W3C." }
+              {
+                "title": "Cadrer",
+                "text": "Règles du projet : mobile d’abord, accessibilité, code valide."
+              },
+              {
+                "title": "Designer",
+                "text": "Palette maison, six thèmes contrôlés en contraste AA, deux polices libres."
+              },
+              {
+                "title": "Développer",
+                "text": "Vite, Tailwind CSS et JavaScript natif organisé en MVC."
+              },
+              {
+                "title": "Tester",
+                "text": "Trois largeurs d’écran, clavier, animations réduites, validateur du W3C."
+              }
             ]
           },
           {
             "label": "Solution",
-            "title": "Un site statique, sans framework",
+            "title": "Un site sans framework et modifiable rapidement",
             "paragraphs": [
               "Le JavaScript suit une architecture MVC : les données, l’affichage et les actions de l’utilisateur sont rangés à part. Chaque fiche projet est une vraie page HTML fabriquée au moment du build, pour que Google lise tout le texte.",
               "Le contenu est rangé dans des fichiers JSON. Un back office, Sveltia CMS, me permet de le modifier depuis le navigateur. Le site est hébergé gratuitement sur GitHub Pages."
@@ -83,8 +121,7 @@
             "label": "Bilan",
             "title": "Ce que ce projet m’a appris",
             "paragraphs": [
-              "J’ai appris à découper un projet JavaScript en MVC, à travailler avec Git par branches et pull requests, et à vérifier l’accessibilité au clavier et au contraste.",
-              "Prochaine étape : remplacer les projets d’exemple par mes vraies réalisations."
+              "J’ai appris à mettre en pratique le découpage d'un projet JavaScript en MVC, à travailler avec Git par branches et pull requests, et à vérifier l’accessibilité au clavier et au contraste."
             ]
           }
         ]
@@ -97,9 +134,13 @@
       "category": "web",
       "date": "2026-05",
       "role": "Design et intégration",
-      "stack": ["Figma", "HTML", "CSS", "SEO"],
-      "example": true,
-      "links": {}
+      "stack": [
+        "Figma",
+        "HTML",
+        "CSS",
+        "SEO"
+      ],
+      "example": true
     },
     {
       "slug": "exemple-application-mobile",
@@ -108,9 +149,11 @@
       "category": "ux",
       "date": "2026-03",
       "role": "Design UX et UI",
-      "stack": ["Figma", "Adobe tools"],
-      "example": true,
-      "links": {}
+      "stack": [
+        "Figma",
+        "Adobe tools"
+      ],
+      "example": true
     },
     {
       "slug": "exemple-teaser-video",
@@ -119,9 +162,11 @@
       "category": "audiovisuel",
       "date": "2026-02",
       "role": "Réalisation et montage",
-      "stack": ["Adobe tools", "AI"],
-      "example": true,
-      "links": {}
+      "stack": [
+        "Adobe tools",
+        "AI"
+      ],
+      "example": true
     },
     {
       "slug": "exemple-campagne-affiches",
@@ -130,9 +175,11 @@
       "category": "communication",
       "date": "2025-12",
       "role": "Graphisme",
-      "stack": ["Adobe tools", "Canva tools"],
-      "example": true,
-      "links": {}
+      "stack": [
+        "Adobe tools",
+        "Canva tools"
+      ],
+      "example": true
     },
     {
       "slug": "exemple-infographie-donnees",
@@ -141,9 +188,12 @@
       "category": "communication",
       "date": "2025-11",
       "role": "Analyse et mise en forme",
-      "stack": ["Python", "Canva tools", "Git"],
-      "example": true,
-      "links": {}
+      "stack": [
+        "Python",
+        "Canva tools",
+        "Git"
+      ],
+      "example": true
     },
     {
       "slug": "exemple-assistant-ia",
@@ -152,9 +202,12 @@
       "category": "web",
       "date": "2025-09",
       "role": "Développement",
-      "stack": ["JavaScript", "AI", "Python"],
-      "example": true,
-      "links": {}
+      "stack": [
+        "JavaScript",
+        "AI",
+        "Python"
+      ],
+      "example": true
     }
   ]
 }
