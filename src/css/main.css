@@ -44,6 +44,7 @@
   --font-sans: var(--font-mono);
   --font-display: "Press Start 2P", var(--font-mono);
   --font-lead: var(--font-mono); /* phrases longues à la place de la police de titre : accroche, citation */
+  --font-initials: Georgia, "Times New Roman", serif; /* initiales « Pp » des pastilles : la police d'origine du logo */
 
   /* Nom géant de l'accueil : grandit avec la largeur de l'écran */
   --text-hero: clamp(3.5rem, 11vw, 9rem);
