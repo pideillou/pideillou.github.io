@@ -8,7 +8,7 @@ const SPEED = 140;
 const COLORS = ['bg-accent', 'bg-online', 'bg-support', 'bg-gold', 'bg-ink'];
 const ROOT_CLASSES = 'fixed inset-0 z-50 cursor-none bg-surface/95';
 const LOGO_CLASSES =
-  'absolute top-0 left-0 flex size-24 items-center justify-center rounded-full font-display text-3xl text-surface italic shadow-2xl';
+  'absolute top-0 left-0 flex size-24 items-center justify-center rounded-full font-initials text-3xl text-surface italic shadow-2xl';
 const SLEEPER_CLASSES = 'absolute bottom-6 left-1/2 h-40 w-auto -translate-x-1/2 origin-bottom motion-safe:animate-sigh sm:h-52';
 // Événements qui réveillent la page.
 const ACTIVITY = ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart', 'scroll'];
@@ -16,11 +16,18 @@ const ACTIVITY = ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart'
 /**
  * Économiseur d'écran : après un moment sans activité, le logo « Pp » rebondit
  * sur les bords comme le vieux logo DVD. Le moindre mouvement le fait disparaître.
+ * Avec moins d'animations, le logo reste immobile au centre de l'écran.
  */
 export default class ScreensaverView {
   #root = null;
   #frame = 0;
   #timer = 0;
+  #animate;
+
+  /** @param {{ reducedMotion: boolean }} options */
+  constructor({ reducedMotion }) {
+    this.#animate = !reducedMotion;
+  }
 
   /**
    * @param {number} delay Temps sans activité avant le lancement (ms).
@@ -63,6 +70,11 @@ export default class ScreensaverView {
     paint();
 
     const size = logo.offsetWidth;
+    if (!this.#animate) {
+      // Position calculée en JS : seule exception admise aux styles en ligne.
+      logo.style.transform = `translate(${(window.innerWidth - size) / 2}px, ${(window.innerHeight - size) / 3}px)`;
+      return;
+    }
     let x = Math.random() * (window.innerWidth - size);
     let y = Math.random() * (window.innerHeight - size);
     let dx = 1;

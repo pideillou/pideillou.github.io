@@ -16,12 +16,12 @@ export default class CursorView {
   }
 
   /**
-   * Clic gauche à la souris (pas au clavier ni au doigt).
-   * @param {(x: number, y: number) => void} handler Position du clic dans la fenêtre.
+   * Clic gauche à la souris, ou appui au doigt ou au stylet (pas au clavier).
+   * @param {(x: number, y: number) => void} handler Position de l'appui dans la fenêtre.
    */
   bindClick(handler) {
     document.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'mouse' && event.button === 0) handler(event.clientX, event.clientY);
+      if (event.button === 0 && event.isPrimary) handler(event.clientX, event.clientY);
     });
   }
 
