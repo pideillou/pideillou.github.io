@@ -20,7 +20,7 @@
   "projects": [
     {
       "slug": "portfolio",
-      "title": "Ce portfolio",
+      "title": "Un portfolio",
       "summary": "Le site que vous visitez, codé en JavaScript natif : une machine à sous tire trois compétences à chaque visite et un terminal garde 18 secrets.",
       "category": "web",
       "date": "2026-10",
@@ -32,13 +32,10 @@
         "Tailwind",
         "Vite",
         "Git",
-        "SEO"
+        "SEO",
+        "IA"
       ],
       "example": false,
-      "links": {
-        "demo": "https://pideillou.github.io/",
-        "repo": "https://github.com/pideillou/pideillou.github.io"
-      },
       "cover": {
         "src": "/images/projets/portfolio-1600.webp",
         "alt": "Page d’accueil du portfolio : le nom Paul PIDEILL en lettres pixel, l’avatar encapuchonné qui salue, et les boutons « Voir les projets » et « Me contacter ».",
