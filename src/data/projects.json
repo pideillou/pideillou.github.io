@@ -131,52 +131,83 @@
       "category": "web",
       "date": "2026-10",
       "role": "Conception et développement",
-      "stack": ["HTML", "CSS", "JavaScript", "Tailwind", "Vite", "Git", "Figma", "PHP", "MySQL"],
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Tailwind",
+        "Vite",
+        "Git",
+        "Figma",
+        "PHP",
+        "MySQL",
+        "IA"
+      ],
       "example": false,
       "links": {
-        "demo": "https://mmi.unilim.fr/~pideill2/sae-301/Base/"
+        "demo": "https://mmi.unilim.fr/~pideill2/sae-301/Base/",
+        "repo": "https://github.com/pideillou/SAe-3.01"
       },
       "cover": {
         "src": "/images/projets/sae-301-980.webp",
         "alt": "Catalogue du site Razer Click & Collect : en-tête avec le logo Razer, filtres Souris, Claviers et Casques, et les premières souris avec leur photo.",
         "srcset": [
-          { "src": "/images/projets/sae-301-800.webp", "width": 800 },
-          { "src": "/images/projets/sae-301-980.webp", "width": 980 }
+          {
+            "src": "/images/projets/sae-301-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/sae-301-980.webp",
+            "width": 980
+          }
         ]
       },
       "caseStudy": {
         "kicker": "SAé 3.01 · BUT MMI",
-        "titleAccent": "à retirer en magasin",
-        "intro": "Une boutique en ligne pour Razer : le client remplit son panier, valide sa commande et vient la chercher en magasin. Seul sur le projet, du back au front.",
+        "titleAccent": "Site de click&collect Razer",
+        "intro": "Une boutique en ligne pour Razer : le client remplit son panier, valide sa commande et vient la chercher en magasin. Seul sur le projet, du back au front avec aide de l'IA.",
+        "duration": "2 semaines",
         "caption": "Catalogue, version desktop",
         "sections": [
           {
             "label": "Contexte",
             "title": "Une vraie enseigne, un vrai parcours",
             "paragraphs": [
-              "La SAé 3.01 du BUT MMI demande un site click & collect pour une enseigne réelle. J’ai choisi Razer. Le client choisit ses produits, remplit un panier et valide une commande qu’il retire en magasin. Le paiement n’est pas traité.",
-              "Projet individuel, rendu le 23 octobre 2026. C’est un exercice universitaire, sans lien avec l’entreprise Razer."
+              "La SAé 3.01 du BUT MMI exigeais un site click & collect pour une enseigne réelle choisie par nos soins. J’ai choisi Razer. Après cette étape j'ai du choisir les produits ( 3 catégories de 4 produits minimum ) et traiter tout le tunnel de commande d'un site classique de click&collect. Le paiement n’était pas traité.",
+              "Projet individuel, rendu le 23 octobre 2026. Cet exercice universitaire était sans lien avec l’entreprise Razer."
             ]
           },
           {
             "label": "Objectifs",
             "title": "23 user stories à livrer",
             "paragraphs": [
-              "Le sujet donne 23 user stories réparties en 8 epics, plus un bonus sur les promotions. Le minimum : 3 catégories de 4 produits réels, avec des options. Le site devait se distinguer de la boutique officielle tout en respectant la charte de la marque."
+              "Le sujet donnait 23 user stories réparties en 8 epics, plus un bonus sur les promotions. Le site devait se distinguer de la boutique officielle tout en respectant la charte colorimétrique et textuelle de la marque."
             ]
           },
           {
             "label": "Démarche",
             "title": "Une user story, une branche",
             "paragraphs": [
-              "Aucun ordre n’était imposé. J’ai d’abord dessiné le graphe des dépendances entre les stories, puis j’ai choisi l’ordre selon quatre critères : les dépendances techniques, la valeur pour l’utilisateur, la complexité et le risque de réécrire du code.",
+              "Aucun ordre n’étant imposé j’ai d’abord dessiné le graphe des dépendances entre les différentes user-stories, puis j’ai choisi l’ordre selon quatre critères : les dépendances techniques, la valeur pour l’utilisateur, la complexité et le risque de réécrire du code.",
               "Chaque story a sa branche Git. Elle n’est terminée qu’après le validateur du W3C, la vérification des droits et les tests. J’ai travaillé avec un assistant IA, Claude, en validant chaque choix."
             ],
             "steps": [
-              { "title": "Analyser", "text": "Graphe des dépendances et ordre justifié dans le README." },
-              { "title": "Prototyper", "text": "Maquettes sur Figma, avec variables et composants." },
-              { "title": "Développer", "text": "API PHP en trois couches, front en JavaScript avec Vite et Tailwind CSS." },
-              { "title": "Tester", "text": "Validateur du W3C, tests de concurrence sur le stock, Lighthouse." }
+              {
+                "title": "Analyser",
+                "text": "Graphe des dépendances et ordre justifié dans le README."
+              },
+              {
+                "title": "Prototyper",
+                "text": "Maquettes sur Figma, avec variables et composants."
+              },
+              {
+                "title": "Développer",
+                "text": "API PHP en trois couches, front en JavaScript avec Vite et Tailwind CSS."
+              },
+              {
+                "title": "Tester",
+                "text": "Validateur du W3C, tests de concurrence sur le stock, Lighthouse."
+              }
             ]
           },
           {
@@ -199,7 +230,7 @@
             "label": "Bilan",
             "title": "Ce que ce projet m’a appris",
             "paragraphs": [
-              "J’ai appris à découper un gros sujet en user stories et à justifier un ordre de réalisation. Côté technique : les transactions et les verrous en base de données, et la sécurité d’un espace administrateur, avec des mots de passe hachés et des sessions séparées."
+              "J’ai appris à découper un gros sujet en user stories et à justifier un ordre de réalisation. Côté technique : les transactions et les verrous en base de données, et la sécurité d’un espace administrateur, avec des mots de passe hachés et des sessions séparées. De plus j'ai un peu plus appuyé et affirmé mon usage de l'IA dans un contexte professionnel."
             ]
           }
         ]
