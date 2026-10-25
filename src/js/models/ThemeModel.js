@@ -2,10 +2,10 @@
 const THEMES = [
   { id: 'defaut', label: 'borne d’arcade : angles carrés, jaune et rose' },
   { id: 'papier', label: 'clair, crème et encre, comme un magazine' },
-  { id: 'crt', label: 'vieux moniteur : tout en police mono, vert phosphore' },
+  { id: 'crt', label: 'vieux moniteur, vert phosphore' },
   { id: 'contraste', label: 'noir et blanc, contraste maximal (accessibilité)' },
   { id: 'or', label: 'doré, réservé aux gagnants', unlock: 'jackpot' },
-  { id: 'origine', label: 'sombre et serif, la palette d’origine', unlock: 'konami' },
+  { id: 'origine', label: 'sombre et sobre, la palette d’origine', unlock: 'konami' },
 ];
 
 /**
