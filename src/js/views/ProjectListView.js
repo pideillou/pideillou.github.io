@@ -71,12 +71,13 @@ export default class ProjectListView {
     return buttons;
   }
 
-  #row({ project, number, label, matches }) {
+  #row({ project, number, label, context, matches }) {
     const row = this.#template.content.firstElementChild.cloneNode(true);
     row.querySelector('[data-number]').textContent = String(number).padStart(2, '0');
     row.querySelector('[data-cover]').append(createCover(project, COVER_SIZES));
-    row.querySelector('[data-meta]').textContent =
-      `${label} / ${project.date.slice(0, 4)}${project.example ? ' / Exemple' : ''}`;
+    row.querySelector('[data-meta]').textContent = [label, project.date.slice(0, 4), context, project.example && 'Exemple']
+      .filter(Boolean)
+      .join(' / ');
     row.querySelector('[data-title]').textContent = project.title;
     row.querySelector('[data-summary]').textContent = project.summary;
     row.querySelector('[data-stack]').replaceChildren(...createSkillChips(project.stack, matches));

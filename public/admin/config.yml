@@ -81,18 +81,30 @@ collections:
                   - { label: UX, value: ux }
                   - { label: Communication, value: communication }
                   - { label: Audiovisuel, value: audiovisuel }
+              - name: context
+                label: Cadre
+                widget: select
+                required: false
+                hint: 'Affiché sur les cartes de l''accueil et dans la fiche. École : SAé ou projet de cours. Pro : client, stage ou alternance.'
+                options:
+                  - { label: Perso, value: perso }
+                  - { label: École, value: ecole }
+                  - { label: Pro, value: pro }
               - { name: date, label: Date, widget: string, hint: 'Année et mois, par exemple 2026-10.', pattern: ['^\d{4}-(0[1-9]|1[0-2])$', 'Format AAAA-MM, par exemple 2026-10'] }
               - { name: role, label: Mon rôle, widget: string }
               - { name: stack, label: Outils et compétences, label_singular: Outil, widget: list, field: { name: tool, label: Outil, widget: string }, hint: 'Écrire les compétences comme dans « Profil > Compétences » (HTML, Figma…) pour qu''elles comptent dans la machine à sous.' }
               - { name: example, label: Projet d'exemple, widget: boolean, default: false, required: false, hint: 'Coché : la fiche affiche un bandeau « exemple » et n''est pas indexée par Google.' }
               - name: links
                 label: Liens
-                widget: object
+                label_singular: Lien
+                widget: list
                 required: false
                 collapsed: true
+                hint: 'Boutons affichés en bas de la fiche, dans cet ordre : site en ligne, code, maquette Figma, vidéo…'
+                summary: '{{fields.label}}'
                 fields:
-                  - { name: demo, label: Site en ligne, widget: string, required: false, pattern: ['^https://', 'Adresse complète, qui commence par https://'] }
-                  - { name: repo, label: Code source, widget: string, required: false, pattern: ['^https://', 'Adresse complète, qui commence par https://'] }
+                  - { name: label, label: Texte du bouton, widget: string, hint: 'Ce que le lien ouvre, par exemple « Voir la maquette Figma ».' }
+                  - { name: url, label: Adresse, widget: string, pattern: ['^https://', 'Adresse complète, qui commence par https://'] }
               - name: cover
                 label: Visuel
                 widget: object

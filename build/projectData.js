@@ -27,6 +27,24 @@ function normalizeCover(cover, root, slug) {
   return { alt: '', ...cover, ...size };
 }
 
+// Texte des boutons de l'ancien format de liens ({ demo, repo }), encore accepté.
+const LEGACY_LINKS = { demo: 'Voir le site en ligne', repo: 'Voir le code' };
+
+/**
+ * Liens d'un projet : une liste de { label, url }, dans l'ordre des boutons.
+ * Les liens sans adresse web (http ou https) sont écartés, ceux sans texte prennent « Voir le lien ».
+ * @param {{ label?: string, url?: string }[] | Record<string, string> | undefined} links
+ * @returns {{ label: string, url: string }[]}
+ */
+function normalizeLinks(links) {
+  const list = Array.isArray(links)
+    ? links
+    : Object.entries(links ?? {}).map(([key, url]) => ({ label: LEGACY_LINKS[key], url }));
+  return list
+    .filter((link) => /^https?:\/\//.test(link?.url ?? ''))
+    .map(({ label, url }) => ({ label: label?.trim() || 'Voir le lien', url }));
+}
+
 /**
  * @param {{ categories: object[], projects: object[] }} data Contenu brut de projects.json.
  * @param {string} root Racine du projet.
@@ -35,7 +53,7 @@ export function normalizeProjectData(data, root) {
   const projects = data.projects.map((project) => {
     const { cover, caseStudy, links, ...rest } = project;
     const study = caseStudy && withoutEmpty(caseStudy);
-    const normalized = { ...rest, stack: project.stack ?? [], example: Boolean(project.example), links: withoutEmpty(links) };
+    const normalized = { ...rest, stack: project.stack ?? [], example: Boolean(project.example), links: normalizeLinks(links) };
     const image = normalizeCover(cover, root, project.slug);
     if (image) normalized.cover = image;
     if (study && Object.keys(study).length) normalized.caseStudy = study;

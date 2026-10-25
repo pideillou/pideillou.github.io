@@ -1,3 +1,5 @@
+import { projectContext } from '../utils/projectContext.js';
+
 // Nombre de projets mis en avant par la machine à sous.
 const FEATURED_COUNT = 3;
 // Filtre qui affiche toutes les catégories.
@@ -5,9 +7,11 @@ export const ALL = 'all';
 
 /**
  * @typedef {{ slug: string, title: string, summary: string, category: string, date: string,
- *   role: string, stack: string[], example: boolean, links: { demo?: string, repo?: string },
+ *   context?: 'perso' | 'ecole' | 'pro',
+ *   role: string, stack: string[], example: boolean, links: { label: string, url: string }[],
  *   cover?: { src: string, alt: string, width: number, height: number, srcset?: { src: string, width: number }[] } }} Project
- * @typedef {{ project: Project, number: number, label: string, matches: string[] }} ProjectItem
+ * @typedef {{ project: Project, number: number, label: string, context: string, matches: string[] }} ProjectItem
+ *   context : cadre du projet en court (« Perso », « École », « Pro »), vide s'il n'est pas renseigné.
  */
 
 /**
@@ -34,6 +38,7 @@ export default class ProjectModel extends EventTarget {
         project,
         number: index + 1,
         label: categories.find((category) => category.id === project.category)?.label ?? project.category,
+        context: projectContext(project.context)?.short ?? '',
       }));
   }
 

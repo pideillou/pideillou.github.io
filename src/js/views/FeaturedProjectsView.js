@@ -77,7 +77,7 @@ export default class FeaturedProjectsView {
     setTimeout(() => card.removeAttribute('data-face-down'), FLIP_DELAY);
   }
 
-  #card({ project, label, matches }, index) {
+  #card({ project, label, context, matches }, index) {
     const card = this.#template.content.firstElementChild.cloneNode(true);
     const number = String(index + 1).padStart(2, '0');
     card.querySelector('[data-cover]').prepend(createCover(project, COVER_SIZES));
@@ -85,8 +85,9 @@ export default class FeaturedProjectsView {
     card.querySelectorAll('[data-back-number]').forEach((corner) => {
       corner.textContent = number;
     });
-    card.querySelector('[data-meta]').textContent =
-      `${label} · ${project.date.slice(0, 4)}${project.example ? ' · Exemple' : ''}`;
+    card.querySelector('[data-meta]').textContent = [label, project.date.slice(0, 4), context, project.example && 'Exemple']
+      .filter(Boolean)
+      .join(' · ');
     card.querySelector('[data-title]').textContent = project.title;
     card.querySelector('[data-summary]').textContent = project.summary;
 
