@@ -102,6 +102,16 @@ collections:
                 fields:
                   - { name: src, label: Image, widget: image, required: false, media_folder: /public/images/projets, public_folder: /images/projets }
                   - { name: alt, label: Description de l'image, widget: string, required: false, hint: 'Ce que montre l''image, pour les personnes qui ne la voient pas. Laisser vide si l''image est purement décorative.' }
+                  - name: srcset
+                    label: Autres tailles (facultatif)
+                    label_singular: Taille
+                    widget: list
+                    required: false
+                    hint: 'La même image en plus petit (par exemple 800 px de large), pour les téléphones. Indiquer aussi l''image principale avec sa largeur.'
+                    summary: '{{fields.width}} px'
+                    fields:
+                      - { name: src, label: Image, widget: image, media_folder: /public/images/projets, public_folder: /images/projets }
+                      - { name: width, label: Largeur en pixels, widget: number, value_type: int, min: 1 }
               - name: caseStudy
                 label: Étude de cas (fiche projet)
                 widget: object

@@ -66,6 +66,9 @@ function readProjects(root) {
 
 const pageUrl = (base, slug) => `${base}projets/${slug}/`;
 
+// Image de partage des fiches : celle de l'accueil (src/data/seo.json), en PNG car LinkedIn et WhatsApp affichent mal le WebP.
+const readSeo = (root) => JSON.parse(readFileSync(resolve(root, 'src/data/seo.json'), 'utf8'));
+
 function svg({ tag, attributes, className, children = [] }) {
   const attrs = Object.entries(attributes).map(([key, value]) => ` ${key}="${escape(value)}"`).join('');
   return `<${tag}${attrs}${className ? ` class="${className}"` : ''}>${children.map(svg).join('')}</${tag}>`;
@@ -217,7 +220,7 @@ ${
 }
 
 /** Balises de <head> propres à la fiche : référencement, partage, données structurées. */
-function renderHead(project, base) {
+function renderHead(project, base, seo) {
   const url = `${SITE_URL}${pageUrl(base, project.slug)}`;
   const title = `${project.title} : étude de cas | ${AUTHOR}`;
   const data = {
@@ -252,15 +255,19 @@ function renderHead(project, base) {
   <meta property="og:description" content="${escape(project.summary)}">
   <meta property="og:url" content="${url}">
   <meta property="og:locale" content="fr_FR">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="${SITE_URL}${base}${escape(seo.image)}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${escape(seo.imageAlt)}">
+  <meta name="twitter:card" content="summary_large_image">
   <script type="speculationrules">${JSON.stringify({ prefetch: [{ where: { href_matches: `${base}*` }, eagerness: 'moderate' }] })}</script>
   <script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`,
   };
 }
 
 /** Remplit le gabarit projet.html pour un projet. */
-function renderPage(template, project, projects, base) {
-  const { title, head } = renderHead(project, base);
+function renderPage(template, project, projects, base, seo) {
+  const { title, head } = renderHead(project, base, seo);
   return template
     .replace(/<title>[^<]*<\/title>/, `<title>${escape(title)}</title>`)
     .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escape(project.summary)}">`)
@@ -306,7 +313,7 @@ export default function projectPages() {
           return res.end('Projet introuvable');
         }
         const template = readFileSync(resolve(config.root, TEMPLATE), 'utf8');
-        const html = await server.transformIndexHtml(req.url, renderPage(template, project, projects, config.base));
+        const html = await server.transformIndexHtml(req.url, renderPage(template, project, projects, config.base, readSeo(config.root)));
         res.setHeader('Content-Type', 'text/html; charset=utf-8');
         res.end(html);
       });
@@ -318,10 +325,11 @@ export default function projectPages() {
       const outDir = resolve(config.root, config.build.outDir);
       const template = readFileSync(resolve(outDir, TEMPLATE), 'utf8');
       const projects = readProjects(config.root);
+      const seo = readSeo(config.root);
       projects.forEach((project) => {
         const dir = resolve(outDir, 'projets', project.slug);
         mkdirSync(dir, { recursive: true });
-        writeFileSync(resolve(dir, 'index.html'), renderPage(template, project, projects, config.base));
+        writeFileSync(resolve(dir, 'index.html'), renderPage(template, project, projects, config.base, seo));
       });
       rmSync(resolve(outDir, TEMPLATE));
       writeFileSync(resolve(outDir, 'sitemap.xml'), renderSitemap(projects, config.base));
