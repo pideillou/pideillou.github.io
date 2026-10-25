@@ -4,8 +4,8 @@ const RAWR_INTERVAL = 150;
 const EXTINCTION_RAWRS = 10;
 
 /**
- * Relie le curseur de la souris à l'easter egg « dino ».
- * En mode dino, chaque clic fait rugir le T-rex (sauf si le visiteur a tapé « son off »).
+ * Relie le curseur de la souris (et les appuis au doigt) à l'easter egg « dino ».
+ * En mode dino, chaque clic ou appui fait rugir le T-rex (sauf si le visiteur a tapé « son off »).
  * Au dixième rugissement, la météorite tombe et le mode dino s'arrête.
  */
 export default class CursorController {

@@ -47,6 +47,7 @@ import ClockView from './js/views/ClockView.js';
 import ScrambleView from './js/views/ScrambleView.js';
 import SpotlightView from './js/views/SpotlightView.js';
 import KeyboardView from './js/views/KeyboardView.js';
+import GestureView from './js/views/GestureView.js';
 import TerminalView from './js/views/TerminalView.js';
 import EffectsView from './js/views/EffectsView.js';
 import InspectView from './js/views/InspectView.js';
@@ -196,6 +197,10 @@ const scramble = new ScrambleController(new ScrambleView(document), { reducedMot
 // Code Konami au clavier (thème secret « origine »). Le code « dino » est géré par src/js/site.js.
 const konami = new EasterEggModel(KONAMI);
 new KeyboardView().bindKeys((key) => konami.type(key));
+// Version tactile : les huit flèches en glissant le doigt, puis deux tapotements à la place de B et A.
+const konamiTouch = new EasterEggModel([...KONAMI.slice(0, 8), 'tap', 'tap']);
+konamiTouch.addEventListener('change', () => konami.toggle());
+new GestureView().bindGestures((gesture) => konamiTouch.type(gesture));
 
 // Terminal : la machine à sous n'y est pas proposée si les animations sont réduites.
 const terminalRoot = document.querySelector('[data-terminal]');
@@ -289,6 +294,7 @@ if (terminalRoot) {
     konami,
     rewards: rewardsData,
     drawEnabled: !reducedMotion,
+    touch: !hasMouse,
   });
 
   // Pied de page : score de la partie du visiteur, et raccourcis vers le terminal et le générique.
@@ -313,7 +319,7 @@ if (terminalRoot) {
 
   // Secrets trouvés sur la page (hors terminal) : annoncés ici avec le compteur et l'indice suivant.
   const SECRET_MESSAGES = { extinction: '☄ Extinction. Les dinosaures ont disparu.' };
-  announceSecret = (id) => terminal.print([{ text: SECRET_MESSAGES[id], tone: 'accent' }, ...secretFoundLines(tokens)]);
+  announceSecret = (id) => terminal.print([{ text: SECRET_MESSAGES[id], tone: 'accent' }, ...secretFoundLines(tokens, !hasMouse)]);
 
   // Sans clavier (mobile) : 5 tapotements sur le nom lancent le jeu du dino.
   const title = document.getElementById('accueil-title');
@@ -325,12 +331,11 @@ if (terminalRoot) {
   }
 
   // Économiseur d'écran après trois minutes sans activité : un secret, et un bonus si le logo touche un coin.
-  new ScreensaverController(new ScreensaverView(), {
-    reducedMotion,
+  new ScreensaverController(new ScreensaverView({ reducedMotion }), {
     onStart: () => {
       if (tokens.hasClaimed('secret:veille')) return;
       tokens.earn('secret:veille');
-      terminal.print([{ text: 'Tu t’es endormi ? L’économiseur d’écran veillait.', tone: 'accent' }, ...secretFoundLines(tokens)]);
+      terminal.print([{ text: 'Tu t’es endormi ? L’économiseur d’écran veillait.', tone: 'accent' }, ...secretFoundLines(tokens, !hasMouse)]);
     },
     onCorner: () => tokens.earn('corner'),
   });

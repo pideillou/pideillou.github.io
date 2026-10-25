@@ -23,12 +23,13 @@ export function foundSecrets(tokens) {
 
 /**
  * @param {import('./TokenModel.js').default} tokens
+ * @param {boolean} [touch] Écran tactile sans souris : indices adaptés au doigt.
  * @returns {string | null} Indice du prochain secret à trouver, ou null s'ils sont tous trouvés.
  */
-export function nextSecretHint(tokens) {
+export function nextSecretHint(tokens, touch = false) {
   const found = foundSecrets(tokens);
   const next = SECRETS.find((id) => !found.includes(id));
-  return next ? HINTS[next] : null;
+  return next ? hintFor(next, touch) : null;
 }
 
 /**
@@ -49,14 +50,14 @@ export function playerStats(tokens, scores) {
 /**
  * Lignes affichées quand un secret est trouvé : le compteur, puis l'indice du secret suivant.
  * @param {import('./TokenModel.js').default} tokens
+ * @param {boolean} [touch] Écran tactile sans souris : indices adaptés au doigt.
  * @returns {import('./TerminalModel.js').Line[]}
  */
-export function secretFoundLines(tokens) {
-  const found = foundSecrets(tokens);
-  const next = SECRETS.find((id) => !found.includes(id));
+export function secretFoundLines(tokens, touch = false) {
+  const next = nextSecretHint(tokens, touch);
   return [
-    { text: `★ secret trouvé (${found.length}/${SECRETS.length}) · +1 jeton`, tone: 'accent' },
-    ...(next ? [{ text: `Indice pour le suivant : ${HINTS[next]}`, tone: 'muted' }] : []),
+    { text: `★ secret trouvé (${foundSecrets(tokens).length}/${SECRETS.length}) · +1 jeton`, tone: 'accent' },
+    ...(next ? [{ text: `Indice pour le suivant : ${next}`, tone: 'muted' }] : []),
   ];
 }
 
@@ -101,6 +102,20 @@ const HINTS = {
   extinction: 'en mode dino, rugis encore et encore : le ciel finira par répondre.',
 };
 
+// Sur un écran tactile, ces secrets se trouvent autrement qu'au clavier et à la souris.
+const TOUCH_HINTS = {
+  konami: 'glisse le doigt ↑ ↑ ↓ ↓ ← → ← → sur la page, puis tape deux fois l’écran.',
+  veille: 'pose ton téléphone trois minutes, sans laisser l’écran se verrouiller.',
+  extinction: 'tape dino dans le terminal, puis touche l’écran encore et encore : le ciel finira par répondre.',
+};
+
+/**
+ * @param {string} id Secret.
+ * @param {boolean} touch Écran tactile sans souris.
+ * @returns {string} Indice du secret, adapté à l'appareil.
+ */
+const hintFor = (id, touch) => (touch && TOUCH_HINTS[id]) || HINTS[id];
+
 const DOT = '●';
 const EMPTY_DOT = '○';
 
@@ -143,7 +158,7 @@ export function createCommands(ctx) {
   const secret = (id) => {
     const isNew = !tokens.hasClaimed(`secret:${id}`);
     tokens.earn(`secret:${id}`);
-    return isNew ? secretFoundLines(tokens) : [];
+    return isNew ? secretFoundLines(tokens, !actions.hasMouse) : [];
   };
   const found = () => foundSecrets(tokens);
   const check = (done) => (done ? '[x]' : '[ ]');
@@ -214,11 +229,10 @@ export function createCommands(ctx) {
             : [line('cv.pdf : bientôt disponible.', 'muted')];
         }
         if (file === 'secrets.txt') {
-          const done = found();
-          const next = SECRETS.find((id) => !done.includes(id));
+          const next = nextSecretHint(tokens, !actions.hasMouse);
           return [
-            line(`Il y a ${SECRETS.length} secrets. Tu en as trouvé ${done.length}.`),
-            next ? line(`Indice : ${HINTS[next]}`, 'muted') : line('Tu les as toutes trouvées. Chapeau.', 'success'),
+            line(`Il y a ${SECRETS.length} secrets. Tu en as trouvé ${found().length}.`),
+            next ? line(`Indice : ${next}`, 'muted') : line('Tu les as toutes trouvées. Chapeau.', 'success'),
           ];
         }
         return [line(`cat : ${file ?? ''} : fichier introuvable`, 'error')];

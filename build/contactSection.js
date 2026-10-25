@@ -263,7 +263,7 @@ function renderFooter({ contact, profile }) {
       <div class="mt-16 grid gap-10 border-t border-muted/20 pt-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
         <div class="flex flex-col items-start gap-4">
           <a href="#accueil" class="flex items-center gap-3 rounded-full pr-2 ${FOCUS}">
-            <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent font-display text-lg font-bold text-surface" aria-hidden="true">Pp</span>
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent font-initials text-lg font-bold text-surface" aria-hidden="true">Pp</span>
             <span class="flex flex-col leading-tight"><span class="font-display font-bold">${escape(profile.name)}</span><span class="text-xs text-muted">Développeur &amp; designer</span></span>
           </a>
           <p class="max-w-xs text-sm leading-relaxed text-muted">${escape(profile.school)} à ${escape(profile.city.split(',')[0])}. Je code des interfaces et je les dessine aussi.</p>

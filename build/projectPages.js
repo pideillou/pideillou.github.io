@@ -146,7 +146,7 @@ function renderBody(project, projects, base) {
 
   <header class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 pt-6 md:px-8">
     <a href="${base}" data-transition="back" class="flex items-center gap-3 rounded-full pr-2 ${FOCUS}">
-      <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent font-display text-lg font-bold text-surface" aria-hidden="true">Pp</span>
+      <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent font-initials text-lg font-bold text-surface" aria-hidden="true">Pp</span>
       <span class="font-display font-bold whitespace-nowrap">${AUTHOR}</span>
     </a>
     <a href="${base}#tous-les-projets" data-transition="back" class="group inline-flex min-h-11 items-center gap-2 rounded-full border border-muted/40 px-3 text-sm font-semibold whitespace-nowrap text-ink sm:px-4 transition-colors hover:border-accent hover:text-accent ${FOCUS}">

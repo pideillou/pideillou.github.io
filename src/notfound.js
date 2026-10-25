@@ -12,7 +12,7 @@ tokens.earn('game-over');
 
 const root = document.querySelector('[data-game-over]');
 if (root) {
-  const hint = nextSecretHint(tokens);
+  const hint = nextSecretHint(tokens, !window.matchMedia('(pointer: fine)').matches);
   new GameOverController(new GameOverView(root, { reducedMotion }), {
     home: import.meta.env.BASE_URL,
     hint: hint ? `Indice pour un secret : ${hint}` : 'Tous les secrets sont trouvés. Respect.',

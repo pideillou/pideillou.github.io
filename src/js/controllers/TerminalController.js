@@ -37,9 +37,10 @@ export default class TerminalController {
    *   theme: import('../models/ThemeModel.js').default,
    *   konami: import('../models/EasterEggModel.js').default,
    *   rewards: Record<'collection' | 'jackpot' | 'secrets', { title: string, text: string }>,
-   *   drawEnabled: boolean }} site
+   *   drawEnabled: boolean, touch: boolean }} site
+   *   touch : écran tactile sans souris, pour adapter les indices des secrets.
    */
-  constructor(terminal, view, { slotMachine, collection, tokens, theme, konami, rewards, drawEnabled }) {
+  constructor(terminal, view, { slotMachine, collection, tokens, theme, konami, rewards, drawEnabled, touch }) {
 
     terminal.addEventListener('output', ({ detail }) => view.print(detail.lines));
     terminal.addEventListener('clear', () => view.clear());
@@ -56,7 +57,7 @@ export default class TerminalController {
     if (new Date().getHours() < NIGHT_END) {
       const isNew = !tokens.hasClaimed('secret:nuit');
       tokens.earn('secret:nuit');
-      terminal.print([{ text: 'Toi aussi tu codes tard ? L’atelier est ouvert.', tone: 'accent' }, ...(isNew ? secretFoundLines(tokens) : [])]);
+      terminal.print([{ text: 'Toi aussi tu codes tard ? L’atelier est ouvert.', tone: 'accent' }, ...(isNew ? secretFoundLines(tokens, touch) : [])]);
     }
 
     // Code Konami tapé sur la page : thème « origine » (la palette d'origine du site). Le retaper ramène le thème d'avant.
@@ -76,7 +77,7 @@ export default class TerminalController {
         { text: '↑ ↑ ↓ ↓ ← → ← → B A', tone: 'muted' },
         { text: 'Code Konami ! Thème « origine » activé : la palette des débuts du site.', tone: 'accent' },
         { text: 'Pour revenir : retape le code, ou tape theme defaut.', tone: 'muted' },
-        ...(isNew ? secretFoundLines(tokens) : []),
+        ...(isNew ? secretFoundLines(tokens, touch) : []),
       ]);
     });
 
