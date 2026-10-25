@@ -3,6 +3,22 @@
 /* Mode sombre piloté par une classe sur <html> */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Polices du thème arcade, hébergées dans le dépôt (licence OFL, voir src/assets/fonts/) */
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("../assets/fonts/press-start-2p-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  /* Ses lettres font 1em de large : on la réduit pour garder la largeur d'une mono classique */
+  size-adjust: 60%;
+}
+@font-face {
+  font-family: "Fira Code";
+  src: url("../assets/fonts/fira-code-latin-wght.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
 /* Design tokens du portfolio */
 @theme {
   /* Palette exclusive : on retire les couleurs par défaut de Tailwind */
@@ -24,8 +40,10 @@
 
   --text-2xs: 0.625rem; /* raccourcis clavier, étiquettes d'inspection */
 
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: var(--font-mono);
+  --font-display: "Press Start 2P", var(--font-mono);
+  --font-lead: var(--font-mono); /* phrases longues à la place de la police de titre : accroche, citation */
 
   /* Nom géant de l'accueil : grandit avec la largeur de l'écran */
   --text-hero: clamp(3.5rem, 11vw, 9rem);
@@ -140,8 +158,6 @@
   --color-support: #4c9a59;
   --color-accent: #d4ff6a;
   --color-online: #9dffad;
-  --font-sans: var(--font-mono);
-  --font-display: var(--font-mono);
 }
 :root[data-theme="contraste"] {
   --color-surface: #000;
@@ -160,10 +176,14 @@
   --color-online: #7dd99a;
 }
 
-/* Thème par défaut (sans data-theme) : borne d'arcade, titres en mono et angles carrés.
-   Les autres thèmes gardent les titres serif et les angles arrondis du @theme. */
+/* Press Start 2P n'a pas de gras : on évite le faux gras baveux, dans tous les thèmes */
+:root {
+  font-synthesis-weight: none;
+}
+
+/* Thème par défaut (sans data-theme) : borne d'arcade, angles carrés.
+   Les autres thèmes gardent les angles arrondis du @theme. */
 :root:not([data-theme]) {
-  --font-display: var(--font-mono);
   --radius-sm: 0;
   --radius-md: 0;
   --radius-lg: 0;
@@ -172,7 +192,7 @@
   --radius-4xl: 0;
 }
 
-/* Thème secret débloqué par le code Konami : la palette d'origine du site, sombre et serif */
+/* Thème secret débloqué par le code Konami : la palette d'origine du site, sombre et sobre */
 :root[data-theme="origine"] {
   --color-surface: #151c20;
   --color-ink: #e5e5df;

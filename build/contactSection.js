@@ -185,7 +185,7 @@ function renderSection({ contact, profile }) {
                 <div class="flex gap-3"><dt class="w-12 shrink-0 text-muted">De</dt><dd data-preview="name" class="truncate text-ink">Toi</dd></div>
                 <div class="flex gap-3"><dt class="w-12 shrink-0 text-muted">Quête</dt><dd data-preview="quest" class="text-accent">${escape(first.label)}</dd></div>
               </dl>
-              <p data-preview="message" class="relative mt-6 line-clamp-5 min-h-20 font-display text-lg leading-snug text-muted italic">Ton message s’écrit ici, au fil de la saisie.</p>
+              <p data-preview="message" class="relative mt-6 line-clamp-5 min-h-20 font-lead text-lg leading-snug text-muted italic">Ton message s’écrit ici, au fil de la saisie.</p>
               <ul data-preview="codes" class="relative mt-4 flex flex-wrap gap-2 empty:hidden"></ul>
             </div>
           </div>

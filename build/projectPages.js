@@ -148,7 +148,7 @@ function renderBody(project, projects, base) {
     </a>
     <a href="${base}#tous-les-projets" data-transition="back" class="group inline-flex min-h-11 items-center gap-2 rounded-full border border-muted/40 px-3 text-sm font-semibold whitespace-nowrap text-ink sm:px-4 transition-colors hover:border-accent hover:text-accent ${FOCUS}">
       <svg class="size-4 motion-safe:transition-transform motion-safe:group-hover:-translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 8H2M7 3L2 8l5 5"/></svg>
-      Tous les projets
+      <span class="sm:hidden">Projets</span><span class="hidden sm:inline">Tous les projets</span>
     </a>
   </header>
 
