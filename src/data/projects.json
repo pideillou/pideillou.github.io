@@ -37,13 +37,10 @@
         "IA"
       ],
       "example": false,
-<<<<<<< HEAD
       "links": [
         { "label": "Voir le site en ligne", "url": "https://pideillou.github.io/" },
         { "label": "Voir le code", "url": "https://github.com/pideillou/pideillou.github.io" }
       ],
-=======
->>>>>>> origin/main
       "cover": {
         "src": "/images/projets/portfolio-1600.webp",
         "alt": "Page d’accueil du portfolio : le nom Paul PIDEILL en lettres pixel, l’avatar encapuchonné qui salue, et les boutons « Voir les projets » et « Me contacter ».",
@@ -153,16 +150,10 @@
         "IA"
       ],
       "example": false,
-<<<<<<< HEAD
       "links": [
-        { "label": "Voir le site en ligne", "url": "https://mmi.unilim.fr/~pideill2/sae-301/Base/" }
+        { "label": "Voir le site en ligne", "url": "https://mmi.unilim.fr/~pideill2/sae-301/Base/" },
+        { "label": "Voir le code", "url": "https://github.com/pideillou/SAe-3.01" }
       ],
-=======
-      "links": {
-        "demo": "https://mmi.unilim.fr/~pideill2/sae-301/Base/",
-        "repo": "https://github.com/pideillou/SAe-3.01"
-      },
->>>>>>> origin/main
       "cover": {
         "src": "/images/projets/sae-301-980.webp",
         "alt": "Catalogue du site Razer Click & Collect : en-tête avec le logo Razer, filtres Souris, Claviers et Casques, et les premières souris avec leur photo.",
@@ -258,19 +249,14 @@
       "category": "web",
       "date": "2026-05",
       "role": "Design et intégration",
-<<<<<<< HEAD
-      "stack": ["Figma", "HTML", "CSS", "SEO"],
-      "example": true,
-      "links": []
-=======
       "stack": [
         "Figma",
         "HTML",
         "CSS",
         "SEO"
       ],
-      "example": true
->>>>>>> origin/main
+      "example": true,
+      "links": []
     },
     {
       "slug": "exemple-application-mobile",
@@ -279,17 +265,12 @@
       "category": "ux",
       "date": "2026-03",
       "role": "Design UX et UI",
-<<<<<<< HEAD
-      "stack": ["Figma", "Adobe tools"],
-      "example": true,
-      "links": []
-=======
       "stack": [
         "Figma",
         "Adobe tools"
       ],
-      "example": true
->>>>>>> origin/main
+      "example": true,
+      "links": []
     },
     {
       "slug": "exemple-teaser-video",
@@ -298,17 +279,12 @@
       "category": "audiovisuel",
       "date": "2026-02",
       "role": "Réalisation et montage",
-<<<<<<< HEAD
-      "stack": ["Adobe tools", "AI"],
-      "example": true,
-      "links": []
-=======
       "stack": [
         "Adobe tools",
         "AI"
       ],
-      "example": true
->>>>>>> origin/main
+      "example": true,
+      "links": []
     },
     {
       "slug": "exemple-campagne-affiches",
@@ -317,17 +293,12 @@
       "category": "communication",
       "date": "2025-12",
       "role": "Graphisme",
-<<<<<<< HEAD
-      "stack": ["Adobe tools", "Canva tools"],
-      "example": true,
-      "links": []
-=======
       "stack": [
         "Adobe tools",
         "Canva tools"
       ],
-      "example": true
->>>>>>> origin/main
+      "example": true,
+      "links": []
     },
     {
       "slug": "exemple-infographie-donnees",
@@ -336,18 +307,13 @@
       "category": "communication",
       "date": "2025-11",
       "role": "Analyse et mise en forme",
-<<<<<<< HEAD
-      "stack": ["Python", "Canva tools", "Git"],
-      "example": true,
-      "links": []
-=======
       "stack": [
         "Python",
         "Canva tools",
         "Git"
       ],
-      "example": true
->>>>>>> origin/main
+      "example": true,
+      "links": []
     },
     {
       "slug": "exemple-assistant-ia",
@@ -356,18 +322,13 @@
       "category": "web",
       "date": "2025-09",
       "role": "Développement",
-<<<<<<< HEAD
-      "stack": ["JavaScript", "AI", "Python"],
-      "example": true,
-      "links": []
-=======
       "stack": [
         "JavaScript",
         "AI",
         "Python"
       ],
-      "example": true
->>>>>>> origin/main
+      "example": true,
+      "links": []
     }
   ]
 }
