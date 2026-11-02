@@ -44,6 +44,7 @@
         "titleAccent": "dans Sea of Thieves",
         "intro": "Si un pirate de Sea of Thieves avait un smartphone, quelle application l’aiderait ? J’ai imaginé un GPS communautaire, de la recherche au prototype.",
         "duration": "1 mois",
+        "brands": "les créateurs de Sea of Thieves",
         "sections": [
           {
             "label": "Contexte",
@@ -260,6 +261,7 @@
         "intro": "Une boutique en ligne pour Razer : le client remplit son panier, valide sa commande et vient la chercher en magasin. Seul sur le projet, du back au front avec aide de l'IA.",
         "duration": "2 semaines",
         "caption": "Catalogue, version desktop",
+        "brands": "Razer",
         "sections": [
           {
             "label": "Contexte",
@@ -456,6 +458,7 @@
         "intro": "Pour le cinéma Lido de Limoges, j’ai maquetté puis prototypé sur Figma la landing page d’une semaine de films de science-fiction.",
         "duration": "2 semaines",
         "caption": "Le haut de la page et la frise d’affiches",
+        "brands": "le cinéma Lido",
         "sections": [
           {
             "label": "Contexte",
@@ -532,6 +535,7 @@
         "kicker": "SAé 2.01 · Comprendre",
         "titleAccent": "à l’écoute des visiteurs",
         "intro": "En binôme, nous avons interrogé de vrais utilisateurs pour aider un parc à repenser son application mobile.",
+        "brands": "le PAL",
         "sections": [
           {
             "label": "Contexte",
@@ -711,6 +715,7 @@
         "titleAccent": "en stop motion",
         "intro": "À trois, nous avons imaginé et tourné un clip publicitaire en stop motion pour la campagne « Un pied dans un monde meilleur ».",
         "caption": "Tournage, la chaussure sur fond bleu",
+        "brands": "Nike",
         "sections": [
           {
             "label": "Contexte",
@@ -784,6 +789,7 @@
         "titleAccent": "au Royaume-Uni",
         "intro": "En binôme et en une semaine, nous avons joué une agence chargée de faire connaître une application auprès des parents britanniques.",
         "duration": "1 semaine",
+        "brands": "les auteurs de L’Herbier des Fées",
         "sections": [
           {
             "label": "Contexte",
@@ -942,6 +948,7 @@
         "titleAccent": "et redesign",
         "intro": "En une semaine, j’ai audité le site d’un festival de jeux vidéo indépendants, puis proposé une nouvelle version de deux de ses pages.",
         "duration": "1 semaine",
+        "brands": "IndieCade",
         "sections": [
           {
             "label": "Contexte",
