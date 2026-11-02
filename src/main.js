@@ -63,6 +63,11 @@ import SpotlightController from './js/controllers/SpotlightController.js';
 import TerminalController from './js/controllers/TerminalController.js';
 import JackpotController from './js/controllers/JackpotController.js';
 
+// Aperçu du back-office (/admin/, adresse avec « ?apercu ») : le contenu en cours de modification
+// remplace celui du site avant que tout le reste ne démarre (src/js/preview.js).
+const preview = new URLSearchParams(location.search).has('apercu');
+if (preview) await import('./js/preview.js').then(({ startPreview }) => startPreview('home'));
+
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Indice discret pour les curieux qui ouvrent la console du navigateur.
@@ -353,8 +358,8 @@ new JackpotController(slotMachine, new JackpotView({ reducedMotion }), {
 });
 
 // La machine à sous accueille le visiteur qui arrive sur le site. En revenant d'une fiche,
-// on retrouve directement les projets du dernier tirage.
-if (loader && !backFromProject) {
+// on retrouve directement les projets du dernier tirage. Pas de machine à sous non plus dans l'aperçu.
+if (loader && !backFromProject && !preview) {
   new SlotLoaderController(slotMachine, new SlotLoaderView(loader), { reducedMotion }).start();
 } else {
   const saved = lastDraw.load(null);

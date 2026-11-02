@@ -9,6 +9,12 @@ import PageTransitionView from './js/views/PageTransitionView.js';
 import TocController from './js/controllers/TocController.js';
 import PageTransitionController from './js/controllers/PageTransitionController.js';
 
+// Aperçu du back-office (adresse avec « ?apercu ») : la fiche est refaite avec le contenu
+// en cours de modification avant que le reste ne démarre (src/js/preview.js).
+if (new URLSearchParams(location.search).has('apercu')) {
+  await import('./js/preview.js').then(({ startPreview }) => startPreview('project'));
+}
+
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Chaque fiche est un niveau : la liste des fiches et le projet suivant sont écrits dans le HTML au build.

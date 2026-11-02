@@ -5,14 +5,6 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const ENTITIES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-
-/** Échappe un texte avant de l'insérer dans du HTML. */
-export const escape = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ENTITIES[char]);
-
-/** Numéro sur deux chiffres : 1 devient « 01 ». */
-export const pad = (number) => String(number).padStart(2, '0');
-
 /**
  * @param {{ name: string, placeholder: string, files: Record<string, string>,
  *   render: (data: Record<string, any>) => string }} options

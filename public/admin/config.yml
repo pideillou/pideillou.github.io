@@ -70,7 +70,7 @@ collections:
             summary: '{{fields.title}} ({{fields.date}})'
             hint: Les projets sont triés par date, du plus récent au plus ancien. Les trois plus récents sont mis en avant à l'accueil.
             fields:
-              - { name: slug, label: Adresse de la fiche, widget: string, hint: 'La fiche sera à /projets/<adresse>/. Minuscules et tirets, par exemple « site-boulangerie ». Éviter de la changer une fois en ligne.', pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Minuscules, chiffres et tirets seulement'] }
+              - { name: slug, label: Adresse de la fiche, widget: string, hint: 'La fiche sera à /projets/adresse-choisie/. Minuscules et tirets, par exemple « site-boulangerie ». Éviter de la changer une fois en ligne.', pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Minuscules, chiffres et tirets seulement'] }
               - { name: title, label: Titre, widget: string }
               - { name: summary, label: Résumé, widget: text, hint: 'Deux phrases au plus. Sert aussi de description pour Google.' }
               - name: category
@@ -133,7 +133,7 @@ collections:
                 fields:
                   - { name: kicker, label: Surtitre, widget: string, required: false, hint: 'Par exemple « Projet personnel » ou « SAÉ 3.01 ». Sinon, la catégorie.' }
                   - { name: titleAccent, label: Suite du titre (en couleur), widget: string, required: false }
-                  - { name: intro, label: Introduction, widget: text, required: false, hint: Sinon, le résumé. }
+                  - { name: intro, label: Introduction, widget: text, required: false, hint: 'Sinon, le résumé.' }
                   - { name: duration, label: Durée, widget: string, required: false, hint: 'Par exemple « 3 semaines » ou « En cours ».' }
                   - { name: caption, label: Légende du visuel, widget: string, required: false }
                   - name: sections
