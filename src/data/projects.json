@@ -246,92 +246,564 @@
       }
     },
     {
-      "slug": "exemple-site-vitrine",
-      "title": "Site vitrine d'un commerce",
-      "summary": "Projet d'exemple, à remplacer. Maquette sur Figma puis intégration d'un site d'une page, pensé pour le mobile et le référencement local.",
+      "slug": "sae-203-plateforme-vod",
+      "title": "Flouflix",
+      "summary": "SAé 2.03 : Flouflix, une plateforme de VOD en PHP, MySQL et JavaScript, avec profils, favoris, notes, commentaires et back-office, en 19 itérations.",
       "category": "web",
+      "context": "ecole",
       "date": "2026-05",
-      "role": "Design et intégration",
+      "role": "Conception et développement",
       "stack": [
-        "Figma",
         "HTML",
         "CSS",
-        "SEO"
-      ],
-      "example": true,
-      "links": []
-    },
-    {
-      "slug": "exemple-application-mobile",
-      "title": "Maquette d'une application mobile",
-      "summary": "Projet d'exemple, à remplacer. Parcours utilisateur, maquettes et prototype cliquable d'une application de covoiturage étudiant.",
-      "category": "ux",
-      "date": "2026-03",
-      "role": "Design UX et UI",
-      "stack": [
+        "JavaScript",
         "Figma",
-        "Adobe tools"
+        "Git",
+        "PHP",
+        "MySQL"
       ],
-      "example": true,
-      "links": []
+      "example": false,
+      "links": [],
+      "caseStudy": {
+        "kicker": "SAé 2.03 · Développer",
+        "titleAccent": "ma plateforme de VOD",
+        "intro": "Seul, en dix-neuf itérations, j’ai construit une plateforme de vidéo à la demande : une appli pour les spectateurs et un back-office pour les administrateurs.",
+        "duration": "3 semaines",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Une VOD reliée à une base de données",
+            "paragraphs": [
+              "La SAé 2.03 demande un site relié à une base de données, qui présente ses contenus de façon lisible et permet aux utilisateurs d’interagir avec eux. Le sujet : une plateforme de VOD à la manière de Netflix ou Prime Vidéo, en deux parties, l’application des utilisateurs et un back-office d’administration."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "Une itération, une fonctionnalité",
+            "paragraphs": [
+              "Chaque itération suivait la même architecture : prototype sur Figma, intégration HTML et CSS, JavaScript côté navigateur, puis PHP et MySQL côté serveur. Je travaillais directement sur le serveur mmi.unilim.fr avec l’extension Remote SSH de VS Code, et je synchronisais mon travail sur GitHub par des commits réguliers."
+            ],
+            "steps": [
+              {
+                "title": "Catalogue",
+                "text": "Films par catégorie, fiche détaillée avec bande-annonce, filtre selon l’âge du profil."
+              },
+              {
+                "title": "Profils",
+                "text": "Création, sélection et modification des profils depuis le back-office."
+              },
+              {
+                "title": "Interactions",
+                "text": "Favoris, notes, commentaires, et leur modération côté administration."
+              },
+              {
+                "title": "Finitions",
+                "text": "Recherche, étiquette « new », films mis en avant et page de statistiques."
+              }
+            ]
+          },
+          {
+            "label": "Solution",
+            "title": "Une architecture full stack",
+            "paragraphs": [
+              "Côté navigateur, les requêtes sont séparées de l’affichage dans des modules (dataMovie.js, dataProfile.js). Côté serveur, chaque requête passe par script.php, controller.php et model.php. J’ai aussi construit mon propre framework CSS en couches avec @layer : reset, variables, utilitaires, mise en page et composants nommés en BEM.",
+              "La base de données est modélisée avec Looping et documentée dans un README : tables, types de données, clés, cardinalités et requêtes SQL."
+            ]
+          },
+          {
+            "label": "Résultats",
+            "title": "Dix-neuf itérations livrées",
+            "paragraphs": [
+              "Toutes les itérations fonctionnent. Mesurée par Lighthouse sur ordinateur le 7 mai 2026, la version de base de l’appli obtient 96 en performance, 94 en accessibilité, 100 en bonnes pratiques et 91 en SEO."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "Le JavaScript a été la partie la plus difficile : données asynchrones, échanges entre les modules et mise à jour de l’interface. Le PHP m’a aussi posé des difficultés de logique.",
+              "Faute de temps, je n’ai pas mis en ligne le rapport de connexion avant le rendu. Je retiens qu’il faut anticiper les livrables annexes autant que le développement. C’est la SAé la plus complète de l’année, et je suis fier d’avoir livré une plateforme qui fonctionne."
+            ]
+          }
+        ]
+      }
     },
     {
-      "slug": "exemple-teaser-video",
-      "title": "Teaser vidéo d'un événement",
-      "summary": "Projet d'exemple, à remplacer. Tournage, montage et habillage d'un teaser de quarante secondes, sous-titré pour les réseaux sociaux.",
+      "slug": "sae-201-ux-application-pal",
+      "title": "L’appli du PAL",
+      "summary": "SAé 2.01 : recherche utilisateur pour l’appli du PAL, parc zoologique et d’attractions. Audit, six entretiens, personae et recommandations pour sa refonte.",
+      "category": "ux",
+      "context": "ecole",
+      "date": "2026-03",
+      "role": "Recherche utilisateur",
+      "stack": [
+        "Audit ergonomique",
+        "Entretiens",
+        "Personae"
+      ],
+      "example": false,
+      "links": [],
+      "caseStudy": {
+        "kicker": "SAé 2.01 · Comprendre",
+        "titleAccent": "à l’écoute des visiteurs",
+        "intro": "En binôme, nous avons interrogé de vrais utilisateurs pour aider un parc à repenser son application mobile.",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Moderniser une application de parc",
+            "paragraphs": [
+              "Le PAL, parc zoologique et d’attractions situé dans l’Allier, voulait moderniser son application mobile pour améliorer l’expérience des visiteurs sur place. Avec mon binôme, M. X, nous jouions l’équipe UX chargée d’étudier les usages et de recommander une refonte."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "Du terrain aux recommandations",
+            "paragraphs": [
+              "Chaque étape servait de base à la suivante."
+            ],
+            "steps": [
+              {
+                "title": "Auditer",
+                "text": "Audit ergonomique selon les critères heuristiques : navigation peu intuitive, carte peu lisible, informations difficiles à trouver en se déplaçant."
+              },
+              {
+                "title": "Interroger",
+                "text": "Un guide d’entretien, puis six entretiens de 10 à 15 minutes, trois chacun, enregistrés et retranscrits en entier."
+              },
+              {
+                "title": "Analyser",
+                "text": "Des verbatims aux insights, puis des personae représentatifs de notre panel de jeunes adultes et d’étudiants."
+              },
+              {
+                "title": "Restituer",
+                "text": "Réunion client simulée de quinze minutes : plan de recherche, personae, insights et recommandations illustrées."
+              }
+            ]
+          },
+          {
+            "label": "Résultats",
+            "title": "Des pistes pour la refonte",
+            "paragraphs": [
+              "Nos recommandations : une carte interactive améliorée, une navigation simplifiée, et des fonctions utiles pendant la visite, comme le temps d’attente des attractions ou des notifications."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "Poser des questions ouvertes et neutres, sans orienter les réponses, a été le plus difficile, tout comme passer des propos bruts à des insights exploitables.",
+              "Je retiens qu’un bon guide d’entretien conditionne la qualité des données, et que des insights bien formulés guident les choix de conception."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "sae-105-sites-one-page",
+      "title": "Trois sites One Page",
+      "summary": "SAé 1.05 : trois sites One Page intégrés en HTML et CSS, rendus dynamiques en JavaScript avec des données JSON, puis hébergés. Dont CineRent, ma StartUp.",
+      "category": "web",
+      "context": "ecole",
+      "date": "2026-01",
+      "role": "Intégration et développement",
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Figma",
+        "JSON"
+      ],
+      "example": false,
+      "links": [],
+      "cover": {
+        "src": "/images/projets/sae-105-1600.webp",
+        "alt": "Page d’accueil du site CineRent : le titre « ARRI Alexa Mini LF Camera », une caméra de cinéma et un bouton « Book now ».",
+        "srcset": [
+          {
+            "src": "/images/projets/sae-105-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/sae-105-1600.webp",
+            "width": 1600
+          }
+        ]
+      },
+      "caseStudy": {
+        "kicker": "SAé 1.05 · Développer",
+        "titleAccent": "dont CineRent",
+        "intro": "À partir d’un kit d’interface Figma, j’ai intégré, dynamisé et mis en ligne trois sites, dont celui d’une StartUp de location de matériel de cinéma.",
+        "duration": "3 semaines",
+        "caption": "CineRent, la page d’accueil",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Intégrer vite et bien",
+            "paragraphs": [
+              "La SAé 1.05 pose une question : comment produire beaucoup de pages web valides et accessibles, en automatisant l’intégration ? En tant qu’intégrateur junior, je devais livrer trois sites One Page : Audiophile et Bonbon, imposés, et celui d’une StartUp de mon choix."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "Trois phases en trois semaines",
+            "paragraphs": [
+              "Chaque phase reprenait les composants de la précédente."
+            ],
+            "steps": [
+              {
+                "title": "Maquetter",
+                "text": "Maquette de ma StartUp sur Figma, avec les composants du kit fourni."
+              },
+              {
+                "title": "Intégrer",
+                "text": "HTML et CSS mobile first, un fichier de style par composant, variables CSS, nommage BEM, HTML valide au W3C."
+              },
+              {
+                "title": "Dynamiser",
+                "text": "Pour chaque composant, un gabarit HTML avec des balises {{…}}, un fichier JSON et un script JavaScript qui assemble les deux."
+              },
+              {
+                "title": "Héberger",
+                "text": "Mise en ligne des trois sites sur un serveur web, avec une page d’index qui mène aux trois."
+              }
+            ]
+          },
+          {
+            "label": "Résultats",
+            "title": "Trois sites en ligne, dans les délais",
+            "paragraphs": [
+              "Les trois sites sont en ligne. Pour ma StartUp, CineRent, j’ai choisi la location de matériel de cinéma et personnalisé tous les contenus : textes, images et identité visuelle. Ses données changent à chaque actualisation de la page, comme demandé."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "La dynamisation en JavaScript a été la phase la plus difficile : séparer les données de la présentation m’a demandé beaucoup d’essais. L’hébergement aussi, le temps de comprendre la configuration d’un serveur.",
+              "Je dois encore consolider le JavaScript, mais j’ai livré trois sites fonctionnels dans les délais."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "sae-104-stop-motion-nike-grind",
+      "title": "Nike Grind",
+      "summary": "SAé 1.04 : un clip de 30 secondes en stop motion sur Nike Grind, le recyclage de chaussures en terrains de sport. Storyboard, tournage, montage et voix off.",
       "category": "audiovisuel",
-      "date": "2026-02",
-      "role": "Réalisation et montage",
+      "context": "ecole",
+      "date": "2025-12",
+      "role": "Script et post-production",
       "stack": [
         "Adobe tools",
-        "AI"
+        "After Effects",
+        "DaVinci Resolve",
+        "Stop Motion Studio"
       ],
-      "example": true,
-      "links": []
+      "example": false,
+      "links": [],
+      "cover": {
+        "src": "/images/projets/sae-104-1600.webp",
+        "alt": "Une chaussure Nike blanche à virgule rouge, posée sur un fond bleu, pendant le tournage du stop motion.",
+        "srcset": [
+          {
+            "src": "/images/projets/sae-104-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/sae-104-1600.webp",
+            "width": 1600
+          }
+        ]
+      },
+      "caseStudy": {
+        "kicker": "SAé 1.04 · Exprimer",
+        "titleAccent": "en stop motion",
+        "intro": "À trois, nous avons imaginé et tourné un clip publicitaire en stop motion pour la campagne « Un pied dans un monde meilleur ».",
+        "caption": "Tournage, la chaussure sur fond bleu",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Un pied dans un monde meilleur",
+            "paragraphs": [
+              "Dans le sujet, les grandes marques de chaussures lancent une campagne optimiste, faite de vidéos de 30 secondes en stop motion. Chaque vidéo montre l’action concrète d’une marque.",
+              "En équipe de trois, avec M. X et Mme X, nous avons choisi Nike Grind : Nike recycle des chaussures usées en un matériau qui sert à construire des terrains de basket, des pistes de course et des aires de jeux."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "De la feuille à l’écran",
+            "paragraphs": [
+              "Nous avons d’abord tourné des prototypes de 6 secondes pour vérifier l’image et la fluidité, avant le tournage complet."
+            ],
+            "steps": [
+              {
+                "title": "Écrire",
+                "text": "Trame narrative et voix off en anglais, claire et optimiste."
+              },
+              {
+                "title": "Dessiner",
+                "text": "Storyboard en vignettes pour planifier les plans et valider la direction artistique."
+              },
+              {
+                "title": "Tourner",
+                "text": "Smartphone sur trépied, deux lumières diffuses, fond coloré, application Stop Motion Studio et pelure d’oignon."
+              },
+              {
+                "title": "Monter",
+                "text": "Montage sur DaVinci Resolve, animations sur After Effects, étalonnage, voix off, bruitages et titrage."
+              }
+            ]
+          },
+          {
+            "label": "Mon rôle",
+            "title": "Script, puis post-production",
+            "paragraphs": [
+              "Pendant le tournage, j’étais Script : j’avais une vue d’ensemble, je veillais à la cohérence des plans et j’organisais la progression. Je me gardais pour la post-production, jusqu’à l’export en HD (H.264, MP4) pour YouTube."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "La post-production a été la phase la plus difficile. L’éclairage changeait d’une prise à l’autre, et j’ai eu du mal à harmoniser les couleurs entre les plans.",
+              "Le stop motion paraît simple, mais il demande beaucoup de rigueur au tournage pour éviter ces problèmes ensuite. L’étalonnage et le montage rythmé sont mes axes de progrès."
+            ]
+          }
+        ]
+      }
     },
     {
-      "slug": "exemple-campagne-affiches",
-      "title": "Affiches pour un festival",
-      "summary": "Projet d'exemple, à remplacer. Série d'affiches et de visuels pour les réseaux sociaux, déclinés dans plusieurs formats.",
+      "slug": "sae-102-106-herbier-des-fees",
+      "title": "L’Herbier des Fées",
+      "summary": "SAé 1.02 et 1.06 : la stratégie digitale d’un livre augmenté lancé au Royaume-Uni. Personae, wireframe Figma, plan réseaux sociaux, Trello et oral en anglais.",
       "category": "communication",
+      "context": "ecole",
       "date": "2025-12",
+      "role": "Wireframe et stratégie",
+      "stack": [
+        "Figma",
+        "Trello",
+        "Benchmark",
+        "Anglais"
+      ],
+      "example": false,
+      "links": [],
+      "caseStudy": {
+        "kicker": "SAé 1.02 et 1.06 · Communiquer, entreprendre",
+        "titleAccent": "au Royaume-Uni",
+        "intro": "En binôme et en une semaine, nous avons joué une agence chargée de faire connaître une application auprès des parents britanniques.",
+        "duration": "1 semaine",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Une agence, un livre augmenté",
+            "paragraphs": [
+              "Les auteurs Benjamin Lacombe et Sébastien Perez rééditent leur album jeunesse L’Herbier des Fées en livre augmenté, pour le marché britannique. Avec mon binôme, M. X, nous jouions l’agence ComUnity, chargée de la stratégie de communication digitale auprès des parents britanniques."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "Quatre livrables en une semaine",
+            "paragraphs": [
+              "La SAé 1.06 portait sur la gestion du projet, menée en parallèle des livrables de communication."
+            ],
+            "steps": [
+              {
+                "title": "Analyser",
+                "text": "Deux personae, deux user stories, un benchmark de quatre sites et une ébauche de stratégie pour un site one page."
+              },
+              {
+                "title": "Planifier",
+                "text": "Choix de trois à cinq réseaux sociaux et calendrier de quinze publications sur le mois de juin 2026."
+              },
+              {
+                "title": "Organiser",
+                "text": "Deux tableaux Trello : le planning prévu en début de semaine et le planning réel, tenu à jour."
+              },
+              {
+                "title": "Convaincre",
+                "text": "Oral de six à dix minutes en anglais devant la responsable jeunesse d’Andersen Press, jouée par une enseignante."
+              }
+            ]
+          },
+          {
+            "label": "Mon rôle",
+            "title": "Le wireframe Figma",
+            "paragraphs": [
+              "Je me suis surtout occupé du wireframe du site one page sur Figma : sections organisées en frames avec auto layout, lisibles pour le client et fidèles à l’architecture de l’information. C’est la partie que j’ai trouvée la plus complexe : il fallait respecter les choix de l’analyse tout en proposant une interface intuitive et convaincante."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "Cette semaine m’a donné une première expérience complète du travail en agence, de l’analyse des cibles à la présentation au client. Comparer le planning prévu au planning réel m’a appris à anticiper les imprévus.",
+              "Le wireframe a été l’exercice le plus formateur : traduire une stratégie abstraite en interface concrète. Je veux aussi continuer à pratiquer l’anglais dans un cadre professionnel."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "sae-103-stickers",
+      "title": "Stickers de compétences",
+      "summary": "SAé 1.03 : une série de stickers qui illustrent mes compétences, dans le style de deux artistes. Photomontage sur Photoshop, dessin vectoriel sur Illustrator.",
+      "category": "communication",
+      "context": "ecole",
+      "date": "2025-11",
       "role": "Graphisme",
       "stack": [
         "Adobe tools",
-        "Canva tools"
+        "Photoshop",
+        "Illustrator"
       ],
-      "example": true,
-      "links": []
+      "example": false,
+      "links": [],
+      "cover": {
+        "src": "/images/projets/sae-103-1600.webp",
+        "alt": "Huit stickers en photomontage sur fond sombre : un homme dans un transat sous un projecteur, une lettre A en pierre, des hommes à la loupe, des notes de musique dans une allée d’arbres.",
+        "srcset": [
+          {
+            "src": "/images/projets/sae-103-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/sae-103-1600.webp",
+            "width": 1600
+          }
+        ]
+      },
+      "caseStudy": {
+        "kicker": "SAé 1.03 · Exprimer",
+        "titleAccent": "en deux styles",
+        "intro": "Des stickers à mon image, aussi bons à l’écran qu’à l’impression, inspirés de deux graphistes.",
+        "caption": "Planche Photoshop, 8 des 12 stickers",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Mes compétences en stickers",
+            "paragraphs": [
+              "La SAé 1.03 met les étudiants dans la peau d’infographistes juniors. Le sujet : créer une série de stickers sur mes propres compétences, techniques et humaines, dans le style d’artistes imposés. Chaque sticker devait fonctionner en numérique et à l’impression."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "De la recherche à l’export",
+            "paragraphs": [
+              "Deux planches, deux techniques : la retouche photo d’un côté, le dessin vectoriel de l’autre."
+            ],
+            "steps": [
+              {
+                "title": "Inventorier",
+                "text": "Au moins cinq compétences techniques et cinq qualités, chacune associée à une métaphore visuelle dans un moodboard."
+              },
+              {
+                "title": "S’inspirer",
+                "text": "Étude de Joey Guidone, illustrateur vectoriel, et d’Erik Johansson, auteur de photomontages surréalistes."
+              },
+              {
+                "title": "Créer",
+                "text": "Une planche de 12 stickers sur Photoshop et une planche vectorielle sur Illustrator."
+              },
+              {
+                "title": "Exporter",
+                "text": "Stickers en 2000 × 2000 px, en RVB pour le web et en CMJN haute résolution pour l’impression."
+              }
+            ]
+          },
+          {
+            "label": "Résultats",
+            "title": "Deux planches réussies à leur façon",
+            "paragraphs": [
+              "La planche Photoshop réunit un avatar, mes compétences et une signature à la typographie travaillée, grâce aux calques, aux modes de fusion et au photomontage.",
+              "La planche Illustrator est celle que je trouve la plus réussie : formes géométriques, dégradés, pictogrammes et flat design. Ses métaphores sont plus lisibles et plus personnelles."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "La phase de recherche a été la plus difficile : s’approprier le style d’un artiste sans le copier demande un vrai travail d’analyse. C’est le point que je dois consolider.",
+              "J’ai aussi commencé à comprendre, non sans peine, la différence entre RVB et CMJN et son effet sur le rendu final."
+            ]
+          }
+        ]
+      }
     },
     {
-      "slug": "exemple-infographie-donnees",
-      "title": "Infographie à partir de données ouvertes",
-      "summary": "Projet d'exemple, à remplacer. Un script Python trie un jeu de données public, puis les chiffres clés deviennent une infographie.",
-      "category": "communication",
-      "date": "2025-11",
-      "role": "Analyse et mise en forme",
+      "slug": "sae-101-audit-indiecade",
+      "title": "Audit d’IndieCade",
+      "summary": "SAé 1.01 : audit du site d’IndieCade, festival de jeux vidéo indépendants. Veille, analyses sémiotique et ergonomique, puis redesign de deux pages sur Figma.",
+      "category": "ux",
+      "context": "ecole",
+      "date": "2025-10",
+      "role": "Audit et redesign",
       "stack": [
-        "Python",
-        "Canva tools",
-        "Git"
+        "Figma",
+        "Audit ergonomique",
+        "Analyse sémiotique",
+        "Veille"
       ],
-      "example": true,
-      "links": []
-    },
-    {
-      "slug": "exemple-assistant-ia",
-      "title": "Petit assistant avec une IA",
-      "summary": "Projet d'exemple, à remplacer. Page web qui envoie une question à une API d'IA et affiche la réponse, avec une gestion des erreurs.",
-      "category": "web",
-      "date": "2025-09",
-      "role": "Développement",
-      "stack": [
-        "JavaScript",
-        "AI",
-        "Python"
-      ],
-      "example": true,
-      "links": []
+      "example": false,
+      "links": [],
+      "caseStudy": {
+        "kicker": "SAé 1.01 · Comprendre",
+        "titleAccent": "et redesign",
+        "intro": "En une semaine, j’ai audité le site d’un festival de jeux vidéo indépendants, puis proposé une nouvelle version de deux de ses pages.",
+        "duration": "1 semaine",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Dans la peau d’un chargé de communication",
+            "paragraphs": [
+              "La SAé 1.01 demande d’auditer un site web, un produit ou une marque, et de dire s’il répond aux attentes de ses utilisateurs et aux objectifs de son commanditaire. J’ai travaillé sur le site d’IndieCade, une organisation qui organise un festival de jeux vidéo indépendants.",
+              "Projet individuel : trois livrables à rendre en une semaine."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "Trois livrables, une progression",
+            "paragraphs": [
+              "Chaque livrable s’appuyait sur le précédent."
+            ],
+            "steps": [
+              {
+                "title": "Présenter",
+                "text": "Notice sourcée sur IndieCade : site officiel, Europresse, Kaolim, Wikipédia et LinkedIn."
+              },
+              {
+                "title": "Veiller",
+                "text": "Veille stratégique sur les tendances de promotion des jeux indépendants."
+              },
+              {
+                "title": "Analyser",
+                "text": "Audit sémiotique avec des zonings dessinés à la main, audit ergonomique selon les critères heuristiques."
+              },
+              {
+                "title": "Redessiner",
+                "text": "Wireframes fidèles de deux pages sur Figma, puis une proposition de redesign pour chacune."
+              }
+            ]
+          },
+          {
+            "label": "Résultats",
+            "title": "Des pages plus claires",
+            "paragraphs": [
+              "Pour la page d’accueil et la page détail d’un jeu, je suis parti des problèmes relevés à l’audit : hiérarchie visuelle plus nette, navigation clarifiée et contenu clé mis en avant.",
+              "Les wireframes m’ont fait travailler Figma en profondeur, avec l’auto layout et des frames aux bonnes dimensions."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "L’audit sémiotique a été le plus difficile à cadrer, car il demande une analyse plus abstraite que l’audit ergonomique. Dans ma veille, j’ai aussi retenu des sources erronées ou peu pertinentes.",
+              "Cette SAé m’a fait découvrir la conception d’interfaces, au cœur du métier d’UX designer."
+            ]
+          }
+        ]
+      }
     }
   ]
 }
