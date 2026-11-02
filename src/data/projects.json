@@ -263,7 +263,12 @@
         "MySQL"
       ],
       "example": false,
-      "links": [],
+      "links": [
+        {
+          "label": "Voir le code",
+          "url": "https://github.com/pideillou/SAe-2.03"
+        }
+      ],
       "caseStudy": {
         "kicker": "SAé 2.03 · Développer",
         "titleAccent": "ma plateforme de VOD",
@@ -414,7 +419,12 @@
         "JSON"
       ],
       "example": false,
-      "links": [],
+      "links": [
+        {
+          "label": "Voir le code",
+          "url": "https://github.com/pideillou/SAe-1.05"
+        }
+      ],
       "cover": {
         "src": "/images/projets/sae-105-1600.webp",
         "alt": "Page d’accueil du site CineRent : le titre « ARRI Alexa Mini LF Camera », une caméra de cinéma et un bouton « Book now ».",
