@@ -202,9 +202,9 @@
       <ol data-featured class="mt-16 grid gap-20 md:gap-28"></ol>
 
       <!-- Carte retournable : data-face-down (posé par le JS après un tirage) montre le dos,
-           puis la carte se retourne quand elle entre à l'écran. -->
+           puis la carte se retourne quand elle entre à l'écran. Le lien « Voir le projet » couvre toute la carte (after:inset-0). -->
       <template id="featured-card">
-        <li class="group grid gap-6 md:grid-cols-[3fr_2fr] md:items-center md:gap-12 md:even:grid-cols-[2fr_3fr]">
+        <li class="group relative grid gap-6 md:grid-cols-[3fr_2fr] md:items-center md:gap-12 md:even:grid-cols-[2fr_3fr]">
           <div class="perspective-distant md:group-even:order-last">
             <div class="relative aspect-16/10 transition-transform duration-700 ease-out transform-3d group-data-face-down:rotate-y-180 motion-reduce:transition-none">
               <div data-cover class="absolute inset-0 overflow-hidden rounded-lg border border-muted/30 bg-ink/5 backface-hidden">
@@ -223,7 +223,7 @@
             <h3 data-title class="font-display text-4xl leading-tight text-ink sm:text-5xl"></h3>
             <p data-summary class="max-w-md text-lg leading-relaxed text-muted"></p>
             <p data-match class="flex items-center gap-2 font-mono text-xs text-accent"><span aria-hidden="true">◆</span><span data-match-text></span></p>
-            <a href="projets/" data-project-link data-transition="cover" class="group/open mt-2 inline-flex min-h-11 items-center gap-3 font-semibold text-ink transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <a href="projets/" data-project-link data-transition="cover" class="group/open mt-2 inline-flex min-h-11 after:absolute after:inset-0 items-center gap-3 font-semibold text-ink transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
               Voir le projet<span data-open-name class="sr-only"></span>
               <svg class="size-4 text-accent motion-safe:transition-transform motion-safe:group-hover/open:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
             </a>
@@ -288,7 +288,7 @@
       <ul data-project-list class="mt-12 border-b border-muted/30"></ul>
 
       <template id="project-row">
-        <li class="group flex flex-col gap-5 border-t border-muted/30 py-8 md:grid md:grid-cols-[2rem_14rem_minmax(0,1fr)_auto] md:items-center md:gap-8 lg:grid-cols-[2rem_18rem_minmax(0,1fr)_auto]">
+        <li class="group relative flex flex-col gap-5 border-t border-muted/30 py-8 md:grid md:grid-cols-[2rem_14rem_minmax(0,1fr)_auto] md:items-center md:gap-8 lg:grid-cols-[2rem_18rem_minmax(0,1fr)_auto]">
           <span data-number class="font-mono text-xs text-accent md:self-start"></span>
           <div data-cover class="aspect-16/10 overflow-hidden rounded-lg border border-muted/30 bg-ink/5"></div>
           <div class="flex flex-col items-start gap-3">
@@ -297,7 +297,7 @@
             <p data-summary class="max-w-xl leading-relaxed text-muted"></p>
             <ul data-stack aria-label="Compétences utilisées" class="flex flex-wrap gap-1.5 pt-1"></ul>
           </div>
-          <a href="projets/" data-project-link data-transition="cover" class="inline-flex size-14 shrink-0 items-center justify-center self-end rounded-full border border-muted/40 text-accent transition-colors hover:border-accent hover:bg-accent hover:text-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:self-center">
+          <a href="projets/" data-project-link data-transition="cover" class="inline-flex size-14 shrink-0 after:absolute after:inset-0 items-center justify-center self-end rounded-full border border-muted/40 text-accent transition-colors hover:border-accent hover:bg-accent hover:text-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:self-center">
             <span data-open-label class="sr-only"></span>
             <svg class="size-5 motion-safe:transition-transform motion-safe:group-hover:-rotate-45" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
           </a>

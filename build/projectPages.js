@@ -47,6 +47,9 @@ const ENTITIES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '
 
 const escape = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ENTITIES[char]);
 const pad = (number) => String(number).padStart(2, '0');
+// Titre échappé où les mots composés (« Royaume-Uni ») ne se coupent pas au trait d'union : la police pixel
+// n'a pas de trait d'union insécable, on garde donc le mot entier sur une ligne.
+const keepCompounds = (text) => escape(text).replace(/\S+-\S+/g, (word) => `<span class="whitespace-nowrap">${word}</span>`);
 // Ancre à partir d'un libellé : « Mon rôle » devient « mon-role ».
 const anchor = (label) =>
   label.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -161,8 +164,8 @@ function renderBody(project, projects, base) {
       <header data-enter class="grid gap-10 pt-16 pb-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-end lg:gap-16">
         <div>
           <p class="${EYEBROW}">${EYEBROW_LINE}Étude de cas / ${escape(study.kicker ?? project.label)}</p>
-          <h1 class="mt-6 font-display text-5xl leading-none tracking-tight text-balance sm:text-6xl lg:text-7xl">${escape(project.title)}${
-            study.titleAccent ? ` <span class="block text-accent italic">${escape(study.titleAccent)}</span>` : ''
+          <h1 class="mt-6 font-display text-5xl leading-none tracking-tight text-balance sm:text-6xl lg:text-7xl">${keepCompounds(project.title)}${
+            study.titleAccent ? ` <span class="block text-accent italic">${keepCompounds(study.titleAccent)}</span>` : ''
           }</h1>
         </div>
         <div>
