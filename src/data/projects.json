@@ -19,6 +19,89 @@
   ],
   "projects": [
     {
+      "slug": "sea-of-thieves-gps-pirates",
+      "title": "Un GPS pour pirates",
+      "summary": "Application mobile maquettée et prototypée sur Figma : un GPS communautaire pour les pirates de Sea of Thieves, qui signalent les dangers en mer.",
+      "category": "ux",
+      "context": "ecole",
+      "date": "2026-11",
+      "role": "Design UI et prototypage",
+      "stack": [
+        "Figma",
+        "Benchmark",
+        "Design system",
+        "Prototypage"
+      ],
+      "example": false,
+      "links": [
+        {
+          "label": "Voir la maquette Figma",
+          "url": "https://www.figma.com/design/aBJz3B9Z4iZORa0IRP3r5L/PIDEILL-Paul---Sea-of-Thieves"
+        }
+      ],
+      "caseStudy": {
+        "kicker": "TP de MMI2 · R3.09",
+        "titleAccent": "dans Sea of Thieves",
+        "intro": "Si un pirate de Sea of Thieves avait un smartphone, quelle application l’aiderait ? J’ai imaginé un GPS communautaire, de la recherche au prototype.",
+        "duration": "1 mois",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Une appli pour un personnage",
+            "paragraphs": [
+              "Le TP de la ressource R3.09 demandait d’imaginer l’application mobile d’un personnage de fiction, comme un vrai service qui répond à un besoin, avec la charte et les assets de l’œuvre. J’ai choisi Sea of Thieves, un jeu de piraterie en monde ouvert où chaque navire à l’horizon peut être un autre joueur."
+            ]
+          },
+          {
+            "label": "Objectifs",
+            "title": "Naviguer sereinement",
+            "paragraphs": [
+              "L’application devait permettre aux pirates de naviguer avec leur butin sans se faire piller, de signaler les dangers aux autres et de recevoir en temps réel les alertes des autres équipages. Le barème demandait au moins cinq écrans, un design system et un prototype utilisable dans l’application Figma du téléphone."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "Du benchmark au prototype",
+            "paragraphs": [
+              "Après le choix de l’univers, j’ai suivi les étapes du brief."
+            ],
+            "steps": [
+              {
+                "title": "Comparer",
+                "text": "Benchmark de Waze, Google Maps et MarineTraffic : captures sur mon téléphone, points forts et points faibles de chacune."
+              },
+              {
+                "title": "S’inspirer",
+                "text": "Des applis de carte et de scan, et une appli compagnon de Sea of Thieves, pour la structure des écrans."
+              },
+              {
+                "title": "Reprendre le jeu",
+                "text": "Navires, icônes, emblèmes et police Windlass du jeu, avec une palette de six couleurs tirée de son univers."
+              },
+              {
+                "title": "Maquetter",
+                "text": "Des écrans mobiles de 375 × 812 px, construits avec des composants et leurs variantes, puis reliés en prototype."
+              }
+            ]
+          },
+          {
+            "label": "Résultats",
+            "title": "Une appli qu’on peut parcourir",
+            "paragraphs": [
+              "Le prototype part d’une carte filtrable (avant-postes, événements, Sea Posts, contrebandiers) où l’on choisit son navire : sloop, brigantin ou galion. Une barre du bas mène à la collection de trésors et au profil, avec ses écussons et l’historique de ses signalements. J’ai rendu le fichier le 1er novembre 2026."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "Nous avions un mois, en parallèle des cours. J’y ai passé une vingtaine d’heures."
+            ]
+          }
+        ]
+      }
+    },
+    {
       "slug": "portfolio",
       "title": "Un portfolio",
       "summary": "Le site que vous visitez, codé en JavaScript natif : une machine à sous tire trois compétences à chaque visite et un terminal garde 18 secrets.",
