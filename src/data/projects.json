@@ -334,6 +334,103 @@
       }
     },
     {
+      "slug": "retrospective-science-fiction-lido",
+      "title": "Cinq films de SF au Lido",
+      "summary": "Landing page maquettée et prototypée sur Figma pour une rétrospective science-fiction du cinéma Lido de Limoges : cinq films, agenda des séances, accès.",
+      "category": "ux",
+      "context": "ecole",
+      "date": "2026-04",
+      "role": "Design UI et prototypage",
+      "stack": [
+        "Figma",
+        "Prototypage",
+        "Composants"
+      ],
+      "example": false,
+      "links": [
+        {
+          "label": "Voir la maquette Figma",
+          "url": "https://www.figma.com/design/59eOxONrzQwDUUEcyXyFQR/PIDEILL-PAUL---Sci-fi"
+        }
+      ],
+      "cover": {
+        "src": "/images/projets/retrospective-sf-1600.webp",
+        "alt": "Haut de la landing page sur un ciel étoilé : le logo du Lido, le menu, puis les affiches de 2001, Alien, Matrix, Interstellar et Blade Runner 2049.",
+        "srcset": [
+          {
+            "src": "/images/projets/retrospective-sf-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/retrospective-sf-1600.webp",
+            "width": 1600
+          }
+        ]
+      },
+      "caseStudy": {
+        "kicker": "TP de MMI1 · Maquetter",
+        "titleAccent": "une landing page Figma",
+        "intro": "Pour le cinéma Lido de Limoges, j’ai maquetté puis prototypé sur Figma la landing page d’une semaine de films de science-fiction.",
+        "duration": "2 semaines",
+        "caption": "Le haut de la page et la frise d’affiches",
+        "sections": [
+          {
+            "label": "Contexte",
+            "title": "Un cinéma, cinq rétrospectives",
+            "paragraphs": [
+              "Le Lido est un cinéma Art & Essai de Limoges. Dans ce TP de première année, il organise cinq semaines de rétrospectives autour de films cultes et veut une landing page pour chacune. J’ai choisi la science-fiction : 2001, l’Odyssée de l’espace, Alien, Matrix, Interstellar et Blade Runner 2049."
+            ]
+          },
+          {
+            "label": "Objectifs",
+            "title": "Une ambiance et des infos pratiques",
+            "paragraphs": [
+              "Le brief imposait cinq sections : un header immersif, l’univers du thème, la sélection de films, le calendrier des séances et l’accès au cinéma. Pour réserver, la page renvoie vers le site du cinéma : pas de vente sur la landing."
+            ]
+          },
+          {
+            "label": "Démarche",
+            "title": "Des composants qui bougent",
+            "paragraphs": [
+              "Le brief donnait un point bonus pour les animations : j’en ai mis dans chaque section."
+            ],
+            "steps": [
+              {
+                "title": "Choisir",
+                "text": "Parmi les cinq thèmes proposés (animation japonaise, David Lynch, sport, science-fiction, comédies musicales), j’ai pris la science-fiction."
+              },
+              {
+                "title": "Composer",
+                "text": "Un fond étoilé, la frise des cinq affiches, puis Blade Runner 2049 mis en avant : synopsis, réalisateur, acteurs et images du film."
+              },
+              {
+                "title": "Organiser",
+                "text": "Logo, menu, boutons, agenda, carte et icônes des réseaux sont des composants Figma, rangés sur leur propre page avec leurs variantes."
+              },
+              {
+                "title": "Prototyper",
+                "text": "Les affiches défilent, on choisit un personnage de Blade Runner (K, Joi, Deckard, Luv), on passe de mars à avril dans l’agenda et la carte zoome de la Terre jusqu’au cinéma."
+              }
+            ]
+          },
+          {
+            "label": "Résultats",
+            "title": "Une maquette prototypée, rendue à temps",
+            "paragraphs": [
+              "J’ai rendu le fichier Figma le 19 avril 2026, avec la landing page prototypée et la page de ses composants."
+            ]
+          },
+          {
+            "label": "Bilan",
+            "title": "Ce que ce projet m’a appris",
+            "paragraphs": [
+              "Le TP a duré deux semaines, en parallèle des cours : j’y ai passé moins d’une dizaine d’heures. C’était mon premier projet prototypé de bout en bout, et il m’a fait découvrir Figma concrètement."
+            ]
+          }
+        ]
+      }
+    },
+    {
       "slug": "sae-201-ux-application-pal",
       "title": "L’appli du PAL",
       "summary": "SAé 2.01 : recherche utilisateur pour l’appli du PAL, parc zoologique et d’attractions. Audit, six entretiens, personae et recommandations pour sa refonte.",
