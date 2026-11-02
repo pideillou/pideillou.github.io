@@ -177,6 +177,13 @@ ${
       <p class="mb-8 border-l-2 border-accent pl-4 text-sm text-muted">Projet d’exemple : cette fiche montre la mise en page. Les textes sont à remplacer par une vraie réalisation.</p>
 `
     : ''
+}${
+  // Travail d'école sur une marque réelle : on écarte toute idée de commande ou de partenariat.
+  study.brands
+    ? `
+      <p class="mb-8 border-l-2 border-accent pl-4 text-sm text-muted">Exercice d’école : ce projet n’est ni commandé ni soutenu par ${escape(study.brands)}. Les marques et visuels cités appartiennent à leurs propriétaires.</p>
+`
+    : ''
 }
       <figure data-hero class="relative aspect-16/10 overflow-hidden rounded-lg border border-muted/30 bg-ink/5 md:aspect-2/1">
         ${renderCover(project, base)}
