@@ -36,7 +36,7 @@
       "links": [
         {
           "label": "Voir la maquette Figma",
-          "url": "https://www.figma.com/design/aBJz3B9Z4iZORa0IRP3r5L/PIDEILL-Paul---Sea-of-Thieves"
+          "url": "https://www.figma.com/design/aBJz3B9Z4iZORa0IRP3r5L/PIDEILL-Paul---Sea-of-Thieves?node-id=0-1&t=rW3qTtSCaJdU6dHd-1"
         }
       ],
       "caseStudy": {
@@ -121,7 +121,6 @@
         "IA"
       ],
       "example": false,
-      "links": [],
       "cover": {
         "src": "/images/projets/portfolio-1600.webp",
         "alt": "Page d’accueil du portfolio : le nom Paul PIDEILL en lettres pixel, l’avatar encapuchonné qui salue, et les boutons « Voir les projets » et « Me contacter ».",
@@ -530,7 +529,6 @@
         "Personae"
       ],
       "example": false,
-      "links": [],
       "caseStudy": {
         "kicker": "SAé 2.01 · Comprendre",
         "titleAccent": "à l’écoute des visiteurs",
@@ -695,7 +693,6 @@
         "Stop Motion Studio"
       ],
       "example": false,
-      "links": [],
       "cover": {
         "src": "/images/projets/sae-104-1600.webp",
         "alt": "Une chaussure Nike blanche à virgule rouge, posée sur un fond bleu, pendant le tournage du stop motion.",
@@ -783,7 +780,6 @@
         "Anglais"
       ],
       "example": false,
-      "links": [],
       "caseStudy": {
         "kicker": "SAé 1.02 et 1.06 · Communiquer, entreprendre",
         "titleAccent": "au Royaume-Uni",
@@ -855,7 +851,6 @@
         "Illustrator"
       ],
       "example": false,
-      "links": [],
       "cover": {
         "src": "/images/projets/sae-103-1600.webp",
         "alt": "Huit stickers en photomontage sur fond sombre : un homme dans un transat sous un projecteur, une lettre A en pierre, des hommes à la loupe, des notes de musique dans une allée d’arbres.",
@@ -942,7 +937,6 @@
         "Veille"
       ],
       "example": false,
-      "links": [],
       "caseStudy": {
         "kicker": "SAé 1.01 · Comprendre",
         "titleAccent": "et redesign",
