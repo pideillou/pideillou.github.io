@@ -1,4 +1,5 @@
 import { normalizeProjectData } from '../utils/projectData.js';
+import { changedTexts } from '../utils/changedTexts.js';
 import { renderProfile } from '../render/profileSection.js';
 import { renderEducation } from '../render/educationSection.js';
 import { renderContact, renderFooter } from '../render/contactSection.js';
@@ -68,15 +69,29 @@ export default class PreviewController {
     this.#shown = content ? JSON.stringify(content) : '';
     this.#view.showBadge(!content || applied ? BADGE : this.#view.hasPublishedPage() ? BADGE_ERROR : BADGE_WAIT);
     this.#view.bindLinks();
-    this.#view.restoreScroll(this.#page.section);
+    this.#view.reveal(applied ? this.#changes(content) : [], this.#page.section);
     // Un champ vidé pendant la frappe peut faire planter le site : on le signale sans casser l'aperçu.
     this.#view.bindErrors(() => this.#view.showBadge(BADGE_ERROR));
 
     this.#service.bindContent((next) => {
       if (JSON.stringify(next) === this.#shown) return;
       clearTimeout(this.#timer);
-      this.#timer = setTimeout(() => this.#view.reload(), DEBOUNCE);
+      this.#timer = setTimeout(() => this.#view.reload(this.#shown), DEBOUNCE);
     });
+  }
+
+  /**
+   * Textes qui ont changé depuis l'affichage précédent de cette page (même fichier modifié).
+   * @param {{ file: string, data: object }} content
+   * @returns {string[]}
+   */
+  #changes({ file, data }) {
+    try {
+      const previous = JSON.parse(this.#view.previousContent ?? 'null');
+      return previous?.file === file ? changedTexts(previous.data, data) : [];
+    } catch {
+      return [];
+    }
   }
 
   /**
