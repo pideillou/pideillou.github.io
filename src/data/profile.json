@@ -10,7 +10,8 @@
     "JavaScript",
     "Tailwind",
     "Vite",
-    "Git"
+    "Git",
+    "PHP"
   ],
   "design": [
     "Figma",
@@ -19,7 +20,7 @@
   ],
   "whoami": [
     "Paul PIDEILL, étudiant en 2e année de BUT MMI à Limoges.",
-    "Je construit des interfaces du raisonnement jusqu'au code : développement web, design UX, communication et audiovisuel.",
+    "Je construit des interfaces de la conception au code : développement web, design UX, communication et audiovisuel.",
     "Ouvert aux opportunités."
   ],
   "about": {
@@ -32,18 +33,23 @@
         "items": [
           {
             "title": "Premier loisir",
-            "text": "En une phrase : ce que tu fais, et ce que ça t’apporte.",
-            "todo": true
+            "text": "La musique, j'ai appris batterie en jouant dans un groupe, et avant ça j'ai découvert la percussion plus généralement en école de musique en poussant mon apprentissage de groupe dans un orchestre.",
+            "todo": false
           },
           {
             "title": "Deuxième loisir",
-            "text": "Un sport, un instrument, un jeu, une collection…",
-            "todo": true
+            "text": "Dès mon enfance mon père m'a plongé dans l'univers du basket-ball. Alors j'ai fais de ce sport un apprentissage, j'ai construit un esprit d'équipe fort et une persévérance sans égale. Depuis j'ai développé une passion générale des sports collectifs.",
+            "todo": false
           },
           {
             "title": "Troisième loisir",
-            "text": "Un détail précis vaut mieux qu’une liste : « je monte des courts-métrages avec des amis ».",
-            "todo": true
+            "text": "Bien évidemment les jeux vidéos, que serait un vrai geek sans son pc ? Je ne suis pas le nouveau Gotaga, c'est sûr. Cependant j'aime découvrir de nouveaux univers avec ou sans mes amis, découvrir de nouveaux joueurs et bien sûr créer de nouvelles aventures.",
+            "todo": false
+          },
+          {
+            "title": "Quatrième loisir",
+            "text": "Un loisir un peu plus niche dont je ne connais pas l'origine : l'histoire. Et plus particulièrement la seconde guerre mondiale. Je me pationne pour les grandes batailles les reconstitutions et les panzers allemands.",
+            "todo": false
           }
         ]
       },
