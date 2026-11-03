@@ -3,7 +3,7 @@
  */
 export default class SkillMarqueeController {
   /**
-   * @param {{ name: string, logo?: string }[]} skills
+   * @param {{ name: string, logo?: string, logoFile?: string }[]} skills
    * @param {import('../views/SkillMarqueeView.js').default} view
    */
   constructor(skills, view) {
