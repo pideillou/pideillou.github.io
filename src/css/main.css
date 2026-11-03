@@ -302,6 +302,13 @@
   writing-mode: vertical-rl;
 }
 
+/* Logo déposé dans le back-office : le fichier sert de masque, teinté par la couleur du texte
+   (adresse passée dans --logo par src/js/views/SkillMarqueeView.js) */
+@utility logo-mask {
+  background-color: currentColor;
+  mask: var(--logo) center / contain no-repeat;
+}
+
 /* Halo qui suit la souris (position passée par src/js/views/SpotlightView.js) */
 @utility bg-spotlight {
   background-image: radial-gradient(

@@ -2,6 +2,8 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 
 const ITEM_CLASSES = 'flex shrink-0 items-center gap-3 px-6 py-3 text-muted';
 const LOGO_CLASSES = 'size-8 shrink-0 fill-current';
+// Logo déposé dans le back-office (fichier SVG, PNG ou WebP), teinté comme les logos intégrés.
+const LOGO_FILE_CLASSES = 'size-8 shrink-0 logo-mask';
 // Logo absent : une pastille avec l'initiale de la compétence.
 const INITIAL_CLASSES =
   'flex size-8 shrink-0 items-center justify-center rounded-full border border-current font-mono text-sm';
@@ -31,18 +33,24 @@ export default class SkillMarqueeView {
   /**
    * Crée les deux copies du bandeau : la seconde, masquée aux lecteurs d'écran,
    * prend le relais de la première pour une boucle sans à-coup.
-   * @param {{ name: string, logo?: string }[]} skills
+   * @param {{ name: string, logo?: string, logoFile?: string }[]} skills
    */
   render(skills) {
     this.#lists.forEach((list) => list.replaceChildren(...skills.map((skill) => this.#item(skill))));
   }
 
-  #item({ name, logo }) {
+  #item({ name, logo, logoFile }) {
     const item = document.createElement('li');
     item.className = ITEM_CLASSES;
 
     let icon;
-    if (logo) {
+    if (logoFile) {
+      icon = document.createElement('span');
+      icon.className = LOGO_FILE_CLASSES;
+      icon.setAttribute('aria-hidden', 'true');
+      // JSON.stringify met l'adresse entre guillemets et échappe ceux qu'elle contiendrait.
+      icon.style.setProperty('--logo', `url(${JSON.stringify(logoFile)})`);
+    } else if (logo) {
       icon = document.createElementNS(SVG_NS, 'svg');
       icon.setAttribute('class', LOGO_CLASSES);
       icon.setAttribute('aria-hidden', 'true');

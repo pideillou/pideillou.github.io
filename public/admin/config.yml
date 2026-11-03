@@ -237,9 +237,19 @@ collections:
             fields:
               - { name: name, label: Nom, widget: string, hint: '20 caractères au plus (sinon, ça déborde sur mobile).', pattern: ['^.{1,20}$', '20 caractères au plus'] }
               - name: logo
-                label: Logo
+                label: Logo intégré
                 widget: select
-                options: [html, css, javascript, tailwind, vite, git, figma, adobe, canva, ai, python, seo]
+                required: false
+                options: [html, css, javascript, tailwind, vite, git, php, figma, adobe, canva, ai, python, seo]
+                hint: Un des logos déjà dessinés dans le site. Laisser vide si tu déposes ton propre logo juste en dessous.
+              - name: logoFile
+                label: Ou ton propre logo
+                widget: image
+                required: false
+                media_folder: /public/images/logos
+                public_folder: /images/logos
+                accept: image/svg+xml,image/png,image/webp
+                hint: 'Glisse ici le fichier du logo (SVG, PNG ou WebP). Une seule couleur sur fond transparent : le site le teinte avec la couleur du thème. Il passe avant le logo intégré.'
 
   # ─────────────────────────────── Contact et référencement
   - name: contact
