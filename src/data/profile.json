@@ -60,23 +60,23 @@
         "items": [
           {
             "title": "J’apprends",
-            "text": "Une techno, un logiciel, une langue…",
-            "todo": true
+            "text": "J'apprend constamment de nouvelles technologie et de nouveaux logiciels et renforce mes compétences.",
+            "todo": false
           },
           {
             "title": "Je joue à",
-            "text": "Un jeu vidéo ou de société.",
-            "todo": true
+            "text": "Récemment j'ai testé la V1.0 de Palworld en rejoignant un serveur de survie entre amis.",
+            "todo": false
           },
           {
             "title": "J’écoute",
-            "text": "Un album, un podcast, une playlist de travail.",
-            "todo": true
+            "text": "Actuellement je tiens à me redécouvrir et à sortir des sentiers battus ainsi je me laisse guider par mes recommandations Deezer.",
+            "todo": false
           },
           {
-            "title": "Je lis",
-            "text": "Un livre, une BD, un blog, une newsletter.",
-            "todo": true
+            "title": "Je découvre",
+            "text": "Je me suis récemment lancé dans Blender et Roblox Studio pour commencer la création de jeux vidéos.",
+            "todo": false
           }
         ]
       },
@@ -87,18 +87,23 @@
         "items": [
           {
             "title": "Première qualité",
-            "text": "Une qualité, avec un exemple vécu en projet.",
-            "todo": true
+            "text": "L'esprit d'équipe.",
+            "todo": false
           },
           {
             "title": "Deuxième qualité",
-            "text": "Par exemple : comment tu t’organises en équipe.",
-            "todo": true
+            "text": "Une motivation sans faille.",
+            "todo": false
           },
           {
             "title": "Ce que j’aime",
-            "text": "Le type de tâche qui te fait perdre la notion du temps.",
-            "todo": true
+            "text": "Le goût des choses bien faites.",
+            "todo": false
+          },
+          {
+            "title": "Ce que je déteste",
+            "text": "Le manque de communication.",
+            "todo": false
           }
         ]
       },
