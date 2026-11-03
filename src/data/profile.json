@@ -114,13 +114,8 @@
         "items": [
           {
             "title": "Premier haut fait",
-            "text": "Une réussite hors cours : concours, bénévolat, projet perso, job d’été…",
-            "todo": true
-          },
-          {
-            "title": "Deuxième haut fait",
-            "text": "Un défi relevé, même petit, et ce que tu en as tiré.",
-            "todo": true
+            "text": "La conception d'un portfolio qui me ressemble.",
+            "todo": false
           }
         ]
       }
