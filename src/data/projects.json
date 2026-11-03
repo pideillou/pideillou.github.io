@@ -809,7 +809,7 @@
       "example": false,
       "cover": {
         "src": "/images/projets/sae-102-106-1600.webp",
-        "alt": "Diapositive « Recommandations » : les attentes des personas Henry et Olivia, en deux colonnes.",
+        "alt": "Wireframe Figma du site de L’Herbier des Fées, première version et version retravaillée : avantages de l’application, vidéo et avis clients.",
         "srcset": [
           {
             "src": "/images/projets/sae-102-106-800.webp",
@@ -826,7 +826,7 @@
         "titleAccent": "au Royaume-Uni",
         "intro": "En binôme et en une semaine, nous avons joué une agence chargée de faire connaître une application auprès des parents britanniques.",
         "duration": "1 semaine",
-        "caption": "Recommandations tirées des personas",
+        "caption": "Wireframe Figma, deux versions",
         "brands": "les auteurs de L’Herbier des Fées",
         "sections": [
           {
@@ -895,7 +895,7 @@
       "example": false,
       "cover": {
         "src": "/images/projets/sae-103-1600.webp",
-        "alt": "Huit stickers en photomontage sur fond sombre : un homme dans un transat sous un projecteur, une lettre A en pierre, des hommes à la loupe, des notes de musique dans une allée d’arbres.",
+        "alt": "Huit stickers dessinés sur Illustrator : une imprimante d’où s’envole un oiseau, un compas, une main-outil, le mot TEAM, des initiales, un visage dans des couleurs, un plongeur au-dessus d’un cerveau, une silhouette entourée d’émojis.",
         "srcset": [
           {
             "src": "/images/projets/sae-103-800.webp",
@@ -911,7 +911,7 @@
         "kicker": "SAé 1.03 · Exprimer",
         "titleAccent": "en deux styles",
         "intro": "Des stickers à mon image, aussi bons à l’écran qu’à l’impression, inspirés de deux graphistes.",
-        "caption": "Planche Photoshop, 8 des 12 stickers",
+        "caption": "Planche Illustrator, 8 des 12 stickers",
         "sections": [
           {
             "label": "Contexte",
