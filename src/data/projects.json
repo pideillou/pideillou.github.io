@@ -239,7 +239,7 @@
       ],
       "cover": {
         "src": "/images/projets/sae-301-980.webp",
-        "alt": "Catalogue du site Razer Click & Collect : en-tête avec le logo Razer, filtres Souris, Claviers et Casques, et les premières souris avec leur photo.",
+        "alt": "Catalogue du site click & collect : onglets Souris, Claviers et Casques, titre « Tous les produits » et les premières souris.",
         "srcset": [
           {
             "src": "/images/projets/sae-301-800.webp",
@@ -350,11 +350,26 @@
           "url": "https://github.com/pideillou/SAe-2.03"
         }
       ],
+      "cover": {
+        "src": "/images/projets/sae-203-1600.webp",
+        "alt": "Page Statistiques de Flouflix : profils créés, films dans la base, film le plus mis en favori, catégorie la plus aimée et note moyenne.",
+        "srcset": [
+          {
+            "src": "/images/projets/sae-203-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/sae-203-1600.webp",
+            "width": 1600
+          }
+        ]
+      },
       "caseStudy": {
         "kicker": "SAé 2.03 · Développer",
         "titleAccent": "ma plateforme de VOD",
         "intro": "Seul, en dix-neuf itérations, j’ai construit une plateforme de vidéo à la demande : une appli pour les spectateurs et un back-office pour les administrateurs.",
         "duration": "3 semaines",
+        "caption": "Page Statistiques",
         "sections": [
           {
             "label": "Contexte",
@@ -436,7 +451,7 @@
       ],
       "cover": {
         "src": "/images/projets/retrospective-sf-1600.webp",
-        "alt": "Haut de la landing page sur un ciel étoilé : le logo du Lido, le menu, puis les affiches de 2001, Alien, Matrix, Interstellar et Blade Runner 2049.",
+        "alt": "Agenda des séances de la landing page : un calendrier de mars dans un cadre d’interface futuriste bleu, les jours de projection entourés en rouge.",
         "srcset": [
           {
             "src": "/images/projets/retrospective-sf-800.webp",
@@ -453,7 +468,7 @@
         "titleAccent": "une landing page Figma",
         "intro": "Pour le cinéma Lido de Limoges, j’ai maquetté puis prototypé sur Figma la landing page d’une semaine de films de science-fiction.",
         "duration": "2 semaines",
-        "caption": "Le haut de la page et la frise d’affiches",
+        "caption": "L’agenda des séances",
         "brands": "le cinéma Lido",
         "sections": [
           {
@@ -526,10 +541,25 @@
         "Personae"
       ],
       "example": false,
+      "cover": {
+        "src": "/images/projets/sae-201-1600.webp",
+        "alt": "Persona Céline, 45 ans : citation, biographie, objectif, frustrations et motivations tirées des entretiens.",
+        "srcset": [
+          {
+            "src": "/images/projets/sae-201-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/sae-201-1600.webp",
+            "width": 1600
+          }
+        ]
+      },
       "caseStudy": {
         "kicker": "SAé 2.01 · Comprendre",
         "titleAccent": "à l’écoute des visiteurs",
         "intro": "En binôme, nous avons interrogé de vrais utilisateurs pour aider un parc à repenser son application mobile.",
+        "caption": "Un persona tiré des entretiens",
         "brands": "le PAL",
         "sections": [
           {
@@ -606,7 +636,7 @@
       ],
       "cover": {
         "src": "/images/projets/sae-105-1600.webp",
-        "alt": "Page d’accueil du site CineRent : le titre « ARRI Alexa Mini LF Camera », une caméra de cinéma et un bouton « Book now ».",
+        "alt": "Page d’accueil du site CineRent : le titre « Fully Equipped Van », un fourgon noir et un bouton « See more ».",
         "srcset": [
           {
             "src": "/images/projets/sae-105-800.webp",
@@ -692,7 +722,7 @@
       "example": false,
       "cover": {
         "src": "/images/projets/sae-104-1600.webp",
-        "alt": "Une chaussure Nike blanche à virgule rouge, posée sur un fond bleu, pendant le tournage du stop motion.",
+        "alt": "Quatre cases du storyboard dessinées au crayon : des morceaux éparpillés qui se rassemblent, puis retombent au sol.",
         "srcset": [
           {
             "src": "/images/projets/sae-104-800.webp",
@@ -708,7 +738,7 @@
         "kicker": "SAé 1.04 · Exprimer",
         "titleAccent": "en stop motion",
         "intro": "À trois, nous avons imaginé et tourné un clip publicitaire en stop motion pour la campagne « Un pied dans un monde meilleur ».",
-        "caption": "Tournage, la chaussure sur fond bleu",
+        "caption": "Storyboard, quatre cases",
         "brands": "Nike",
         "sections": [
           {
@@ -777,11 +807,26 @@
         "Anglais"
       ],
       "example": false,
+      "cover": {
+        "src": "/images/projets/sae-102-106-1600.webp",
+        "alt": "Diapositive « Recommandations » : les attentes des personas Henry et Olivia, en deux colonnes.",
+        "srcset": [
+          {
+            "src": "/images/projets/sae-102-106-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/sae-102-106-1600.webp",
+            "width": 1600
+          }
+        ]
+      },
       "caseStudy": {
         "kicker": "SAé 1.02 et 1.06 · Communiquer, entreprendre",
         "titleAccent": "au Royaume-Uni",
         "intro": "En binôme et en une semaine, nous avons joué une agence chargée de faire connaître une application auprès des parents britanniques.",
         "duration": "1 semaine",
+        "caption": "Recommandations tirées des personas",
         "brands": "les auteurs de L’Herbier des Fées",
         "sections": [
           {
@@ -934,11 +979,26 @@
         "Veille"
       ],
       "example": false,
+      "cover": {
+        "src": "/images/projets/sae-101-1600.webp",
+        "alt": "Wireframes de la page d’un jeu, avant et après le redesign : titre, image, vidéo, aperçu du jeu et règles.",
+        "srcset": [
+          {
+            "src": "/images/projets/sae-101-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/projets/sae-101-1600.webp",
+            "width": 1600
+          }
+        ]
+      },
       "caseStudy": {
         "kicker": "SAé 1.01 · Comprendre",
         "titleAccent": "et redesign",
         "intro": "En une semaine, j’ai audité le site d’un festival de jeux vidéo indépendants, puis proposé une nouvelle version de deux de ses pages.",
         "duration": "1 semaine",
+        "caption": "Wireframe d’origine et redesign",
         "brands": "IndieCade",
         "sections": [
           {
