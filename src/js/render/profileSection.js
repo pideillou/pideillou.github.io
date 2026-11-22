@@ -57,7 +57,14 @@ export function renderProfile({ profile }) {
           <span class="block">Profil,</span>
           <span class="block text-accent italic">en mode pause.</span>
         </h2>
-        <p class="max-w-xs leading-relaxed text-muted lg:pb-3">${escape(intro)}</p>
+        <div class="flex max-w-xs flex-col items-start gap-4 lg:pb-3">
+          <p class="leading-relaxed text-muted">${escape(intro)}</p>${
+            profile.cv
+              ? `
+          <a href="${escape(profile.cv)}" download class="group inline-flex min-h-11 items-center gap-2 rounded-full border border-muted/40 px-4 font-mono text-xs tracking-widest text-ink uppercase transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Télécharger mon CV<span class="sr-only"> (PDF)</span><svg class="size-4 text-accent motion-safe:transition-transform motion-safe:group-hover:translate-y-0.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v10M3 7l5 5 5-5M2 14h12"/></svg></a>`
+              : ''
+          }
+        </div>
       </div>
 
       <!-- Menu pause : onglets activés par src/js/views/TabsView.js -->

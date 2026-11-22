@@ -37,5 +37,31 @@
       "label": "Linkedin",
       "url": "https://www.linkedin.com/in/paul-pideill-27a520384/"
     }
-  ]
+  ],
+  "footer": {
+    "kicker": "Fin de la partie",
+    "title": "Merci d’avoir joué.",
+    "titleAccent": "La suite au prochain niveau.",
+    "role": "Développeur & designer",
+    "bio": "Je code des interfaces et je les dessine aussi.",
+    "shortcuts": [
+      {
+        "key": "Ctrl K",
+        "text": "ouvrir le terminal"
+      },
+      {
+        "key": "help",
+        "text": "voir les commandes"
+      },
+      {
+        "key": "theme",
+        "text": "changer d’ambiance"
+      },
+      {
+        "key": "play snake",
+        "text": "faire une pause"
+      }
+    ],
+    "credit": "Fait main à Limoges avec Vite, Tailwind CSS et JavaScript natif."
+  }
 }

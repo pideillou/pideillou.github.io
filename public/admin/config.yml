@@ -174,7 +174,7 @@ collections:
           - { name: dev, label: Compétences en développement, label_singular: Compétence, widget: list, field: { name: skill, label: Compétence, widget: string } }
           - { name: design, label: Compétences en design, label_singular: Compétence, widget: list, field: { name: skill, label: Compétence, widget: string } }
           - { name: whoami, label: Réponse à « whoami » dans le terminal, label_singular: Ligne, widget: list, field: { name: line, label: Ligne, widget: string } }
-          - { name: cv, label: CV (PDF), widget: file, required: false, media_folder: /public/fichiers, public_folder: /fichiers, hint: 'Téléchargeable avec « cat cv.pdf » dans le terminal.' }
+          - { name: cv, label: CV (PDF), widget: file, required: false, media_folder: /public/fichiers, public_folder: /fichiers, accept: application/pdf, hint: 'Fichier PDF. Une fois déposé, un bouton « Télécharger mon CV » apparaît dans la section Profil, un lien dans le pied de page, et la commande « cat cv.pdf » du terminal le propose.' }
           - name: about
             label: Section « Hors écran »
             widget: object
@@ -287,6 +287,28 @@ collections:
             fields:
               - { name: label, label: Nom, widget: string }
               - { name: url, label: Adresse, widget: string, pattern: ['^https://', 'Adresse complète, qui commence par https://'] }
+          - name: footer
+            label: Textes du pied de page
+            widget: object
+            collapsed: true
+            hint: 'Le nom, la formation et la ville viennent de « Profil et parcours > Profil ». Le lien vers le CV s''ajoute tout seul quand un CV est déposé dans le Profil.'
+            fields:
+              - { name: kicker, label: Surtitre, widget: string, hint: 'Petit texte au-dessus du grand titre, par exemple « Fin de la partie ».' }
+              - { name: title, label: Grand titre, widget: string }
+              - { name: titleAccent, label: Suite du titre (en couleur), widget: string, required: false }
+              - { name: role, label: Métier sous ton nom, widget: string, hint: 'Par exemple « Développeur & designer ».' }
+              - { name: bio, label: Phrase de présentation, widget: text, required: false, hint: 'Affichée après « Formation à Ville. ».' }
+              - name: shortcuts
+                label: Raccourcis
+                label_singular: Raccourci
+                widget: list
+                required: false
+                summary: '{{fields.key}} : {{fields.text}}'
+                hint: Commandes du terminal à mettre en avant. Laisser vide pour masquer la colonne.
+                fields:
+                  - { name: key, label: Touche ou commande, widget: string, hint: 'Par exemple « Ctrl K » ou « help ».' }
+                  - { name: text, label: Ce qu'elle fait, widget: string }
+              - { name: credit, label: Ligne du bas, widget: string, required: false, hint: 'Après « © année Nom · ». Le lien vers les mentions légales reste toujours affiché.' }
 
       - name: seo
         label: Référencement (Google et partage)

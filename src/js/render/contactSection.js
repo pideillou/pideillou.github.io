@@ -194,8 +194,20 @@ export function renderContact({ contact, profile }) {
     </section>`;
 }
 
+// Textes du pied de page par défaut, si « footer » manque dans contact.json.
+const FOOTER_DEFAULTS = {
+  kicker: 'Fin de la partie',
+  title: 'Merci d’avoir joué.',
+  titleAccent: 'La suite au prochain niveau.',
+  role: 'Développeur & designer',
+  bio: 'Je code des interfaces et je les dessine aussi.',
+  shortcuts: [],
+  credit: '',
+};
+
 export function renderFooter({ contact, profile }) {
   const year = new Date().getFullYear();
+  const footer = { ...FOOTER_DEFAULTS, ...contact.footer };
   const sections = [
     ['projets', 'Projets choisis'],
     ['tous-les-projets', 'Tous les projets'],
@@ -208,6 +220,9 @@ export function renderFooter({ contact, profile }) {
       ({ label, url }) =>
         `<li><a href="${escape(url)}" target="_blank" rel="noopener noreferrer" class="${FOOTER_LINK}">${escape(label)}<span class="sr-only"> (nouvel onglet)</span> <span aria-hidden="true">↗</span></a></li>`,
     ),
+    ...(profile.cv
+      ? [`<li><a href="${escape(profile.cv)}" download class="${FOOTER_LINK}">Mon CV<span class="sr-only"> (PDF, téléchargement)</span> <span class="font-mono text-xs" aria-hidden="true">PDF</span></a></li>`]
+      : []),
     ...(contact.email ? [`<li><a href="mailto:${escape(contact.email)}" class="${FOOTER_LINK}">${escape(contact.email)}</a></li>`] : []),
     `<li><a href="#contact" class="${FOOTER_LINK}">Le formulaire, juste au-dessus</a></li>`,
   ];
@@ -234,8 +249,8 @@ export function renderFooter({ contact, profile }) {
       <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
         <div class="flex items-end justify-between gap-6 lg:justify-start">
           <div class="min-w-0">
-            <p class="flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase"><span class="text-accent" aria-hidden="true">◆</span>Fin de la partie</p>
-            <p class="mt-5 font-display text-5xl leading-none tracking-tight sm:text-6xl">Merci d’avoir joué.<span class="block text-accent italic">La suite au prochain niveau.</span></p>
+            <p class="flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase"><span class="text-accent" aria-hidden="true">◆</span>${escape(footer.kicker)}</p>
+            <p class="mt-5 font-display text-5xl leading-none tracking-tight sm:text-6xl">${escape(footer.title)}${footer.titleAccent ? `<span class="block text-accent italic">${escape(footer.titleAccent)}</span>` : ''}</p>
           </div>
           <!-- Avatar qui fête la fin de partie : deux sauts quand il apparaît à l'écran (src/js/views/AvatarView.js) -->
           <img data-avatar="footer" src="/src/assets/avatar/cheers-1x.webp" srcset="/src/assets/avatar/cheers-1x.webp 1x, /src/assets/avatar/cheers-2x.webp 2x" width="144" height="288" alt="" loading="lazy" decoding="async" class="h-36 w-auto shrink-0 data-on:motion-safe:animate-cheer sm:h-48">
@@ -264,9 +279,9 @@ export function renderFooter({ contact, profile }) {
         <div class="flex flex-col items-start gap-4">
           <a href="#accueil" class="flex items-center gap-3 rounded-full pr-2 ${FOCUS}">
             <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent font-initials text-lg font-bold text-surface" aria-hidden="true">Pp</span>
-            <span class="flex flex-col leading-tight"><span class="font-display font-bold">${escape(profile.name)}</span><span class="text-xs text-muted">Développeur &amp; designer</span></span>
+            <span class="flex flex-col leading-tight"><span class="font-display font-bold">${escape(profile.name)}</span><span class="text-xs text-muted">${escape(footer.role)}</span></span>
           </a>
-          <p class="max-w-xs text-sm leading-relaxed text-muted">${escape(profile.school)} à ${escape(profile.city.split(',')[0])}. Je code des interfaces et je les dessine aussi.</p>
+          <p class="max-w-xs text-sm leading-relaxed text-muted">${escape(profile.school)} à ${escape(profile.city.split(',')[0])}.${footer.bio ? ` ${escape(footer.bio)}` : ''}</p>
         </div>
 
         <nav aria-labelledby="footer-nav-title">
@@ -281,19 +296,24 @@ export function renderFooter({ contact, profile }) {
           <ul class="mt-4 grid gap-2 text-sm">${links.join('')}</ul>
         </div>
 
-        <div>
+${
+          footer.shortcuts.length
+            ? `<div>
           <h2 class="${FOOTER_TITLE}">Raccourcis</h2>
-          <ul class="mt-4 grid gap-2 font-mono text-xs text-muted">
-            <li><kbd class="rounded border border-muted/40 px-1 text-ink">Ctrl K</kbd> ouvrir le terminal</li>
-            <li><span class="text-ink">help</span> voir les commandes</li>
-            <li><span class="text-ink">theme</span> changer d’ambiance</li>
-            <li><span class="text-ink">play snake</span> faire une pause</li>
+          <ul class="mt-4 grid gap-2 font-mono text-xs text-muted">${footer.shortcuts
+            .map(
+              ({ key, text }) => `
+            <li><kbd class="rounded border border-muted/40 px-1 font-mono text-ink">${escape(key)}</kbd> ${escape(text)}</li>`,
+            )
+            .join('')}
           </ul>
-        </div>
+        </div>`
+            : ''
+        }
       </div>
 
       <div class="mt-16 flex flex-col gap-4 border-t border-muted/20 pt-8 font-mono text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-        <p>© ${year} ${escape(profile.name)} · Fait main à Limoges avec Vite, Tailwind CSS et JavaScript natif. · <a href="mentions-legales/" class="${FOOTER_LINK} underline decoration-accent underline-offset-4">Mentions légales</a></p>
+        <p>© ${year} ${escape(profile.name)} · ${footer.credit ? `${escape(footer.credit)} · ` : ''}<a href="mentions-legales/" class="${FOOTER_LINK} underline decoration-accent underline-offset-4">Mentions légales</a></p>
         <a href="#accueil" class="group inline-flex min-h-11 items-center gap-2 self-start rounded-full text-ink transition-colors hover:text-accent sm:self-auto ${FOCUS}">Continuer ? Revenir au début<svg class="size-4 text-accent motion-safe:transition-transform motion-safe:group-hover:-translate-y-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 14V2M3 7l5-5 5 5"/></svg></a>
       </div>
     </div>
