@@ -112,10 +112,14 @@ function renderSection(section, index, isLast, project) {
           </section>`;
 }
 
+// Lien vers le projet voisin. Les flèches ← → du clavier le suivent aussi (src/project.js) :
+// l'indice « touche » n'apparaît qu'avec une souris, au doigt ces touches n'existent pas.
 function renderNeighbour(project, direction, base) {
   const next = direction === 'next';
-  return `<a href="${pageUrl(base, project.slug)}" data-transition="${next ? 'next' : 'previous'}" class="group flex flex-col gap-2 bg-surface py-10 ${next ? 'sm:items-end sm:pl-8 sm:text-right' : 'sm:pr-8'} ${FOCUS}">
-          <span class="font-mono text-xs tracking-widest text-muted uppercase">${next ? 'Projet suivant →' : '← Projet précédent'}</span>
+  const arrow = next ? '→' : '←';
+  const hint = `<span class="hidden tracking-normal normal-case pointer-fine:inline" aria-hidden="true"> · touche <kbd class="rounded border border-muted/40 px-1 font-mono text-ink">${arrow}</kbd></span>`;
+  return `<a href="${pageUrl(base, project.slug)}" data-transition="${next ? 'next' : 'previous'}" aria-keyshortcuts="${next ? 'ArrowRight' : 'ArrowLeft'}" class="group flex flex-col gap-2 bg-surface py-10 ${next ? 'sm:items-end sm:pl-8 sm:text-right' : 'sm:pr-8'} ${FOCUS}">
+          <span class="font-mono text-xs tracking-widest text-muted uppercase">${next ? `Projet suivant →${hint}` : `← Projet précédent${hint}`}</span>
           <span class="font-display text-2xl text-ink transition-colors group-hover:text-accent sm:text-3xl">${escape(project.title)}</span>
         </a>`;
 }
