@@ -33,7 +33,7 @@
       "links": [
         {
           "label": "Voir la maquette Figma",
-          "url": "https://www.figma.com/design/aBJz3B9Z4iZORa0IRP3r5L/PIDEILL-Paul---Sea-of-Thieves?t=citYzw2WiNXYf71O-1"
+          "url": "https://www.figma.com/design/aBJz3B9Z4iZORa0IRP3r5L/PIDEILL-Paul---Sea-of-Thieves"
         }
       ],
       "caseStudy": {
@@ -118,6 +118,12 @@
         "IA"
       ],
       "example": false,
+      "links": [
+        {
+          "label": "Voir le code sur GitHub",
+          "url": "https://github.com/pideillou/pideillou.github.io"
+        }
+      ],
       "cover": {
         "src": "/images/projets/portfolio-1600.webp",
         "alt": "Page d’accueil du portfolio : le nom Paul PIDEILL en lettres pixel, l’avatar encapuchonné qui salue, et les boutons « Voir les projets » et « Me contacter ».",
@@ -446,7 +452,7 @@
       "links": [
         {
           "label": "Voir la maquette Figma",
-          "url": "https://www.figma.com/design/59eOxONrzQwDUUEcyXyFQR/PIDEILL-PAUL---Sci-fi?node-id=0-1&t=9qyYm9jctCnrlqT6-1"
+          "url": "https://www.figma.com/design/59eOxONrzQwDUUEcyXyFQR/PIDEILL-PAUL---Sci-fi?node-id=0-1"
         }
       ],
       "cover": {
