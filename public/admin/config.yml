@@ -210,6 +210,7 @@ collections:
             label: Étapes
             label_singular: Étape
             widget: list
+            hint: Autant d'étapes que tu veux. Sur téléphone, au-delà de 6, la carte du parcours défile en largeur.
             summary: '{{fields.years}} · {{fields.title}}'
             fields:
               - { name: tutorial, label: Niveau tutoriel, widget: boolean, default: false, required: false, hint: Coché pour la première étape (avant le BUT). }
@@ -365,7 +366,7 @@ collections:
         file: src/data/rewards.json
         fields:
           - name: collection
-            label: Collection complète (12 compétences vues)
+            label: Collection complète (toutes les compétences vues)
             widget: object
             fields: &reward
               - { name: title, label: Titre, widget: string }

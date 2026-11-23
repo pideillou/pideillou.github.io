@@ -22,6 +22,14 @@ const FOOTER_TITLE = 'font-mono text-xs font-normal tracking-widest text-muted u
 const FOOTER_LINK = `rounded text-muted transition-colors hover:text-ink ${FOCUS}`;
 const CHIP = `min-h-9 rounded-full border border-muted/30 px-3 transition-colors hover:border-accent hover:text-accent ${FOCUS}`;
 
+// Images de l'avatar (1x, 2x). Au build, Vite réécrit ces chemins dans index.html.
+// L'aperçu du back-office, lui, passe les adresses données par ses imports (voir PreviewController.js).
+export const AVATARS = {
+  letter: ['/src/assets/avatar/letter-1x.webp', '/src/assets/avatar/letter-2x.webp'],
+  cheers: ['/src/assets/avatar/cheers-1x.webp', '/src/assets/avatar/cheers-2x.webp'],
+};
+const avatarSources = ([x1, x2]) => `src="${escape(x1)}" srcset="${escape(x1)} 1x, ${escape(x2)} 2x"`;
+
 // Pigeon posé (symbole dans index.html), de la couleur du texte autour.
 const pigeon = (className) => `<svg class="${className}" viewBox="0 0 64 48" aria-hidden="true"><use href="#pigeon"></use></svg>`;
 
@@ -58,7 +66,7 @@ function formTarget({ endpoint, email }) {
   return '';
 }
 
-export function renderContact({ contact, profile }) {
+export function renderContact({ contact, profile, avatars = AVATARS }) {
   const [first] = contact.quests;
   return `<section id="contact" aria-labelledby="contact-title" class="relative scroll-mt-28 py-24">
       <!-- Coulisses de la section, révélées par la lampe (desktop) -->
@@ -90,7 +98,7 @@ export function renderContact({ contact, profile }) {
         </h2>
         <div class="flex items-end gap-5 lg:flex-col lg:items-start lg:pb-3">
           <!-- Avatar qui tient la lettre, le pigeon sur l'épaule : c'est lui qui part à l'envoi -->
-          <img src="/src/assets/avatar/letter-1x.webp" srcset="/src/assets/avatar/letter-1x.webp 1x, /src/assets/avatar/letter-2x.webp 2x" width="110" height="295" alt="" loading="lazy" decoding="async" class="h-40 w-auto shrink-0 lg:h-52">
+          <img ${avatarSources(avatars.letter)} width="110" height="295" alt="" loading="lazy" decoding="async" class="h-40 w-auto shrink-0 lg:h-52">
           <p class="max-w-xs leading-relaxed text-muted">${escape(contact.intro)}</p>
         </div>
         <p class="flex items-center gap-2 font-mono text-xs text-support lg:col-start-2"><span class="text-accent" aria-hidden="true">◆</span>${escape(contact.response)}</p>
@@ -205,7 +213,7 @@ const FOOTER_DEFAULTS = {
   credit: '',
 };
 
-export function renderFooter({ contact, profile }) {
+export function renderFooter({ contact, profile, avatars = AVATARS }) {
   const year = new Date().getFullYear();
   const footer = { ...FOOTER_DEFAULTS, ...contact.footer };
   const sections = [
@@ -216,7 +224,8 @@ export function renderFooter({ contact, profile }) {
     ['contact', 'Contact'],
   ];
   const links = [
-    ...contact.links.map(
+    // Le back-office supprime une liste vide : « links » peut manquer.
+    ...(contact.links ?? []).map(
       ({ label, url }) =>
         `<li><a href="${escape(url)}" target="_blank" rel="noopener noreferrer" class="${FOOTER_LINK}">${escape(label)}<span class="sr-only"> (nouvel onglet)</span> <span aria-hidden="true">↗</span></a></li>`,
     ),
@@ -253,7 +262,7 @@ export function renderFooter({ contact, profile }) {
             <p class="mt-5 font-display text-5xl leading-none tracking-tight sm:text-6xl">${escape(footer.title)}${footer.titleAccent ? `<span class="block text-accent italic">${escape(footer.titleAccent)}</span>` : ''}</p>
           </div>
           <!-- Avatar qui fête la fin de partie : deux sauts quand il apparaît à l'écran (src/js/views/AvatarView.js) -->
-          <img data-avatar="footer" src="/src/assets/avatar/cheers-1x.webp" srcset="/src/assets/avatar/cheers-1x.webp 1x, /src/assets/avatar/cheers-2x.webp 2x" width="144" height="288" alt="" loading="lazy" decoding="async" class="h-36 w-auto shrink-0 data-on:motion-safe:animate-cheer sm:h-48">
+          <img data-avatar="footer" ${avatarSources(avatars.cheers)} width="144" height="288" alt="" loading="lazy" decoding="async" class="h-36 w-auto shrink-0 data-on:motion-safe:animate-cheer sm:h-48">
         </div>
 
         <section data-footer-score aria-labelledby="footer-score-title" class="rounded-xl border border-muted/30 p-5 font-mono text-xs" hidden>

@@ -18,12 +18,12 @@ const readJson = (root, name) => JSON.parse(readFileSync(resolve(root, `src/data
 const readSeo = (root) => readJson(root, 'seo');
 
 function renderSitemap(projects, base) {
-  const today = new Date().toISOString().slice(0, 10);
   // Les projets d'exemple ne sont pas indexés : ils n'entrent pas dans le plan du site.
+  // Pas de <lastmod> : la date du build changerait à chaque fois, et Google ignore une date peu fiable.
   const urls = [base, ...projects.filter(({ example }) => !example).map(({ slug }) => pageUrl(base, slug))];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((path) => `  <url><loc>${SITE_URL}${path}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+${urls.map((path) => `  <url><loc>${SITE_URL}${path}</loc></url>`).join('\n')}
 </urlset>
 `;
 }

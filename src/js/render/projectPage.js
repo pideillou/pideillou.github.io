@@ -277,10 +277,11 @@ export function renderHead(project, base, seo) {
 /** Remplit le gabarit projet.html pour un projet. */
 export function renderPage(template, project, projects, base, seo) {
   const { title, head } = renderHead(project, base, seo);
+  // Fonctions de remplacement : un « $ » dans un texte du back-office reste un simple caractère.
   return template
-    .replace(/<title>[^<]*<\/title>/, `<title>${escape(title)}</title>`)
-    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escape(project.summary)}">`)
-    .replace('<!-- project:head -->', head)
-    .replace('<!-- project:body -->', renderBody(project, projects, base));
+    .replace(/<title>[^<]*<\/title>/, () => `<title>${escape(title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*">/, () => `<meta name="description" content="${escape(project.summary)}">`)
+    .replace('<!-- project:head -->', () => head)
+    .replace('<!-- project:body -->', () => renderBody(project, projects, base));
 }
 

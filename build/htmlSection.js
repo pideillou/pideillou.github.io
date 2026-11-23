@@ -34,7 +34,8 @@ export default function htmlSection({ name, placeholder, files, render }) {
     transformIndexHtml: {
       order: 'pre',
       handler(html) {
-        return html.includes(placeholder) ? html.replace(placeholder, render(read())) : html;
+        // Fonction de remplacement : un « $ » dans un texte du back-office reste un simple caractère.
+        return html.includes(placeholder) ? html.replace(placeholder, () => render(read())) : html;
       },
     },
   };

@@ -165,15 +165,13 @@ export default class TerminalView {
   }
 
   /**
-   * Raccourci global : Ctrl + K (ou Cmd + K) et la touche ², hors champs de saisie.
+   * Raccourci global : Ctrl + K (ou Cmd + K).
+   * Pas de raccourci d'une seule touche : il se déclencherait par erreur (WCAG 2.1.4).
    * @param {() => void} handler
    */
   bindShortcut(handler) {
     document.addEventListener('keydown', (event) => {
-      const target = /** @type {HTMLElement} */ (event.target);
-      const typing = target.closest('input, textarea, select') || target.isContentEditable;
-      const ctrlK = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k';
-      if (ctrlK || (event.key === '²' && !typing)) {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
         handler();
       }

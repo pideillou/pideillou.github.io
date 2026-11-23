@@ -13,6 +13,7 @@ import ContactController from './js/controllers/ContactController.js';
 import ContactService from './js/services/ContactService.js';
 import FooterView from './js/views/FooterView.js';
 import AvatarView from './js/views/AvatarView.js';
+import EducationMapView from './js/views/EducationMapView.js';
 import FooterController from './js/controllers/FooterController.js';
 import ProjectModel from './js/models/ProjectModel.js';
 import FeaturedProjectsView from './js/views/FeaturedProjectsView.js';
@@ -368,10 +369,13 @@ if (loader && !backFromProject && !preview) {
 }
 
 // Les textes se décodent et l'avatar salue quand la page devient visible : à la fermeture de la machine à sous.
+// La carte du parcours se cale sur le niveau en cours (utile quand elle défile, sur téléphone).
 const heroAvatar = document.querySelector('[data-avatar="hero"]');
+const educationMap = document.querySelector('[data-education-map]');
 waitForPage().then(() => {
   scramble.start();
   if (heroAvatar) new AvatarView(heroAvatar).play();
+  if (educationMap) new EducationMapView(educationMap).showCurrent();
 });
 
 // Retire le cache posé par le CSS : la machine à sous est ouverte (ou ne s'ouvrira pas).
