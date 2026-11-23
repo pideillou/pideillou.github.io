@@ -16,7 +16,7 @@
     { "role": "Outils", "names": ["Vite", "Tailwind CSS", "JavaScript", "Figma"] },
     { "role": "Formation", "names": ["BUT MMI", "IUT du Limousin"] },
     { "role": "Inspirations", "names": ["Figma Make", "Les films de mon enfance", "Ma passion des easter eggs"] },
-    { "role": "Carburant", "names": ["Une musique varié et de nombreuses pauses de réflexion"] },
+    { "role": "Carburant", "names": ["Une musique variée et de nombreuses pauses de réflexion"] },
     { "role": "Remerciements", "names": ["Merci à toi d'avoir lu jusqu'ici"] }
   ],
   "thanks": "Merci d’avoir joué",
