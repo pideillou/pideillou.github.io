@@ -1,4 +1,4 @@
-import { projectContext } from '../utils/projectContext.js';
+import { CONTEXT_IDS, projectContext } from '../utils/projectContext.js';
 
 // Nombre de projets mis en avant par la machine à sous.
 const FEATURED_COUNT = 3;
@@ -16,7 +16,7 @@ export const ALL = 'all';
 
 /**
  * Projets du portfolio : les trois mis en avant selon le dernier tirage de la machine à sous,
- * et la liste complète, filtrée par catégorie.
+ * et la liste complète, filtrée par catégorie et par cadre (perso, école, pro).
  * Émet « change » avec l'état complet à chaque tirage ou changement de filtre.
  */
 export default class ProjectModel extends EventTarget {
@@ -24,6 +24,7 @@ export default class ProjectModel extends EventTarget {
   #categories;
   #drawn = [];
   #filter = ALL;
+  #context = ALL;
 
   /**
    * @param {{ projects: Project[], categories: { id: string, label: string }[] }} data
@@ -57,9 +58,17 @@ export default class ProjectModel extends EventTarget {
     this.#emit();
   }
 
+  /** @param {string} id Cadre (« perso », « ecole », « pro »), ou ALL. */
+  setContext(id) {
+    if (id !== ALL && !CONTEXT_IDS.includes(id)) return;
+    this.#context = id;
+    this.#emit();
+  }
+
   /**
-   * @returns {{ drawn: string[], jackpot: boolean, featured: ProjectItem[], filter: string,
-   *   categories: { id: string, label: string, count: number }[], list: ProjectItem[] }}
+   * @returns {{ drawn: string[], jackpot: boolean, featured: ProjectItem[], filter: string, context: string,
+   *   categories: { id: string, label: string, count: number }[],
+   *   contexts: { id: string, label: string, count: number }[], list: ProjectItem[] }}
    */
   get state() {
     const items = this.#items.map((item) => this.#withMatches(item));
@@ -70,11 +79,20 @@ export default class ProjectModel extends EventTarget {
       jackpot: this.#drawn.length === 1,
       featured,
       filter: this.#filter,
+      context: this.#context,
       categories: this.#categories.map((category) => ({
         ...category,
         count: items.filter(({ project }) => project.category === category.id).length,
       })),
-      list: items.filter(({ project }) => this.#filter === ALL || project.category === this.#filter),
+      contexts: CONTEXT_IDS.map((id) => ({
+        id,
+        label: projectContext(id).short,
+        count: items.filter(({ project }) => project.context === id).length,
+      })),
+      // Les deux filtres se combinent : « Web » et « École » montre les projets web faits à l'école.
+      list: items.filter(
+        ({ project }) => (this.#filter === ALL || project.category === this.#filter) && (this.#context === ALL || project.context === this.#context),
+      ),
     };
   }
 

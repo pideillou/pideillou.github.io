@@ -6,6 +6,9 @@ const CONTEXTS = {
   pro: { short: 'Pro', long: 'Projet professionnel' },
 };
 
+/** Identifiants des cadres, dans l'ordre d'affichage des filtres. */
+export const CONTEXT_IDS = Object.keys(CONTEXTS);
+
 /**
  * @param {string | undefined} id Cadre du projet (« perso », « ecole » ou « pro »).
  * @returns {{ short: string, long: string } | null} Libellés, ou null si le cadre n'est pas renseigné.

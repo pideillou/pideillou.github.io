@@ -7,11 +7,13 @@ const FILTER_CLASSES =
 const COVER_SIZES = '(min-width: 1024px) 18rem, (min-width: 768px) 14rem, 100vw';
 
 /**
- * Section « Tous les projets » : filtres par catégorie et liste en lignes.
+ * Section « Tous les projets » : filtres par catégorie et par cadre, liste en lignes.
  */
 export default class ProjectListView {
   #filters;
+  #contextFilters;
   #buttons = null;
+  #contextButtons = null;
   #list;
   #status;
   #template;
@@ -22,16 +24,37 @@ export default class ProjectListView {
     this.#list = root.querySelector('[data-project-list]');
     this.#status = root.querySelector('[data-project-list-status]');
     this.#template = root.querySelector('#project-row');
+
+    // Filtres par cadre, juste sous ceux des catégories (marge négative : on rapproche les deux rangées de la grille).
+    this.#contextFilters = document.createElement('div');
+    this.#contextFilters.setAttribute('role', 'group');
+    this.#contextFilters.setAttribute('aria-label', 'Filtrer les projets par cadre');
+    this.#contextFilters.className = '-mt-4 flex flex-wrap items-center gap-2 lg:col-start-2 lg:-mt-8';
+    this.#filters.after(this.#contextFilters);
   }
 
   /**
-   * @param {{ filter: string, categories: { id: string, label: string, count: number }[],
+   * @param {{ filter: string, context: string, categories: { id: string, label: string, count: number }[],
+   *   contexts: { id: string, label: string, count: number }[],
    *   list: import('../models/ProjectModel.js').ProjectItem[] }} state
    */
-  render({ filter, categories, list }) {
-    this.#buttons ??= this.#createFilters(categories);
+  render({ filter, context, categories, contexts, list }) {
+    const total = categories.reduce((sum, { count }) => sum + count, 0);
+    this.#buttons ??= this.#createFilters(this.#filters, categories, { all: 'Tous', total, key: 'filter' });
+    this.#contextButtons ??= this.#createFilters(this.#contextFilters, contexts, { all: 'Tous les cadres', total, key: 'context' });
+    // Un seul cadre renseigné : rien à filtrer, le groupe reste caché.
+    this.#contextFilters.hidden = this.#contextButtons.length < 3;
     this.#buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
-    this.#list.replaceChildren(...list.map((item) => this.#row(item)));
+    this.#contextButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.context === context)));
+
+    const rows = list.map((item) => this.#row(item));
+    if (!rows.length) {
+      const empty = document.createElement('li');
+      empty.className = 'border-t border-muted/30 py-8 text-muted';
+      empty.textContent = 'Aucun projet ne correspond à ces deux filtres pour l’instant.';
+      rows.push(empty);
+    }
+    this.#list.replaceChildren(...rows);
 
     // Annoncé aux lecteurs d'écran seulement quand le nombre change (filtre), pas à chaque tirage.
     const plural = list.length > 1 ? 's' : '';
@@ -39,7 +62,7 @@ export default class ProjectListView {
     if (this.#status.textContent !== status) this.#status.textContent = status;
   }
 
-  /** @param {(id: string) => void} handler Clic sur un filtre. */
+  /** @param {(id: string) => void} handler Clic sur un filtre de catégorie. */
   bindFilter(handler) {
     this.#filters.addEventListener('click', (event) => {
       const button = event.target.closest('[data-filter]');
@@ -47,15 +70,28 @@ export default class ProjectListView {
     });
   }
 
-  // Les catégories sans projet n'ont pas de bouton.
-  #createFilters(categories) {
-    const total = categories.reduce((sum, { count }) => sum + count, 0);
-    const buttons = [{ id: ALL, label: 'Tous', count: total }, ...categories.filter(({ count }) => count > 0)].map(
+  /** @param {(id: string) => void} handler Clic sur un filtre de cadre. */
+  bindContext(handler) {
+    this.#contextFilters.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-context]');
+      if (button) handler(button.dataset.context);
+    });
+  }
+
+  /**
+   * Boutons d'un groupe de filtres. Les entrées sans projet n'ont pas de bouton.
+   * @param {HTMLElement} container
+   * @param {{ id: string, label: string, count: number }[]} entries
+   * @param {{ all: string, total: number, key: 'filter' | 'context' }} options
+   *   all : libellé du bouton « tout » ; total : nombre de projets ; key : attribut data-* du bouton.
+   */
+  #createFilters(container, entries, { all, total, key }) {
+    const buttons = [{ id: ALL, label: all, count: total }, ...entries.filter(({ count }) => count > 0)].map(
       ({ id, label, count }) => {
         const button = document.createElement('button');
         button.type = 'button';
         button.className = FILTER_CLASSES;
-        button.dataset.filter = id;
+        button.dataset[key] = id;
         const number = document.createElement('span');
         number.className = 'text-2xs';
         number.textContent = String(count);
@@ -67,7 +103,7 @@ export default class ProjectListView {
         return button;
       },
     );
-    this.#filters.replaceChildren(...buttons);
+    container.replaceChildren(...buttons);
     return buttons;
   }
 
