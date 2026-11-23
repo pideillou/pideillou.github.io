@@ -6,9 +6,10 @@
 // Fabriqué au build (build/educationSection.js) et refait dans l'aperçu du back-office (src/js/preview.js).
 import { escape, pad } from './html.js';
 
-// Colonnes de la carte et des fiches de niveau, selon le nombre d'années (classes écrites en entier pour Tailwind).
-const COLUMNS = { 2: 'grid-cols-2', 3: 'grid-cols-3', 4: 'grid-cols-4' };
-const CARD_COLUMNS = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-2 lg:grid-cols-4' };
+// Colonnes des fiches de niveau, selon le nombre d'étapes (classes écrites en entier pour Tailwind).
+// La carte, elle, crée une colonne par étape toute seule (grid-flow-col).
+const CARD_COLUMNS = { 1: '', 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-2 lg:grid-cols-4' };
+const cardColumns = (count) => CARD_COLUMNS[count] ?? 'md:grid-cols-2 lg:grid-cols-3';
 
 // Carte : 600 × 120 unités, étirée sur toute la largeur. Les niveaux alternent bas et haut ;
 // ces hauteurs correspondent au centre des pastilles (size-12) dans un bandeau h-32.
@@ -69,13 +70,21 @@ function levelLabels(steps) {
 function renderMap(steps) {
   const labels = levelLabels(steps);
   const nodes = steps
-    .map((step, i) => `<div class="flex justify-center ${i % 2 ? 'items-start' : 'items-end'}">${(NODES[step.status] ?? NODES.next)(labels[i].slice(-2))}</div>`)
+    .map(
+      (step, i) =>
+        `<div${step.status === 'current' ? ' data-current' : ''} class="flex justify-center ${i % 2 ? 'items-start' : 'items-end'}">${(NODES[step.status] ?? NODES.next)(labels[i].slice(-2))}</div>`,
+    )
     .join('');
+  // Une colonne par étape, 3,5 rem minimum. Si elles ne tiennent pas (téléphone, plus de 6 étapes),
+  // le bandeau dépasse et la carte défile en largeur ; src/js/views/EducationMapView.js la cale sur le niveau en cours.
+  // pt-8 et pb-6 : de la place pour la bulle « Ici » et l'onde du niveau en cours, que le défilement couperait.
   return `
         <!-- Carte des niveaux (décorative : les fiches en dessous portent l'information) -->
-        <div class="relative mx-auto mt-16 h-32 w-full max-w-5xl lg:col-span-3" aria-hidden="true">
-          <svg class="absolute inset-0 size-full" viewBox="0 0 600 120" preserveAspectRatio="none">${renderPath(steps)}</svg>
-          <div class="relative grid h-full ${COLUMNS[steps.length] ?? COLUMNS[3]}">${nodes}</div>
+        <div data-education-map class="mx-auto mt-8 w-full max-w-5xl overflow-x-auto overflow-y-hidden pt-8 pb-6 scrollbar-thin lg:col-span-3" aria-hidden="true">
+          <div class="relative h-32 w-max min-w-full">
+            <svg class="absolute inset-0 size-full" viewBox="0 0 600 120" preserveAspectRatio="none">${renderPath(steps)}</svg>
+            <div class="relative grid h-full auto-cols-[minmax(3.5rem,1fr)] grid-flow-col">${nodes}</div>
+          </div>
         </div>`;
 }
 
@@ -106,7 +115,7 @@ export function renderEducation({ kicker, world, intro, steps }) {
         <span class="absolute top-100 right-8 text-accent">// monde 1, presque fini</span>
         <!-- Marges -->
         <span class="absolute top-120 left-2 rotate-180 text-vertical">&lt;path d="M 0 0 C …"&gt;</span>
-        <span class="absolute top-192 left-2 rotate-180 text-vertical">grid-template-columns: repeat(4, 1fr);</span>
+        <span class="absolute top-192 left-2 rotate-180 text-vertical">grid-auto-flow: column;</span>
         <span class="absolute top-264 left-2 rotate-180 text-vertical text-accent">// boss final : le stage</span>
         <span class="absolute top-156 right-2 text-vertical">XP += curiosité;</span>
         <span class="absolute top-228 right-2 text-vertical">niveau 03 : verrouillé <span class="text-muted">/* pour l'instant */</span></span>
@@ -126,7 +135,7 @@ export function renderEducation({ kicker, world, intro, steps }) {
         <p class="flex items-center gap-2 font-mono text-xs text-support lg:col-start-2"><span class="text-accent" aria-hidden="true">◆</span>${escape(world)}</p>
 ${renderMap(steps)}
 
-        <ol class="mx-auto grid w-full max-w-5xl gap-4 md:gap-6 ${CARD_COLUMNS[steps.length] ?? CARD_COLUMNS[3]} lg:col-span-3">${steps.map((step, i) => renderCard(step, labels[i])).join('')}
+        <ol class="mx-auto grid w-full max-w-5xl gap-4 md:gap-6 ${cardColumns(steps.length)} lg:col-span-3">${steps.map((step, i) => renderCard(step, labels[i])).join('')}
         </ol>
 
         <p class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-muted lg:col-span-3">

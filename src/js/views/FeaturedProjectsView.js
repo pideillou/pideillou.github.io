@@ -57,9 +57,11 @@ export default class FeaturedProjectsView {
     this.#lines.forEach((line, index) => {
       line.textContent = heading[index];
     });
-    this.#status.textContent = drawn.length
-      ? `Sélection de la machine à sous : ${drawn.join(' · ')}`
-      : 'Les trois projets les plus récents.';
+    // Compétences tirées sans aucun projet qui les utilise : on le dit, au lieu d'annoncer une fausse sélection.
+    const matched = featured.some(({ matches }) => matches.length);
+    if (!drawn.length) this.#status.textContent = 'Les trois projets les plus récents.';
+    else if (!matched) this.#status.textContent = `Aucun projet avec ${drawn.join(' · ')} pour l’instant : voici les trois plus récents.`;
+    else this.#status.textContent = `Sélection de la machine à sous : ${drawn.join(' · ')}`;
 
     const cards = featured.map((item, index) => this.#card(item, index));
     this.#list.replaceChildren(...cards);

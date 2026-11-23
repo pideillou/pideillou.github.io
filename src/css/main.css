@@ -320,7 +320,8 @@
 
 /* Cache la page tant que le JS n'a pas ouvert la machine à sous (voir src/main.js),
    pour ne pas la voir apparaître une fraction de seconde avant.
-   Seulement si le JS est actif et si les animations sont autorisées. */
+   Seulement si le JS est actif et si les animations sont autorisées.
+   Secours : si le JS plante ou ne charge pas, le cache disparaît seul au bout de 4 s. */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   html:not([data-ready]) body::after {
     content: "";
@@ -328,6 +329,12 @@
     inset: 0;
     z-index: 100;
     background-color: var(--color-surface);
+    animation: ready-fallback 0s 4s forwards;
+  }
+}
+@keyframes ready-fallback {
+  to {
+    visibility: hidden;
   }
 }
 

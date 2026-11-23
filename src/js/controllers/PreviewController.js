@@ -4,6 +4,13 @@ import { renderProfile } from '../render/profileSection.js';
 import { renderEducation } from '../render/educationSection.js';
 import { renderContact, renderFooter } from '../render/contactSection.js';
 import { renderBody, renderHead, sortProjects } from '../render/projectPage.js';
+// Avatars de la section Contact et du pied de page : Vite donne leur adresse publiée.
+import letter1x from '../../assets/avatar/letter-1x.webp';
+import letter2x from '../../assets/avatar/letter-2x.webp';
+import cheers1x from '../../assets/avatar/cheers-1x.webp';
+import cheers2x from '../../assets/avatar/cheers-2x.webp';
+
+const AVATARS = { letter: [letter1x, letter2x], cheers: [cheers1x, cheers2x] };
 
 // Un visuel tout juste envoyé n'a pas encore de dimensions (lues dans le fichier au build) : 16:10 par défaut.
 const DEFAULT_COVER_SIZE = { width: 1600, height: 1000 };
@@ -120,8 +127,8 @@ export default class PreviewController {
     const html = {
       '#profil': renderProfile({ profile }),
       '#parcours': renderEducation(education),
-      '#contact': renderContact({ contact, profile }),
-      '[data-footer]': renderFooter({ contact, profile }),
+      '#contact': renderContact({ contact, profile, avatars: AVATARS }),
+      '[data-footer]': renderFooter({ contact, profile, avatars: AVATARS }),
     };
     return () => {
       Object.entries(html).forEach(([selector, section]) => this.#view.replace(selector, section));

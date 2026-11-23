@@ -43,9 +43,13 @@ transitions.enter({
 
 // Flèches ← → : projet précédent ou suivant. Le clic passe par la transition de page habituelle.
 // KeyboardView ignore les touches tapées dans un champ (terminal) ; les jeux gardent leurs flèches pour eux.
+// On ignore une touche maintenue (un seul changement de fiche), une touche déjà prise par autre chose,
+// et une page qui défile en largeur (zoom, contenu trop large) : les flèches servent alors à la faire défiler.
 const NEIGHBOURS = { ArrowLeft: 'previous', ArrowRight: 'next' };
-new KeyboardView().bindKeys((key) => {
-  if (NEIGHBOURS[key]) document.querySelector(`a[data-transition="${NEIGHBOURS[key]}"]`)?.click();
+const scrollsSideways = () => document.documentElement.scrollWidth > document.documentElement.clientWidth;
+new KeyboardView().bindKeys((key, event) => {
+  if (!NEIGHBOURS[key] || event.repeat || event.defaultPrevented || scrollsSideways()) return;
+  document.querySelector(`a[data-transition="${NEIGHBOURS[key]}"]`)?.click();
 });
 
 // Pas de machine à sous ici : on retire tout de suite le cache posé par le CSS.

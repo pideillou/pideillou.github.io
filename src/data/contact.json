@@ -3,7 +3,7 @@
   "intro": "Un stage, une alternance, un projet ou juste un bonjour : choisis ta quête.",
   "response": "Réponse sous 48 h, en semaine comme le week-end.",
   "endpoint": "https://formspree.io/f/xwlvgjwv",
-  "privacy": "Ton nom, ton e-mail et ton message servent seulement à te répondre. Ils ne sont ni revendus ni ajoutés à une liste de diffusion. Pour plus de détails consulter les mentions légales.",
+  "privacy": "Ton nom, ton e-mail et ton message servent seulement à te répondre. Ils ne sont ni revendus ni ajoutés à une liste de diffusion. Pour plus de détails, consulte les mentions légales.",
   "maxLength": 2000,
   "quests": [
     {
@@ -34,7 +34,7 @@
       "url": "https://github.com/pideillou"
     },
     {
-      "label": "Linkedin",
+      "label": "LinkedIn",
       "url": "https://www.linkedin.com/in/paul-pideill-27a520384/"
     }
   ],

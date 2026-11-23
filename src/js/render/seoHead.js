@@ -22,7 +22,8 @@ export function renderSeoHead({ contact, profile, seo }) {
     address: { '@type': 'PostalAddress', addressLocality: city, addressCountry: 'FR' },
     affiliation: { '@type': 'CollegeOrUniversity', name: profile.institution },
     // Google relie ces profils au site : c'est bien la même personne.
-    sameAs: contact.links.map(({ url }) => url),
+    // « links » peut manquer : le back-office supprime une liste vide.
+    sameAs: (contact.links ?? []).map(({ url }) => url),
   };
   const website = { '@type': 'WebSite', '@id': `${SITE}#website`, name: `Portfolio de ${profile.name}`, url: SITE, inLanguage: 'fr', author: { '@id': person['@id'] } };
   const data = { '@context': 'https://schema.org', '@graph': [person, website] };

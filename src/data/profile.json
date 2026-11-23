@@ -20,7 +20,7 @@
   ],
   "whoami": [
     "Paul PIDEILL, étudiant en 2e année de BUT MMI à Limoges.",
-    "Je construit des interfaces de la conception au code : développement web, design UX, communication et audiovisuel.",
+    "Je construis des interfaces de la conception au code : développement web, design UX, communication et audiovisuel.",
     "Ouvert aux opportunités."
   ],
   "cv": "/fichiers/cv.pdf",
@@ -34,22 +34,22 @@
         "items": [
           {
             "title": "Premier loisir",
-            "text": "La musique, j'ai appris batterie en jouant dans un groupe, et avant ça j'ai découvert la percussion plus généralement en école de musique en poussant mon apprentissage de groupe dans un orchestre.",
+            "text": "La musique. J'ai découvert les percussions en école de musique, puis j'ai joué en groupe dans un orchestre. J'ai ensuite appris la batterie en jouant dans un groupe.",
             "todo": false
           },
           {
             "title": "Deuxième loisir",
-            "text": "Dès mon enfance mon père m'a plongé dans l'univers du basket-ball. Alors j'ai fais de ce sport un apprentissage, j'ai construit un esprit d'équipe fort et une persévérance sans égale. Depuis j'ai développé une passion générale des sports collectifs.",
+            "text": "Dès mon enfance, mon père m'a plongé dans l'univers du basket-ball. Ce sport m'a beaucoup appris : j'y ai construit un fort esprit d'équipe et une persévérance sans égale. Depuis, je me passionne pour les sports collectifs en général.",
             "todo": false
           },
           {
             "title": "Troisième loisir",
-            "text": "Bien évidemment les jeux vidéos, que serait un vrai geek sans son pc ? Je ne suis pas le nouveau Gotaga, c'est sûr. Cependant j'aime découvrir de nouveaux univers avec ou sans mes amis, découvrir de nouveaux joueurs et bien sûr créer de nouvelles aventures.",
+            "text": "Les jeux vidéo, bien évidemment : que serait un vrai geek sans son PC ? Je ne suis pas le nouveau Gotaga, c'est sûr. Mais j'aime découvrir de nouveaux univers, avec ou sans mes amis, rencontrer d'autres joueurs et, bien sûr, vivre de nouvelles aventures.",
             "todo": false
           },
           {
             "title": "Quatrième loisir",
-            "text": "Un loisir un peu plus niche dont je ne connais pas l'origine : l'histoire. Et plus particulièrement la seconde guerre mondiale. Je me pationne pour les grandes batailles les reconstitutions et les panzers allemands.",
+            "text": "Un loisir un peu plus niche, dont je ne connais pas l'origine : l'histoire, et plus particulièrement la Seconde Guerre mondiale. Je me passionne pour les grandes batailles, les reconstitutions et les blindés allemands.",
             "todo": false
           }
         ]
@@ -61,22 +61,22 @@
         "items": [
           {
             "title": "J’apprends",
-            "text": "J'apprend constamment de nouvelles technologie et de nouveaux logiciels et renforce mes compétences.",
+            "text": "J'apprends sans cesse de nouvelles technologies et de nouveaux logiciels pour renforcer mes compétences.",
             "todo": false
           },
           {
             "title": "Je joue à",
-            "text": "Récemment j'ai testé la V1.0 de Palworld en rejoignant un serveur de survie entre amis.",
+            "text": "Récemment, j'ai testé la version 1.0 de Palworld sur un serveur de survie entre amis.",
             "todo": false
           },
           {
             "title": "J’écoute",
-            "text": "Actuellement je tiens à me redécouvrir et à sortir des sentiers battus ainsi je me laisse guider par mes recommandations Deezer.",
+            "text": "En ce moment, j'ai envie de sortir des sentiers battus : je me laisse guider par mes recommandations Deezer.",
             "todo": false
           },
           {
             "title": "Je découvre",
-            "text": "Je me suis récemment lancé dans Blender et Roblox Studio pour commencer la création de jeux vidéos.",
+            "text": "Je me suis récemment lancé dans Blender et Roblox Studio pour commencer à créer des jeux vidéo.",
             "todo": false
           }
         ]
