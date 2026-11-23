@@ -6,6 +6,7 @@ import NavModel from './js/models/NavModel.js';
 import StorageService from './js/services/StorageService.js';
 import TocView from './js/views/TocView.js';
 import PageTransitionView from './js/views/PageTransitionView.js';
+import KeyboardView from './js/views/KeyboardView.js';
 import TocController from './js/controllers/TocController.js';
 import PageTransitionController from './js/controllers/PageTransitionController.js';
 
@@ -38,6 +39,13 @@ const transitions = new PageTransitionController(
 transitions.enter({
   hero: document.querySelector('[data-hero]'),
   parts: [...document.querySelectorAll('[data-enter]')],
+});
+
+// Flèches ← → : projet précédent ou suivant. Le clic passe par la transition de page habituelle.
+// KeyboardView ignore les touches tapées dans un champ (terminal) ; les jeux gardent leurs flèches pour eux.
+const NEIGHBOURS = { ArrowLeft: 'previous', ArrowRight: 'next' };
+new KeyboardView().bindKeys((key) => {
+  if (NEIGHBOURS[key]) document.querySelector(`a[data-transition="${NEIGHBOURS[key]}"]`)?.click();
 });
 
 // Pas de machine à sous ici : on retire tout de suite le cache posé par le CSS.
