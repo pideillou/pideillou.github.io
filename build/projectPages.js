@@ -7,13 +7,15 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { SITE_URL, pageUrl, renderPage, sortProjects } from '../src/js/render/projectPage.js';
 import { readProjectData } from './projectData.js';
+import { renderLlmsTxt } from './llmsTxt.js';
 
 const TEMPLATE = 'projet.html';
 
 const readProjects = (root) => sortProjects(readProjectData(root));
 
 // Image de partage des fiches : celle de l'accueil (src/data/seo.json).
-const readSeo = (root) => JSON.parse(readFileSync(resolve(root, 'src/data/seo.json'), 'utf8'));
+const readJson = (root, name) => JSON.parse(readFileSync(resolve(root, `src/data/${name}.json`), 'utf8'));
+const readSeo = (root) => readJson(root, 'seo');
 
 function renderSitemap(projects, base) {
   const today = new Date().toISOString().slice(0, 10);
@@ -59,7 +61,7 @@ export default function projectPages() {
       });
     },
 
-    // Build : une page par projet à partir du gabarit compilé, puis le plan du site.
+    // Build : une page par projet à partir du gabarit compilé, puis le plan du site et llms.txt.
     closeBundle() {
       if (config.command !== 'build') return;
       const outDir = resolve(config.root, config.build.outDir);
@@ -73,6 +75,10 @@ export default function projectPages() {
       });
       rmSync(resolve(outDir, TEMPLATE));
       writeFileSync(resolve(outDir, 'sitemap.xml'), renderSitemap(projects, config.base));
+      writeFileSync(
+        resolve(outDir, 'llms.txt'),
+        renderLlmsTxt({ seo, profile: readJson(config.root, 'profile'), contact: readJson(config.root, 'contact'), projects, base: config.base }),
+      );
     },
   };
 }
