@@ -19,7 +19,8 @@ const VALID =
   'pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 scale-75 font-mono text-xs text-online opacity-0 data-on:scale-100 data-on:opacity-100 motion-safe:transition';
 const ERROR = 'mt-2 flex gap-2 text-sm text-accent';
 const FOOTER_TITLE = 'font-mono text-xs font-normal tracking-widest text-muted uppercase';
-const FOOTER_LINK = `rounded text-muted transition-colors hover:text-ink ${FOCUS}`;
+// inline-block min-h-6 : zone cliquable d'au moins 24 px de haut (WCAG 2.5.8), même sur mobile.
+const FOOTER_LINK = `inline-block min-h-6 py-0.5 rounded text-muted transition-colors hover:text-ink ${FOCUS}`;
 const CHIP = `min-h-9 rounded-full border border-muted/30 px-3 transition-colors hover:border-accent hover:text-accent ${FOCUS}`;
 
 // Images de l'avatar (1x, 2x). Au build, Vite réécrit ces chemins dans index.html.

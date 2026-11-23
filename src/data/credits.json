@@ -5,7 +5,7 @@
   "subtitle": "Un nouveau stagiaire",
   "crawl": [
     "C’est une période de trouble intense dans le monde du web. Partout dans la galaxie, des équipes cherchent quelqu’un capable de coder ET de designer.",
-    "Venu de Nouvelle-Aquitaine, Paul PIDEILL, actuellement étudiant en deuxième année de BUT MMI, manie HTML, CSS, JavaScript, Figma et autres outils du web. Il n’a pour arme qu’un terminal et son ordinateur portable.",
+    "Venu de Nouvelle-Aquitaine, Paul PIDEILL, actuellement étudiant en 2e année de BUT MMI, manie HTML, CSS, JavaScript, Figma et autres outils du web. Il n’a pour arme qu’un terminal et son ordinateur portable.",
     "Poursuivi par les bugs et assailli par les dates de rendu, il file vers la section Contact avec un portfolio qui pourrait bien ramener l’équilibre dans votre équipe…"
   ],
   "title": "Paul PIDEILL · portfolio",
@@ -17,8 +17,8 @@
     { "role": "Formation", "names": ["BUT MMI", "IUT du Limousin"] },
     { "role": "Inspirations", "names": ["Figma Make", "Les films de mon enfance", "Ma passion des easter eggs"] },
     { "role": "Carburant", "names": ["Une musique variée et de nombreuses pauses de réflexion"] },
-    { "role": "Remerciements", "names": ["Merci à toi d'avoir lu jusqu'ici"] }
+    { "role": "Remerciements", "names": ["Merci à toi d’avoir lu jusqu’ici"] }
   ],
   "thanks": "Merci d’avoir joué",
-  "ending": "J'assure qu'aucun pixel n’a été maltraité pendant le tournage."
+  "ending": "J’assure qu’aucun pixel n’a été maltraité pendant le tournage."
 }

@@ -11,7 +11,7 @@
       "label": "Alternance",
       "tag": "Quête longue",
       "subject": "Proposition d’alternance",
-      "placeholder": "Le rythme, le poste, ce que j'apprendrais chez vous…"
+      "placeholder": "Le rythme, le poste, ce que j’apprendrais chez vous…"
     },
     {
       "id": "projet",
@@ -46,7 +46,7 @@
     "bio": "Je code des interfaces et je les dessine aussi.",
     "shortcuts": [
       {
-        "key": "Ctrl K",
+        "key": "Ctrl + K",
         "text": "ouvrir le terminal"
       },
       {

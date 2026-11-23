@@ -149,7 +149,7 @@
             "label": "Contexte",
             "title": "Un portfolio dont on se souvient",
             "paragraphs": [
-              "Étudiant en deuxième année de BUT MMI, j’avais besoin d’un site pour présenter mes projets. Un recruteur en voit beaucoup : je voulais que le mien se distingue dès les premières secondes, sans rien perdre en clarté. Le plus compliqué pour moi était de retrouver ma personnalité tout en gardant la clarté et l'efficacité d'un portfolio professionnel.",
+              "Étudiant en 2e année de BUT MMI, j’avais besoin d’un site pour présenter mes projets. Un recruteur en voit beaucoup : je voulais que le mien se distingue dès les premières secondes, sans rien perdre en clarté. Le plus compliqué pour moi était de retrouver ma personnalité tout en gardant la clarté et l’efficacité d’un portfolio professionnel.",
               "C’est un projet personnel. Je m’occupe seul du concept, du design, de l’intégration, du JavaScript et des textes."
             ]
           },
@@ -165,7 +165,7 @@
             "title": "Une méthode en quatre temps",
             "paragraphs": [
               "Chaque idée passe par les mêmes étapes avant d’arriver sur le site. Je travaille avec une branche Git par sujet, et chaque nouveauté entre par une pull request.",
-              "Je code avec un assistant IA, Claude. Il propose des solutions quand je bloque, je choisis, je relis et je teste avant de garder quoi que ce soit. Claude travaille dans un environnement régis par de nombreux rules et skills et un agent.md qui le restreint au strict nécessaire."
+              "Je code avec un assistant IA, Claude. Il propose des solutions quand je bloque, je choisis, je relis et je teste avant de garder quoi que ce soit. Claude travaille dans un environnement régi par de nombreuses règles, des skills et un fichier AGENTS.md qui le restreint au strict nécessaire."
             ],
             "steps": [
               {
@@ -174,7 +174,7 @@
               },
               {
                 "title": "Designer",
-                "text": "Palette maison, six thèmes contrôlés en contraste AA, deux polices libres."
+                "text": "Palette maison, 6 thèmes contrôlés en contraste AA, deux polices libres."
               },
               {
                 "title": "Développer",
@@ -191,14 +191,14 @@
             "title": "Un site sans framework et modifiable rapidement",
             "paragraphs": [
               "Le JavaScript suit une architecture MVC : les données, l’affichage et les actions de l’utilisateur sont rangés à part. Chaque fiche projet est une vraie page HTML fabriquée au moment du build, pour que Google lise tout le texte.",
-              "Le contenu est rangé dans des fichiers JSON. Un back office, Sveltia CMS, me permet de le modifier depuis le navigateur. Le site est hébergé gratuitement sur GitHub Pages."
+              "Le contenu est rangé dans des fichiers JSON. Un back-office, Sveltia CMS, me permet de le modifier depuis le navigateur. Le site est hébergé gratuitement sur GitHub Pages."
             ]
           },
           {
             "label": "Résultats",
             "title": "Un site qui se joue",
             "paragraphs": [
-              "Une machine à sous au chargement, un terminal d’une trentaine de commandes, 18 secrets, 16 succès, six thèmes et deux mini-jeux. Sans souris ou sans animation, le site reste entièrement utilisable.",
+              "Une machine à sous au chargement, un terminal d’une trentaine de commandes, 18 secrets, 16 succès, 6 thèmes et 2 mini-jeux. Sans souris ou sans animation, le site reste entièrement utilisable.",
               "Les pages passent le validateur HTML du W3C sans erreur."
             ]
           },
@@ -206,7 +206,7 @@
             "label": "Bilan",
             "title": "Ce que ce projet m’a appris",
             "paragraphs": [
-              "J’ai appris à mettre en pratique le découpage d'un projet JavaScript en MVC, à travailler avec Git par branches et pull requests, et à vérifier l’accessibilité au clavier et au contraste."
+              "J’ai appris à mettre en pratique le découpage d’un projet JavaScript en MVC, à travailler avec Git par branches et pull requests, et à vérifier l’accessibilité au clavier et au contraste."
             ]
           }
         ]
@@ -259,8 +259,8 @@
       },
       "caseStudy": {
         "kicker": "SAé 3.01 · BUT MMI",
-        "titleAccent": "Site de click&collect Razer",
-        "intro": "Une boutique en ligne pour Razer : le client remplit son panier, valide sa commande et vient la chercher en magasin. Seul sur le projet, du back au front avec aide de l'IA.",
+        "titleAccent": "Site de click & collect Razer",
+        "intro": "Une boutique en ligne pour Razer : le client remplit son panier, valide sa commande et vient la chercher en magasin. Seul sur le projet, du back au front avec l’aide de l’IA.",
         "duration": "2 semaines",
         "caption": "Catalogue, version desktop",
         "brands": "Razer",
@@ -269,7 +269,7 @@
             "label": "Contexte",
             "title": "Une vraie enseigne, un vrai parcours",
             "paragraphs": [
-              "La SAé 3.01 du BUT MMI exigeais un site click & collect pour une enseigne réelle choisie par nos soins. J’ai choisi Razer. Après cette étape j'ai du choisir les produits ( 3 catégories de 4 produits minimum ) et traiter tout le tunnel de commande d'un site classique de click&collect. Le paiement n’était pas traité.",
+              "La SAé 3.01 du BUT MMI exigeait un site click & collect pour une enseigne réelle choisie par nos soins. J’ai choisi Razer. Après cette étape, j’ai dû choisir les produits (3 catégories de 4 produits minimum) et traiter tout le tunnel de commande d’un site classique de click & collect. Le paiement n’était pas traité.",
               "Projet individuel, rendu le 23 octobre 2026. Cet exercice universitaire était sans lien avec l’entreprise Razer."
             ]
           },
@@ -284,7 +284,7 @@
             "label": "Démarche",
             "title": "Une user story, une branche",
             "paragraphs": [
-              "Aucun ordre n’étant imposé j’ai d’abord dessiné le graphe des dépendances entre les différentes user-stories, puis j’ai choisi l’ordre selon quatre critères : les dépendances techniques, la valeur pour l’utilisateur, la complexité et le risque de réécrire du code.",
+              "Aucun ordre n’étant imposé, j’ai d’abord dessiné le graphe des dépendances entre les différentes user-stories, puis j’ai choisi l’ordre selon quatre critères : les dépendances techniques, la valeur pour l’utilisateur, la complexité et le risque de réécrire du code.",
               "Chaque story a sa branche Git. Elle n’est terminée qu’après le validateur du W3C, la vérification des droits et les tests. J’ai travaillé avec un assistant IA, Claude, en validant chaque choix."
             ],
             "steps": [
@@ -326,7 +326,7 @@
             "label": "Bilan",
             "title": "Ce que ce projet m’a appris",
             "paragraphs": [
-              "J’ai appris à découper un gros sujet en user stories et à justifier un ordre de réalisation. Côté technique : les transactions et les verrous en base de données, et la sécurité d’un espace administrateur, avec des mots de passe hachés et des sessions séparées. De plus j'ai un peu plus appuyé et affirmé mon usage de l'IA dans un contexte professionnel."
+              "J’ai appris à découper un gros sujet en user stories et à justifier un ordre de réalisation. Côté technique : les transactions et les verrous en base de données, et la sécurité d’un espace administrateur, avec des mots de passe hachés et des sessions séparées. De plus, j’ai un peu plus appuyé et affirmé mon usage de l’IA dans un contexte professionnel."
             ]
           }
         ]
@@ -373,7 +373,7 @@
       "caseStudy": {
         "kicker": "SAé 2.03 · Développer",
         "titleAccent": "ma plateforme de VOD",
-        "intro": "Seul, en dix-neuf itérations, j’ai construit une plateforme de vidéo à la demande : une appli pour les spectateurs et un back-office pour les administrateurs.",
+        "intro": "Seul, en 19 itérations, j’ai construit une plateforme de vidéo à la demande : une appli pour les spectateurs et un back-office pour les administrateurs.",
         "duration": "3 semaines",
         "caption": "Page Statistiques",
         "sections": [
@@ -381,7 +381,7 @@
             "label": "Contexte",
             "title": "Une VOD reliée à une base de données",
             "paragraphs": [
-              "La SAé 2.03 demande un site relié à une base de données, qui présente ses contenus de façon lisible et permet aux utilisateurs d’interagir avec eux. Le sujet : une plateforme de VOD à la manière de Netflix ou Prime Vidéo, en deux parties, l’application des utilisateurs et un back-office d’administration."
+              "La SAé 2.03 demande un site relié à une base de données, qui présente ses contenus de façon lisible et permet aux utilisateurs d’interagir avec eux. Le sujet : une plateforme de VOD à la manière de Netflix ou Prime Video, en deux parties, l’application des utilisateurs et un back-office d’administration."
             ]
           },
           {
@@ -620,8 +620,8 @@
     },
     {
       "slug": "sae-105-sites-one-page",
-      "title": "Trois sites One Page",
-      "summary": "SAé 1.05 : trois sites One Page intégrés en HTML et CSS, rendus dynamiques en JavaScript avec des données JSON, puis hébergés. Dont CineRent, ma StartUp.",
+      "title": "Trois sites one page",
+      "summary": "SAé 1.05 : trois sites one page intégrés en HTML et CSS, rendus dynamiques en JavaScript avec des données JSON, puis hébergés. Dont CineRent, ma start-up.",
       "category": "web",
       "context": "ecole",
       "date": "2026-01",
@@ -657,7 +657,7 @@
       "caseStudy": {
         "kicker": "SAé 1.05 · Développer",
         "titleAccent": "dont CineRent",
-        "intro": "À partir d’un kit d’interface Figma, j’ai intégré, dynamisé et mis en ligne trois sites, dont celui d’une StartUp de location de matériel de cinéma.",
+        "intro": "À partir d’un kit d’interface Figma, j’ai intégré, dynamisé et mis en ligne trois sites, dont celui d’une start-up de location de matériel de cinéma.",
         "duration": "3 semaines",
         "caption": "CineRent, la page d’accueil",
         "sections": [
@@ -665,7 +665,7 @@
             "label": "Contexte",
             "title": "Intégrer vite et bien",
             "paragraphs": [
-              "La SAé 1.05 pose une question : comment produire beaucoup de pages web valides et accessibles, en automatisant l’intégration ? En tant qu’intégrateur junior, je devais livrer trois sites One Page : Audiophile et Bonbon, imposés, et celui d’une StartUp de mon choix."
+              "La SAé 1.05 pose une question : comment produire beaucoup de pages web valides et accessibles, en automatisant l’intégration ? En tant qu’intégrateur junior, je devais livrer trois sites One Page : Audiophile et Bonbon, imposés, et celui d’une start-up de mon choix."
             ]
           },
           {
@@ -677,7 +677,7 @@
             "steps": [
               {
                 "title": "Maquetter",
-                "text": "Maquette de ma StartUp sur Figma, avec les composants du kit fourni."
+                "text": "Maquette de ma start-up sur Figma, avec les composants du kit fourni."
               },
               {
                 "title": "Intégrer",
@@ -697,7 +697,7 @@
             "label": "Résultats",
             "title": "Trois sites en ligne, dans les délais",
             "paragraphs": [
-              "Les trois sites sont en ligne. Pour ma StartUp, CineRent, j’ai choisi la location de matériel de cinéma et personnalisé tous les contenus : textes, images et identité visuelle. Ses données changent à chaque actualisation de la page, comme demandé."
+              "Les trois sites sont en ligne. Pour ma start-up, CineRent, j’ai choisi la location de matériel de cinéma et personnalisé tous les contenus : textes, images et identité visuelle. Ses données changent à chaque actualisation de la page, comme demandé."
             ]
           },
           {
@@ -720,7 +720,7 @@
       "date": "2025-12",
       "role": "Script et post-production",
       "stack": [
-        "Adobe tools",
+        "Adobe",
         "After Effects",
         "DaVinci Resolve",
         "Stop Motion Studio"
@@ -894,7 +894,7 @@
       "date": "2025-11",
       "role": "Graphisme",
       "stack": [
-        "Adobe tools",
+        "Adobe",
         "Photoshop",
         "Illustrator"
       ],

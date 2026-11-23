@@ -14,7 +14,7 @@ const GUIDE_SECTIONS = [
   {
     label: 'Contexte',
     title: 'Le point de départ',
-    paragraphs: ['Texte d’exemple. Explique d’où part le projet : le cadre (cours, SAÉ, client ou projet perso), la demande et la contrainte principale.'],
+    paragraphs: ['Texte d’exemple. Explique d’où part le projet : le cadre (cours, SAé, client ou projet perso), la demande et la contrainte principale.'],
   },
   {
     label: 'Objectifs',

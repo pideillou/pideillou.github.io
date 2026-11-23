@@ -15,6 +15,7 @@ import KeyboardView from './views/KeyboardView.js';
 import XpModel from './models/XpModel.js';
 import LevelModel from './models/LevelModel.js';
 import XpBarView from './views/XpBarView.js';
+import FrenchTypographyView from './views/FrenchTypographyView.js';
 import ThemeController from './controllers/ThemeController.js';
 import CursorController from './controllers/CursorController.js';
 import XpController from './controllers/XpController.js';
@@ -27,6 +28,9 @@ import XpController from './controllers/XpController.js';
  *   xp : barre de lecture et jeton de fin de page (désactivés sur les mentions légales, qui ne sont pas un niveau).
  */
 export function setupSite({ reducedMotion, onSecret = () => {}, levels: levelSlugs = [], level = null, xp = true }) {
+  // Espaces insécables et apostrophes ’ sur tous les textes, y compris ceux ajoutés plus tard par le JS.
+  new FrenchTypographyView();
+
   const skillNames = skillsData.skills.map((skill) => skill.name);
   const collection = new CollectionModel(skillNames, new StorageService('portfolio:collection'));
   const tokens = new TokenModel(new StorageService('portfolio:tokens'));

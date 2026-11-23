@@ -34,22 +34,22 @@
         "items": [
           {
             "title": "Premier loisir",
-            "text": "La musique. J'ai découvert les percussions en école de musique, puis j'ai joué en groupe dans un orchestre. J'ai ensuite appris la batterie en jouant dans un groupe.",
+            "text": "La musique. J’ai découvert les percussions en école de musique, puis j’ai joué en groupe dans un orchestre. J’ai ensuite appris la batterie en jouant dans un groupe.",
             "todo": false
           },
           {
             "title": "Deuxième loisir",
-            "text": "Dès mon enfance, mon père m'a plongé dans l'univers du basket-ball. Ce sport m'a beaucoup appris : j'y ai construit un fort esprit d'équipe et une persévérance sans égale. Depuis, je me passionne pour les sports collectifs en général.",
+            "text": "Dès mon enfance, mon père m’a plongé dans l’univers du basket-ball. Ce sport m’a beaucoup appris : j’y ai construit un fort esprit d’équipe et une persévérance sans égale. Depuis, je me passionne pour les sports collectifs en général.",
             "todo": false
           },
           {
             "title": "Troisième loisir",
-            "text": "Les jeux vidéo, bien évidemment : que serait un vrai geek sans son PC ? Je ne suis pas le nouveau Gotaga, c'est sûr. Mais j'aime découvrir de nouveaux univers, avec ou sans mes amis, rencontrer d'autres joueurs et, bien sûr, vivre de nouvelles aventures.",
+            "text": "Les jeux vidéo, bien évidemment : que serait un vrai geek sans son PC ? Je ne suis pas le nouveau Gotaga, c’est sûr. Mais j’aime découvrir de nouveaux univers, avec ou sans mes amis, rencontrer d’autres joueurs et, bien sûr, vivre de nouvelles aventures.",
             "todo": false
           },
           {
             "title": "Quatrième loisir",
-            "text": "Un loisir un peu plus niche, dont je ne connais pas l'origine : l'histoire, et plus particulièrement la Seconde Guerre mondiale. Je me passionne pour les grandes batailles, les reconstitutions et les blindés allemands.",
+            "text": "Un loisir un peu plus niche, dont je ne connais pas l’origine : l’histoire, et plus particulièrement la Seconde Guerre mondiale. Je me passionne pour les grandes batailles, les reconstitutions et les blindés allemands.",
             "todo": false
           }
         ]
@@ -61,17 +61,17 @@
         "items": [
           {
             "title": "J’apprends",
-            "text": "J'apprends sans cesse de nouvelles technologies et de nouveaux logiciels pour renforcer mes compétences.",
+            "text": "J’apprends sans cesse de nouvelles technologies et de nouveaux logiciels pour renforcer mes compétences.",
             "todo": false
           },
           {
             "title": "Je joue à",
-            "text": "Récemment, j'ai testé la version 1.0 de Palworld sur un serveur de survie entre amis.",
+            "text": "Récemment, j’ai testé la version 1.0 de Palworld sur un serveur de survie entre amis.",
             "todo": false
           },
           {
             "title": "J’écoute",
-            "text": "En ce moment, j'ai envie de sortir des sentiers battus : je me laisse guider par mes recommandations Deezer.",
+            "text": "En ce moment, j’ai envie de sortir des sentiers battus : je me laisse guider par mes recommandations Deezer.",
             "todo": false
           },
           {
@@ -88,7 +88,7 @@
         "items": [
           {
             "title": "Première qualité",
-            "text": "L'esprit d'équipe.",
+            "text": "L’esprit d’équipe.",
             "todo": false
           },
           {
@@ -115,7 +115,7 @@
         "items": [
           {
             "title": "Premier haut fait",
-            "text": "La conception d'un portfolio qui me ressemble.",
+            "text": "La conception d’un portfolio qui me ressemble.",
             "todo": false
           }
         ]

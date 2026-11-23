@@ -112,7 +112,7 @@ const OBSTACLES = [
     ],
   },
   {
-    cause: 'la deadline de la SAÉ',
+    cause: 'la deadline de la SAé',
     rows: [
       '.##.....##.',
       '###..#..###',

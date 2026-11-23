@@ -232,7 +232,7 @@ export function createCommands(ctx) {
           const next = nextSecretHint(tokens, !actions.hasMouse);
           return [
             line(`Il y a ${SECRETS.length} secrets. Tu en as trouvé ${found().length}.`),
-            next ? line(`Indice : ${next}`, 'muted') : line('Tu les as toutes trouvées. Chapeau.', 'success'),
+            next ? line(`Indice : ${next}`, 'muted') : line('Tu les as tous trouvés. Chapeau.', 'success'),
           ];
         }
         return [line(`cat : ${file ?? ''} : fichier introuvable`, 'error')];
@@ -573,7 +573,7 @@ export function createCommands(ctx) {
       run: (args) => {
         const rest = args.join(' ');
         if (rest === 'admin') {
-          return [line('Accès au back office : il arrive bientôt (Sveltia CMS, connexion GitHub).', 'muted')];
+          return [line('Le back-office existe bien (Sveltia CMS, connexion GitHub), mais la clé reste chez moi.', 'muted')];
         }
         if (/^rm -rf \/?\*?$/.test(rest)) {
           actions.glitch();
