@@ -23,6 +23,7 @@ export default class ProjectController {
       model.setDrawn(detail.result);
     });
     list.bindFilter((id) => model.setFilter(id));
+    list.bindContext((id) => model.setContext(id));
 
     featured.render(model.state);
     list.render(model.state);
