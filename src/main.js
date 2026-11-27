@@ -7,6 +7,7 @@ import changelogData from './data/changelog.json';
 import creditsData from './data/credits.json';
 import projectsData from './data/projects.json';
 import contactData from './data/contact.json';
+import homeData from './data/home.json';
 import ContactModel from './js/models/ContactModel.js';
 import ContactView from './js/views/ContactView.js';
 import ContactController from './js/controllers/ContactController.js';
@@ -242,6 +243,7 @@ if (terminalRoot) {
   const terminal = new TerminalModel(
     createCommands({
       profile: profileData,
+      home: homeData,
       changelog: changelogData.entries,
       sections: ['accueil', 'projets', 'profil', 'parcours', 'contact'],
       getHistory: () => terminal.history,

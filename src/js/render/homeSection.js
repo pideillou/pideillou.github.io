@@ -4,7 +4,7 @@
 // Un morceau masqué (disponibilité, citation) reste dans la page, vide et caché, pour que l'aperçu le retrouve.
 // Fabriqué au build (build/homeSection.js) et refait dans l'aperçu du back-office (src/js/preview.js).
 import { escape } from './html.js';
-import { splitSchool } from '../utils/profile.js';
+import { availability, splitSchool } from '../utils/profile.js';
 
 // Pastille verte qui clignote, devant « Ouvert aux opportunités ».
 // Classes écrites en entier : Tailwind ne repère pas une classe fabriquée par morceaux.
@@ -20,16 +20,17 @@ const dot = (kind) => {
             </span>`;
 };
 
-const isOn = (block) => Boolean(block?.visible && String(block.label ?? block.text ?? '').trim());
+// Bloc affiché : interrupteur allumé et texte rempli.
+const isOn = (block) => Boolean(block?.visible && String(block.text ?? '').trim());
 
 /** Disponibilité et horloge dans l'en-tête (cachées sur tablette, où la place manque). */
 function renderNavStatus({ home, profile }) {
   const city = String(profile.city ?? '').split(',')[0].trim();
-  const status = isOn(home.availability)
+  const status = availability(home)
     ? `
           <span class="flex items-center gap-2 text-ink">
             ${dot('small')}
-            ${escape(home.availability.label)}
+            ${escape(availability(home))}
           </span>`
     : '';
   return `<p data-home="nav-status" class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 text-xs text-muted md:hidden lg:flex lg:border-l lg:border-muted/30 lg:pr-2 lg:pl-6">${status}
@@ -39,10 +40,10 @@ function renderNavStatus({ home, profile }) {
 
 /** Pastille « Ouvert aux opportunités » en haut de l'accueil. */
 function renderStatus({ home }) {
-  if (!isOn(home.availability)) return '<p data-home="status" hidden></p>';
+  if (!availability(home)) return '<p data-home="status" hidden></p>';
   return `<p data-home="status" class="inline-flex w-fit items-center gap-2.5 rounded-full border border-online/40 bg-online/10 px-4 py-2 text-xs tracking-widest text-ink uppercase">
           ${dot('large')}
-          ${escape(home.availability.label)}
+          ${escape(availability(home))}
         </p>`;
 }
 
