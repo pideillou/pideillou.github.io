@@ -3,7 +3,7 @@
 // Le formulaire marche sans JavaScript si un service d'envoi est configuré (« endpoint ») ;
 // le JS ajoute la vérification des champs, l'enveloppe, les codes de récompense et le pigeon.
 // Fabriqué au build (build/contactSection.js) et refait dans l'aperçu du back-office (src/js/preview.js).
-import { escape, pad } from './html.js';
+import { escape, pad, safeUrl } from './html.js';
 import { visibleCv } from '../utils/profile.js';
 
 const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
@@ -61,8 +61,9 @@ function renderQuest(quest, index) {
 }
 
 // Adresse d'envoi sans JavaScript : le service configuré, sinon la messagerie du visiteur.
+// Seule une adresse en https:// est acceptée pour le service (safeUrl).
 function formTarget({ endpoint, email }) {
-  if (endpoint) return ` action="${escape(endpoint)}" method="post"`;
+  if (safeUrl(endpoint)) return ` action="${escape(safeUrl(endpoint))}" method="post"`;
   if (email) return ` action="mailto:${escape(email)}" method="post" enctype="text/plain"`;
   return '';
 }
@@ -225,10 +226,10 @@ export function renderFooter({ contact, profile, avatars = AVATARS }) {
     ['contact', 'Contact'],
   ];
   const links = [
-    // Le back-office supprime une liste vide : « links » peut manquer.
-    ...(contact.links ?? []).map(
+    // Le back-office supprime une liste vide : « links » peut manquer. Liens sans https:// écartés.
+    ...(contact.links ?? []).filter(({ url }) => safeUrl(url)).map(
       ({ label, url }) =>
-        `<li><a href="${escape(url)}" target="_blank" rel="noopener noreferrer" class="${FOOTER_LINK}">${escape(label)}<span class="sr-only"> (nouvel onglet)</span> <span aria-hidden="true">↗</span></a></li>`,
+        `<li><a href="${escape(safeUrl(url))}" target="_blank" rel="noopener noreferrer" class="${FOOTER_LINK}">${escape(label)}<span class="sr-only"> (nouvel onglet)</span> <span aria-hidden="true">↗</span></a></li>`,
     ),
     ...(visibleCv(profile)
       ? [`<li><a href="${escape(visibleCv(profile))}" download class="${FOOTER_LINK}">Mon CV<span class="sr-only"> (PDF, téléchargement)</span> <span class="font-mono text-xs" aria-hidden="true">PDF</span></a></li>`]

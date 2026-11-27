@@ -39,13 +39,23 @@ function normalizeLinks(links) {
     .map(({ label, url }) => ({ label: label?.trim() || 'Voir le lien', url }));
 }
 
+// Adresse de fiche : minuscules, chiffres et tirets (même règle que le back-office).
+// Elle sert de nom de dossier au build : un « ../ » écrirait en dehors de dist/.
+const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
+function hasValidSlug(project) {
+  if (SLUG.test(project?.slug ?? '')) return true;
+  console.warn(`[projets] Adresse de fiche invalide, projet ignoré : « ${project?.slug ?? ''} » (${project?.title ?? 'sans titre'}).`);
+  return false;
+}
+
 /**
  * @param {{ categories: object[], projects: object[] }} data Contenu brut de projects.json.
  * @param {(src: string) => { width: number, height: number } | null} sizeOf
  *   Dimensions d'un visuel sans largeur ni hauteur (lues dans le fichier au build).
  */
 export function normalizeProjectData(data, sizeOf) {
-  const projects = data.projects.map((project) => {
+  const projects = data.projects.filter(hasValidSlug).map((project) => {
     const { cover, caseStudy, links, ...rest } = project;
     const study = caseStudy && withoutEmpty(caseStudy);
     const normalized = { ...rest, stack: project.stack ?? [], example: Boolean(project.example), links: normalizeLinks(links) };

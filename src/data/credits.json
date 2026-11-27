@@ -2,11 +2,11 @@
   "intro": "Il y a peu de temps, dans un IUT pas si lointain…",
   "logo": "Paul PIDEILL",
   "episode": "Épisode II",
-  "subtitle": "Un nouveau stagiaire",
+  "subtitle": "Le code contre-attaque",
   "crawl": [
-    "C’est une période de trouble intense dans le monde du web. Partout dans la galaxie, des équipes cherchent quelqu’un capable de coder ET de designer.",
-    "Venu de Nouvelle-Aquitaine, Paul PIDEILL, actuellement étudiant en deuxième année de BUT MMI, manie HTML, CSS, JavaScript, Figma et autres outils du web. Il n’a pour arme qu’un terminal et son ordinateur portable.",
-    "Poursuivi par les bugs et assailli par les dates de rendu, il file vers la section Contact avec un portfolio qui pourrait bien ramener l’équilibre dans votre équipe…"
+    "C’est une période agitée dans le monde du web. Partout dans la galaxie, des équipes cherchent des profils capables de coder ET de designer.",
+    "Venu de Nouvelle-Aquitaine, Paul PIDEILL, étudiant en BUT MMI, manie HTML, CSS, JavaScript, Figma et bien d’autres outils du web. Pour seules armes : un terminal et un ordinateur portable.",
+    "Poursuivi par les bugs, il enchaîne missions, projets et dates de rendu, niveau après niveau. Si votre équipe cherche un allié pour la prochaine aventure, la section Contact reste ouverte…"
   ],
   "title": "Paul PIDEILL · portfolio",
   "roles": [
@@ -15,10 +15,10 @@
     { "role": "Assistant de code", "names": ["Claude (IA)"] },
     { "role": "Outils", "names": ["Vite", "Tailwind CSS", "JavaScript", "Figma"] },
     { "role": "Formation", "names": ["BUT MMI", "IUT du Limousin"] },
-    { "role": "Inspirations", "names": ["Figma Make", "Les films de mon enfance", "Ma passion des easter eggs"] },
-    { "role": "Carburant", "names": ["Une musique variée et de nombreuses pauses de réflexion"] },
-    { "role": "Remerciements", "names": ["Merci à toi d'avoir lu jusqu'ici"] }
+    { "role": "Inspirations", "names": ["Figma Make", "Les films de mon enfance", "Ma passion pour les easter eggs"] },
+    { "role": "Carburant", "names": ["De la musique, beaucoup", "Des pauses pour réfléchir"] },
+    { "role": "Remerciements", "names": ["Les équipes qui m’ont accueilli", "Toi, qui as lu jusqu’ici"] }
   ],
   "thanks": "Merci d’avoir joué",
-  "ending": "J'assure qu'aucun pixel n’a été maltraité pendant le tournage."
+  "ending": "Aucun pixel n’a été maltraité pendant le tournage."
 }

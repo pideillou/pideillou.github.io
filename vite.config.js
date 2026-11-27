@@ -9,6 +9,7 @@ import educationSection from './build/educationSection.js';
 import contactSection, { siteFooter } from './build/contactSection.js';
 import seoHead from './build/seoHead.js';
 import homeSection from './build/homeSection.js';
+import cspMeta from './build/csp.js';
 
 export default defineConfig({
   // Le site est servi à la racine de https://pideillou.github.io/ (dépôt pideillou.github.io sur GitHub Pages).
@@ -26,6 +27,8 @@ export default defineConfig({
     contactSection(),
     siteFooter(),
     seoHead(),
+    // Politique de sécurité (CSP) ajoutée à chaque page au build
+    cspMeta(),
   ],
   build: {
     outDir: 'dist',

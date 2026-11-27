@@ -3,7 +3,7 @@
  * ce sont les secrets, chacun rapporte un jeton la première fois.
  * Les actions sur la page (défilement, effets…) sont fournies par le contrôleur.
  */
-import { visibleCv } from '../utils/profile.js';
+import { availability, visibleCv } from '../utils/profile.js';
 
 /**
  * Identifiants des secrets (pour le compteur « secrets »).
@@ -123,6 +123,7 @@ const EMPTY_DOT = '○';
 /**
  * @param {object} ctx
  * @param {{ name: string, user: string, school: string, city: string, dev: string[], design: string[], whoami: string[], cv: string }} ctx.profile
+ * @param {{ availability?: { visible?: boolean, label?: string } }} ctx.home Disponibilité (src/data/home.json).
  * @param {{ date: string, message: string }[]} ctx.changelog
  * @param {string[]} ctx.sections Identifiants des sections de la page.
  * @param {() => string[]} ctx.getHistory
@@ -200,7 +201,11 @@ export function createCommands(ctx) {
 
     whoami: {
       description: 'qui je suis',
-      run: () => profile.whoami.map((text) => line(text)),
+      run: () => {
+        // Dernière ligne : la disponibilité, affichée seulement si l'interrupteur du back-office est allumé.
+        const status = availability(ctx.home);
+        return [...profile.whoami, ...(status ? [/[.!?…]$/.test(status) ? status : `${status}.`] : [])].map((text) => line(text));
+      },
     },
 
     neofetch: {
