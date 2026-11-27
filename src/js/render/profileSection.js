@@ -4,6 +4,7 @@
 // travailler, hauts faits) est un onglet ; sans JS, elles s'affichent l'une sous l'autre.
 // Fabriqué au build (build/profileSection.js) et refait dans l'aperçu du back-office (src/js/preview.js).
 import { escape, pad } from './html.js';
+import { visibleCv } from '../utils/profile.js';
 
 const TAB_CLASSES =
   'group flex min-h-11 w-full items-center gap-3 rounded-md px-3 text-left font-mono text-sm text-muted transition-colors hover:bg-ink/5 hover:text-ink focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent aria-selected:bg-accent/10 aria-selected:text-ink';
@@ -29,6 +30,7 @@ function renderPanel({ id, title, items }) {
 
 export function renderProfile({ profile }) {
   const { intro, menu } = profile.about;
+  const cv = visibleCv(profile);
   const tabs = menu
     .map(
       ({ id, label }, i) =>
@@ -59,9 +61,9 @@ export function renderProfile({ profile }) {
         </h2>
         <div class="flex max-w-xs flex-col items-start gap-4 lg:pb-3">
           <p class="leading-relaxed text-muted">${escape(intro)}</p>${
-            profile.cv
+            cv
               ? `
-          <a href="${escape(profile.cv)}" download class="group inline-flex min-h-11 items-center gap-2 rounded-full border border-muted/40 px-4 font-mono text-xs tracking-widest text-ink uppercase transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Télécharger mon CV<span class="sr-only"> (PDF)</span><svg class="size-4 text-accent motion-safe:transition-transform motion-safe:group-hover:translate-y-0.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v10M3 7l5 5 5-5M2 14h12"/></svg></a>`
+          <a href="${escape(cv)}" download class="group inline-flex min-h-11 items-center gap-2 rounded-full border border-muted/40 px-4 font-mono text-xs tracking-widest text-ink uppercase transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Télécharger mon CV<span class="sr-only"> (PDF)</span><svg class="size-4 text-accent motion-safe:transition-transform motion-safe:group-hover:translate-y-0.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v10M3 7l5 5 5-5M2 14h12"/></svg></a>`
               : ''
           }
         </div>

@@ -8,14 +8,25 @@ import profileSection from './build/profileSection.js';
 import educationSection from './build/educationSection.js';
 import contactSection, { siteFooter } from './build/contactSection.js';
 import seoHead from './build/seoHead.js';
+import homeSection from './build/homeSection.js';
 
 export default defineConfig({
   // Le site est servi à la racine de https://pideillou.github.io/ (dépôt pideillou.github.io sur GitHub Pages).
   base: '/',
   // Plugins maison (dossier build/) : les projets remis en forme (contenu modifié depuis le back-office),
-  // une fiche HTML par projet, les sections « Profil », « Mon parcours » et « Contact » de l'accueil,
-  // son pied de page et son en-tête SEO, fabriqués depuis src/data/.
-  plugins: [tailwindcss(), projectData(), projectPages(), profileSection(), educationSection(), contactSection(), siteFooter(), seoHead()],
+  // une fiche HTML par projet, les textes de l'accueil (disponibilité, citation, accroche…),
+  // les sections « Profil », « Mon parcours » et « Contact », le pied de page et l'en-tête SEO, fabriqués depuis src/data/.
+  plugins: [
+    tailwindcss(),
+    projectData(),
+    projectPages(),
+    homeSection(),
+    profileSection(),
+    educationSection(),
+    contactSection(),
+    siteFooter(),
+    seoHead(),
+  ],
   build: {
     outDir: 'dist',
     // Pages : l'accueil, le gabarit des fiches projet (remplacé par une page par projet)
