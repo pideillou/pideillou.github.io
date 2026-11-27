@@ -24,6 +24,7 @@
     "Ouvert aux opportunités."
   ],
   "cv": "/fichiers/cv.pdf",
+  "cvVisible": true,
   "about": {
     "intro": "Ce qui ne tient pas dans un CV : ce qui m’occupe quand l’écran s’éteint, et ma façon de travailler.",
     "menu": [

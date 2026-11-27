@@ -53,16 +53,8 @@
           </ul>
         </nav>
 
-        <p class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 text-xs text-muted md:hidden lg:flex lg:border-l lg:border-muted/30 lg:pr-2 lg:pl-6">
-          <span class="flex items-center gap-2 text-ink">
-            <span class="relative flex size-2" aria-hidden="true">
-              <span class="absolute size-full rounded-full bg-online opacity-75 motion-safe:animate-ping"></span>
-              <span class="relative size-2 rounded-full bg-online shadow-[0_0_8px_var(--color-online)]"></span>
-            </span>
-            Ouvert aux opportunités
-          </span>
-          <span>Limoges <span data-clock data-timezone="Europe/Paris" class="tabular-nums"></span></span>
-        </p>
+        <!-- Disponibilité et horloge : src/data/home.json et src/js/render/homeSection.js -->
+        <!-- home:nav-status -->
 
         <!-- Interrupteur de la lampe : seulement avec une souris (src/js/views/SpotlightView.js) -->
         <button type="button" data-lamp-toggle aria-pressed="false" title="Lampe : révéler les coulisses" class="hidden size-9 shrink-0 items-center justify-center rounded-full text-muted transition-colors hover:bg-ink/10 hover:text-ink focus-visible:outline-2 focus-visible:outline-accent aria-pressed:bg-accent/15 aria-pressed:text-accent pointer-fine:md:flex">
@@ -112,25 +104,11 @@
   <main id="contenu" class="mx-auto max-w-6xl px-4 md:px-8">
     <section id="accueil" aria-labelledby="accueil-title" class="flex min-h-dvh flex-col justify-center gap-12 pt-32 pb-12 md:pt-40 lg:justify-between lg:gap-8 lg:pt-32 lg:pb-8">
       <div class="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start">
-        <p class="inline-flex w-fit items-center gap-2.5 rounded-full border border-online/40 bg-online/10 px-4 py-2 text-xs tracking-widest text-ink uppercase">
-          <span class="relative flex size-2.5" aria-hidden="true">
-            <span class="absolute size-full rounded-full bg-online opacity-75 motion-safe:animate-ping"></span>
-            <span class="relative size-2.5 rounded-full bg-online shadow-[0_0_10px_var(--color-online)]"></span>
-          </span>
-          Ouvert aux opportunités
-        </p>
+        <!-- Textes de l'accueil (disponibilité, citation, accroche, infos) : src/data/home.json,
+             modifiables dans le back-office (« Accueil et disponibilité »). HTML : src/js/render/homeSection.js -->
+        <!-- home:status -->
 
-        <!-- Citation : sous le nom sur mobile, en haut à droite sur desktop -->
-        <figure class="relative order-last max-w-sm pl-9 lg:order-0 lg:col-start-2 lg:row-start-1 lg:mt-2">
-          <span class="absolute -top-2 left-0 font-display text-6xl leading-none text-accent" aria-hidden="true">«</span>
-          <blockquote>
-            <p class="font-lead text-lg leading-snug text-ink italic sm:text-xl">La simplicité est la sophistication suprême.<span class="font-display text-accent not-italic" aria-hidden="true">&#x202F;»</span></p>
-          </blockquote>
-          <figcaption class="mt-3 flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase">
-            <span class="h-px w-6 bg-accent" aria-hidden="true"></span>
-            Léonard de Vinci
-          </figcaption>
-        </figure>
+        <!-- home:quote -->
 
         <div class="flex items-end justify-between gap-4 lg:col-span-2">
           <div class="min-w-0">
@@ -143,7 +121,7 @@
       </div>
 
       <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-10 lg:grid-cols-[minmax(0,1.4fr)_auto_minmax(0,1fr)]">
-        <p class="font-lead text-xl leading-snug sm:text-2xl">Étudiant en 2e année de <a href="https://www.iut.unilim.fr/les-formations/but/metiers-du-multimedia-et-de-linternet/" target="_blank" rel="noopener noreferrer" class="underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">BUT MMI<span class="sr-only"> (nouvel onglet)</span></a>. Développement web, design UX, communication et création audiovisuelle.</p>
+        <!-- home:lead -->
 
         <div class="flex flex-wrap gap-3">
           <a href="#projets" class="group inline-flex min-h-12 items-center gap-3 rounded-full bg-accent px-6 font-semibold text-surface transition-colors hover:bg-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
@@ -156,17 +134,11 @@
           </a>
         </div>
 
-        <p class="border-l border-accent pl-4 text-sm leading-relaxed text-muted md:col-span-2 lg:col-span-1">Je transforme des idées en expériences utiles, lisibles et sensibles.</p>
+        <!-- home:tagline -->
       </div>
 
       <!-- Infos en police mono, « décodées » à l'arrivée et au survol (src/js/views/ScrambleView.js) -->
-      <p class="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs text-muted uppercase">
-        <span data-scramble>Limoges, France</span>
-        <span class="h-px w-8 bg-muted/50" aria-hidden="true"></span>
-        <span data-scramble>45.83°N 1.26°E</span>
-        <span class="h-px w-8 bg-muted/50" aria-hidden="true"></span>
-        <span data-scramble>Développement web &amp; design</span>
-      </p>
+      <!-- home:facts -->
     </section>
 
     <!-- Projets : données dans src/data/projects.json. Les trois projets mis en avant
@@ -198,7 +170,7 @@
           <span data-featured-line="1" class="block">Trois projets,</span>
           <span data-featured-line="2" class="block text-accent italic">trois façons de créer.</span>
         </h2>
-        <p class="max-w-xs leading-relaxed text-muted lg:pb-3">De l’idée à la réalisation, je cherche le bon équilibre entre usage, forme et technique.</p>
+        <!-- home:featured-intro -->
         <p class="flex items-center gap-2 font-mono text-xs text-support lg:col-start-2"><span class="text-accent" aria-hidden="true">◆</span><span data-featured-status aria-live="polite">Les trois projets les plus récents.</span></p>
       </div>
 
@@ -283,7 +255,7 @@
           <span class="block">Le travail</span>
           <span class="block text-accent italic">sur la table.</span>
         </h2>
-        <p class="max-w-xs leading-relaxed text-muted lg:pb-3">Une sélection de réalisations universitaires et personnelles. Chaque projet est une occasion de tester, rater proprement, puis mieux faire.</p>
+        <!-- home:projects-intro -->
         <div data-project-filters role="group" aria-label="Filtrer les projets par catégorie" class="flex flex-wrap gap-2 lg:col-start-2 lg:pt-4"></div>
       </div>
 

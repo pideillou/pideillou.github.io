@@ -6,17 +6,19 @@ backend:
   name: github
   repo: pideillou/pideillou.github.io
   branch: main
-  # Messages de commit au format Conventional Commits, comme le reste du dépôt
+  # Messages de commit au format Conventional Commits, comme le reste du dépôt.
+  # {{slug}} = nom du fichier modifié (home, projects…) ; {{collection}} donnerait « _singletons » pour l'accès rapide.
   commit_messages:
-    create: 'chore(contenu): créer {{collection}} « {{slug}} »'
-    update: 'chore(contenu): modifier {{collection}} « {{slug}} »'
-    delete: 'chore(contenu): supprimer {{collection}} « {{slug}} »'
+    create: 'chore(contenu): créer « {{slug}} »'
+    update: 'chore(contenu): modifier « {{slug}} »'
+    delete: 'chore(contenu): supprimer « {{slug}} »'
     uploadMedia: 'chore(contenu): ajouter le fichier {{path}}'
     deleteMedia: 'chore(contenu): supprimer le fichier {{path}}'
 
 site_url: https://pideillou.github.io/
 display_url: https://pideillou.github.io/
-logo_url: /favicon.svg
+logo:
+  src: /favicon.svg
 
 # Fichiers envoyés : rangés dans public/ (copié tel quel dans le site)
 media_folder: public/images
@@ -44,187 +46,216 @@ output:
     indent_style: space
     indent_size: 2
 
-collections:
-  # ─────────────────────────────── Projets
-  - name: projets
-    label: Projets
-    icon: work
-    files:
-      - name: projects
-        label: Projets et catégories
-        file: src/data/projects.json
+# Accès rapide : ces fichiers s'ouvrent en un clic depuis la barre de gauche (singletons de Sveltia).
+singletons:
+  - name: home
+    label: Accueil et disponibilité
+    file: src/data/home.json
+    fields:
+      - name: availability
+        label: Disponibilité
+        widget: object
+        hint: Pastille verte en haut de l'accueil et dans le menu.
         fields:
-          - name: categories
-            label: Catégories (filtres de « Tous les projets »)
-            label_singular: Catégorie
-            widget: list
-            summary: '{{fields.label}}'
-            hint: Pour ajouter une catégorie, ajoute-la aussi dans le choix « Catégorie » des projets (fichier public/admin/config.yml).
-            fields:
-              - { name: id, label: Identifiant, widget: string, hint: 'En minuscules, sans espace ni accent. Ne pas changer : les projets y font référence.', pattern: ['^[a-z0-9-]+$', 'Minuscules, chiffres et tirets seulement'] }
-              - { name: label, label: Nom affiché, widget: string }
-          - name: projects
-            label: Projets
-            label_singular: Projet
-            widget: list
-            summary: '{{fields.title}} ({{fields.date}})'
-            hint: Les projets sont triés par date, du plus récent au plus ancien. Les trois plus récents sont mis en avant à l'accueil.
-            fields:
-              - { name: slug, label: Adresse de la fiche, widget: string, hint: 'La fiche sera à /projets/adresse-choisie/. Minuscules et tirets, par exemple « site-boulangerie ». Éviter de la changer une fois en ligne.', pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Minuscules, chiffres et tirets seulement'] }
-              - { name: title, label: Titre, widget: string }
-              - { name: summary, label: Résumé, widget: text, hint: 'Deux phrases au plus. Sert aussi de description pour Google.' }
-              - name: category
-                label: Catégorie
-                widget: select
-                options:
-                  - { label: Web, value: web }
-                  - { label: UX, value: ux }
-                  - { label: Communication, value: communication }
-                  - { label: Audiovisuel, value: audiovisuel }
-              - name: context
-                label: Cadre
-                widget: select
-                required: false
-                hint: 'Affiché sur les cartes de l''accueil et dans la fiche. École : SAé ou projet de cours. Pro : client, stage ou alternance.'
-                options:
-                  - { label: Perso, value: perso }
-                  - { label: École, value: ecole }
-                  - { label: Pro, value: pro }
-              - { name: date, label: Date, widget: string, hint: 'Année et mois, par exemple 2026-10.', pattern: ['^\d{4}-(0[1-9]|1[0-2])$', 'Format AAAA-MM, par exemple 2026-10'] }
-              - { name: role, label: Mon rôle, widget: string }
-              - { name: stack, label: Outils et compétences, label_singular: Outil, widget: list, field: { name: tool, label: Outil, widget: string }, hint: 'Écrire les compétences comme dans « Profil > Compétences » (HTML, Figma…) pour qu''elles comptent dans la machine à sous.' }
-              - { name: example, label: Projet d'exemple, widget: boolean, default: false, required: false, hint: 'Coché : la fiche affiche un bandeau « exemple » et n''est pas indexée par Google.' }
-              - name: links
-                label: Liens
-                label_singular: Lien
-                widget: list
-                required: false
-                collapsed: true
-                hint: 'Boutons affichés en bas de la fiche, dans cet ordre : site en ligne, code, maquette Figma, vidéo…'
-                summary: '{{fields.label}}'
-                fields:
-                  - { name: label, label: Texte du bouton, widget: string, hint: 'Ce que le lien ouvre, par exemple « Voir la maquette Figma ».' }
-                  - { name: url, label: Adresse, widget: string, pattern: ['^https://', 'Adresse complète, qui commence par https://'] }
-              - name: cover
-                label: Visuel
-                widget: object
-                required: false
-                collapsed: true
-                hint: Sans visuel, une illustration est dessinée selon la catégorie. Format conseillé 16:10 (par exemple 1600 × 1000).
-                fields:
-                  - { name: src, label: Image, widget: image, required: false, media_folder: /public/images/projets, public_folder: /images/projets }
-                  - { name: alt, label: Description de l'image, widget: string, required: false, hint: 'Ce que montre l''image, pour les personnes qui ne la voient pas. Laisser vide si l''image est purement décorative.' }
-                  - name: srcset
-                    label: Autres tailles (facultatif)
-                    label_singular: Taille
-                    widget: list
-                    required: false
-                    hint: 'La même image en plus petit (par exemple 800 px de large), pour les téléphones. Indiquer aussi l''image principale avec sa largeur.'
-                    summary: '{{fields.width}} px'
-                    fields:
-                      - { name: src, label: Image, widget: image, media_folder: /public/images/projets, public_folder: /images/projets }
-                      - { name: width, label: Largeur en pixels, widget: number, value_type: int, min: 1 }
-              - name: caseStudy
-                label: Étude de cas (fiche projet)
-                widget: object
-                required: false
-                collapsed: true
-                hint: Laisser vide pour une fiche avec des textes guides.
-                fields:
-                  - { name: kicker, label: Surtitre, widget: string, required: false, hint: 'Par exemple « Projet personnel » ou « SAÉ 3.01 ». Sinon, la catégorie.' }
-                  - { name: titleAccent, label: Suite du titre (en couleur), widget: string, required: false }
-                  - { name: intro, label: Introduction, widget: text, required: false, hint: 'Sinon, le résumé.' }
-                  - { name: duration, label: Durée, widget: string, required: false, hint: 'Par exemple « 3 semaines » ou « En cours ».' }
-                  - { name: caption, label: Légende du visuel, widget: string, required: false }
-                  - { name: brands, label: Marques ou œuvres citées, widget: string, required: false, hint: 'Pour un travail d''école sur une vraie marque. Complète la phrase « ce projet n’est ni commandé ni soutenu par… », par exemple « Razer » ou « les créateurs de Sea of Thieves ». Laisser vide si la marque est un vrai client.' }
-                  - name: sections
-                    label: Parties
-                    label_singular: Partie
-                    widget: list
-                    required: false
-                    summary: '{{fields.label}} : {{fields.title}}'
-                    fields:
-                      - { name: label, label: Nom dans le sommaire, widget: string, hint: 'Court : Contexte, Objectifs, Mon rôle…' }
-                      - { name: title, label: Titre, widget: string }
-                      - { name: paragraphs, label: Paragraphes, label_singular: Paragraphe, widget: list, field: { name: paragraph, label: Paragraphe, widget: text } }
-                      - name: steps
-                        label: Étapes (facultatif)
-                        label_singular: Étape
-                        widget: list
-                        required: false
-                        summary: '{{fields.title}}'
-                        fields:
-                          - { name: title, label: Titre, widget: string }
-                          - { name: text, label: Texte, widget: text, required: false }
+          - { name: visible, label: Afficher la disponibilité, widget: boolean, default: true, required: false, hint: 'Coupé : la pastille disparaît de l''accueil et du menu.' }
+          - { name: label, label: Texte, widget: string, hint: 'Par exemple « Ouvert aux opportunités » ou « Cherche une alternance 2027 ». 40 caractères au plus.', pattern: ['^.{1,40}$', '40 caractères au plus'] }
+      - name: quote
+        label: Citation
+        widget: object
+        fields:
+          - { name: visible, label: Afficher la citation, widget: boolean, default: true, required: false }
+          - { name: text, label: Citation, widget: text, hint: 'Sans guillemets : ils sont ajoutés tout seuls.' }
+          - { name: author, label: Auteur, widget: string, required: false }
+      - name: lead
+        label: Phrase d'accroche
+        widget: object
+        hint: 'Le début (« Étudiant en 2e année de BUT MMI. ») vient du champ « Formation » de « Profil et CV ».'
+        fields:
+          - { name: schoolUrl, label: Lien vers la formation, widget: string, required: false, pattern: ['^https://', 'Adresse complète, qui commence par https://'] }
+          - { name: text, label: Suite de la phrase, widget: text }
+      - { name: tagline, label: Petite phrase sous les boutons, widget: text }
+      - { name: coordinates, label: Coordonnées GPS affichées, widget: string, required: false, hint: 'À côté de la ville (qui vient du Profil). Par exemple 45.83°N 1.26°E.' }
+      - { name: focus, label: Spécialité (bas de l'accueil), widget: string, required: false, hint: 'Par exemple « Développement web & design ».' }
+      - { name: featuredIntro, label: Intro de « Projets choisis », widget: text }
+      - { name: projectsIntro, label: Intro de « Tous les projets », widget: text }
 
-  # ─────────────────────────────── Profil et parcours
-  - name: profil
-    label: Profil et parcours
-    icon: person
-    files:
-      - name: profile
-        label: Profil
-        file: src/data/profile.json
+  - name: education
+    label: Parcours
+    file: src/data/education.json
+    fields:
+      - { name: kicker, label: Surtitre, widget: string }
+      - { name: world, label: Nom du monde, widget: string }
+      - { name: intro, label: Introduction, widget: text }
+      - name: steps
+        label: Étapes
+        label_singular: Étape
+        widget: list
+        hint: Autant d'étapes que tu veux. Sur téléphone, au-delà de 6, la carte du parcours défile en largeur.
+        summary: '{{fields.years}} · {{fields.title}}'
         fields:
-          - { name: name, label: Nom, widget: string }
-          - { name: user, label: Nom d'utilisateur du terminal, widget: string, hint: 'Affiché dans l''invite du terminal (paul@portfolio).' }
-          - { name: school, label: Formation, widget: string }
-          - { name: institution, label: Établissement, widget: string }
-          - { name: city, label: Ville, widget: string }
-          - { name: dev, label: Compétences en développement, label_singular: Compétence, widget: list, field: { name: skill, label: Compétence, widget: string } }
-          - { name: design, label: Compétences en design, label_singular: Compétence, widget: list, field: { name: skill, label: Compétence, widget: string } }
-          - { name: whoami, label: Réponse à « whoami » dans le terminal, label_singular: Ligne, widget: list, field: { name: line, label: Ligne, widget: string } }
-          - { name: cv, label: CV (PDF), widget: file, required: false, media_folder: /public/fichiers, public_folder: /fichiers, accept: application/pdf, hint: 'Fichier PDF. Une fois déposé, un bouton « Télécharger mon CV » apparaît dans la section Profil, un lien dans le pied de page, et la commande « cat cv.pdf » du terminal le propose.' }
-          - name: about
-            label: Section « Hors écran »
-            widget: object
+          - { name: tutorial, label: Niveau tutoriel, widget: boolean, default: false, required: false, hint: Coché pour la première étape (avant le BUT). }
+          - { name: years, label: Années, widget: string, hint: 'Par exemple 2025–2026.' }
+          - { name: title, label: Titre, widget: string }
+          - { name: text, label: Texte, widget: text }
+          - name: status
+            label: État
+            widget: select
+            options:
+              - { label: Validé, value: done }
+              - { label: En cours, value: current }
+              - { label: À venir, value: next }
+
+  - name: projects
+    label: Projets
+    file: src/data/projects.json
+    fields:
+      - name: categories
+        label: Catégories (filtres de « Tous les projets »)
+        label_singular: Catégorie
+        widget: list
+        summary: '{{fields.label}}'
+        hint: Pour ajouter une catégorie, ajoute-la aussi dans le choix « Catégorie » des projets (fichier public/admin/config.yml).
+        fields:
+          - { name: id, label: Identifiant, widget: string, hint: 'En minuscules, sans espace ni accent. Ne pas changer : les projets y font référence.', pattern: ['^[a-z0-9-]+$', 'Minuscules, chiffres et tirets seulement'] }
+          - { name: label, label: Nom affiché, widget: string }
+      - name: projects
+        label: Projets
+        label_singular: Projet
+        widget: list
+        summary: '{{fields.title}} ({{fields.date}})'
+        hint: Les projets sont triés par date, du plus récent au plus ancien. Les trois plus récents sont mis en avant à l'accueil.
+        fields:
+          - { name: slug, label: Adresse de la fiche, widget: string, hint: 'La fiche sera à /projets/adresse-choisie/. Minuscules et tirets, par exemple « site-boulangerie ». Éviter de la changer une fois en ligne.', pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Minuscules, chiffres et tirets seulement'] }
+          - { name: title, label: Titre, widget: string }
+          - { name: summary, label: Résumé, widget: text, hint: 'Deux phrases au plus. Sert aussi de description pour Google.' }
+          - name: category
+            label: Catégorie
+            widget: select
+            options:
+              - { label: Web, value: web }
+              - { label: UX, value: ux }
+              - { label: Communication, value: communication }
+              - { label: Audiovisuel, value: audiovisuel }
+          - name: context
+            label: Cadre
+            widget: select
+            required: false
+            hint: 'Affiché sur les cartes de l''accueil et dans la fiche. École : SAé ou projet de cours. Pro : client, stage ou alternance.'
+            options:
+              - { label: Perso, value: perso }
+              - { label: École, value: ecole }
+              - { label: Pro, value: pro }
+          - { name: date, label: Date, widget: string, hint: 'Année et mois, par exemple 2026-10.', pattern: ['^\d{4}-(0[1-9]|1[0-2])$', 'Format AAAA-MM, par exemple 2026-10'] }
+          - { name: role, label: Mon rôle, widget: string }
+          - { name: stack, label: Outils et compétences, label_singular: Outil, widget: list, field: { name: tool, label: Outil, widget: string }, hint: 'Écrire les compétences comme dans « Profil > Compétences » (HTML, Figma…) pour qu''elles comptent dans la machine à sous.' }
+          - { name: example, label: Projet d'exemple, widget: boolean, default: false, required: false, hint: 'Coché : la fiche affiche un bandeau « exemple » et n''est pas indexée par Google.' }
+          - name: links
+            label: Liens
+            label_singular: Lien
+            widget: list
+            required: false
+            collapsed: true
+            hint: 'Boutons affichés en bas de la fiche, dans cet ordre : site en ligne, code, maquette Figma, vidéo…'
+            summary: '{{fields.label}}'
             fields:
-              - { name: intro, label: Introduction, widget: text }
-              - name: menu
-                label: Onglets
-                label_singular: Onglet
+              - { name: label, label: Texte du bouton, widget: string, hint: 'Ce que le lien ouvre, par exemple « Voir la maquette Figma ».' }
+              - { name: url, label: Adresse, widget: string, pattern: ['^https://', 'Adresse complète, qui commence par https://'] }
+          - name: cover
+            label: Visuel
+            widget: object
+            required: false
+            collapsed: true
+            hint: Sans visuel, une illustration est dessinée selon la catégorie. Format conseillé 16:10 (par exemple 1600 × 1000).
+            fields:
+              - { name: src, label: Image, widget: image, required: false, media_folder: /public/images/projets, public_folder: /images/projets }
+              - { name: alt, label: Description de l'image, widget: string, required: false, hint: 'Ce que montre l''image, pour les personnes qui ne la voient pas. Laisser vide si l''image est purement décorative.' }
+              - name: srcset
+                label: Autres tailles (facultatif)
+                label_singular: Taille
                 widget: list
-                summary: '{{fields.label}}'
+                required: false
+                hint: 'La même image en plus petit (par exemple 800 px de large), pour les téléphones. Indiquer aussi l''image principale avec sa largeur.'
+                summary: '{{fields.width}} px'
                 fields:
-                  - { name: id, label: Identifiant, widget: string, hint: 'Minuscules et tirets. Ne pas changer sans raison.', pattern: ['^[a-z0-9-]+$', 'Minuscules, chiffres et tirets seulement'] }
-                  - { name: label, label: Nom de l'onglet, widget: string }
-                  - { name: title, label: Titre du panneau, widget: string }
-                  - name: items
-                    label: Éléments
-                    label_singular: Élément
+                  - { name: src, label: Image, widget: image, media_folder: /public/images/projets, public_folder: /images/projets }
+                  - { name: width, label: Largeur en pixels, widget: number, value_type: int, min: 1 }
+          - name: caseStudy
+            label: Étude de cas (fiche projet)
+            widget: object
+            required: false
+            collapsed: true
+            hint: Laisser vide pour une fiche avec des textes guides.
+            fields:
+              - { name: kicker, label: Surtitre, widget: string, required: false, hint: 'Par exemple « Projet personnel » ou « SAÉ 3.01 ». Sinon, la catégorie.' }
+              - { name: titleAccent, label: Suite du titre (en couleur), widget: string, required: false }
+              - { name: intro, label: Introduction, widget: text, required: false, hint: 'Sinon, le résumé.' }
+              - { name: duration, label: Durée, widget: string, required: false, hint: 'Par exemple « 3 semaines » ou « En cours ».' }
+              - { name: caption, label: Légende du visuel, widget: string, required: false }
+              - { name: brands, label: Marques ou œuvres citées, widget: string, required: false, hint: 'Pour un travail d''école sur une vraie marque. Complète la phrase « ce projet n’est ni commandé ni soutenu par… », par exemple « Razer » ou « les créateurs de Sea of Thieves ». Laisser vide si la marque est un vrai client.' }
+              - name: sections
+                label: Parties
+                label_singular: Partie
+                widget: list
+                required: false
+                summary: '{{fields.label}} : {{fields.title}}'
+                fields:
+                  - { name: label, label: Nom dans le sommaire, widget: string, hint: 'Court : Contexte, Objectifs, Mon rôle…' }
+                  - { name: title, label: Titre, widget: string }
+                  - { name: paragraphs, label: Paragraphes, label_singular: Paragraphe, widget: list, field: { name: paragraph, label: Paragraphe, widget: text } }
+                  - name: steps
+                    label: Étapes (facultatif)
+                    label_singular: Étape
                     widget: list
+                    required: false
                     summary: '{{fields.title}}'
                     fields:
                       - { name: title, label: Titre, widget: string }
-                      - { name: text, label: Texte, widget: text }
-                      - { name: todo, label: À compléter, widget: boolean, default: false, required: false, hint: 'Coché : l''élément est marqué « à compléter » sur le site. Décocher une fois le vrai texte écrit.' }
+                      - { name: text, label: Texte, widget: text, required: false }
 
-      - name: education
-        label: Parcours
-        file: src/data/education.json
+  - name: profile
+    label: Profil et CV
+    file: src/data/profile.json
+    fields:
+      - { name: name, label: Nom, widget: string }
+      - { name: user, label: Nom d'utilisateur du terminal, widget: string, hint: 'Affiché dans l''invite du terminal (paul@portfolio).' }
+      - { name: school, label: Formation, widget: string, hint: 'Écrire « Diplôme, année », par exemple « BUT MMI, 3e année » : l''accueil affiche « Étudiant en 3e année de BUT MMI ». En septembre, penser aussi à « whoami » ci-dessous, au générique (Bonus) et à la description Google (Référencement).' }
+      - { name: institution, label: Établissement, widget: string }
+      - { name: city, label: Ville, widget: string }
+      - { name: dev, label: Compétences en développement, label_singular: Compétence, widget: list, field: { name: skill, label: Compétence, widget: string } }
+      - { name: design, label: Compétences en design, label_singular: Compétence, widget: list, field: { name: skill, label: Compétence, widget: string } }
+      - { name: whoami, label: Réponse à « whoami » dans le terminal, label_singular: Ligne, widget: list, field: { name: line, label: Ligne, widget: string }, hint: 'Si tu n''es plus disponible, retire aussi la ligne « Ouvert aux opportunités ».' }
+      - { name: cv, label: CV (PDF), widget: file, required: false, media_folder: /public/fichiers, public_folder: /fichiers, accept: application/pdf, hint: 'Fichier PDF. Une fois déposé, un bouton « Télécharger mon CV » apparaît dans la section Profil, un lien dans le pied de page, et la commande « cat cv.pdf » du terminal le propose.' }
+      - { name: cvVisible, label: CV visible sur le site, widget: boolean, default: true, required: false, hint: 'Coupé : le bouton « Télécharger mon CV », le lien du pied de page et la commande « cat cv.pdf » disparaissent. Le fichier reste en ligne pour qui a déjà son adresse : pour le retirer vraiment, supprime-le du champ ci-dessus.' }
+      - name: about
+        label: Section « Hors écran »
+        widget: object
         fields:
-          - { name: kicker, label: Surtitre, widget: string }
-          - { name: world, label: Nom du monde, widget: string }
           - { name: intro, label: Introduction, widget: text }
-          - name: steps
-            label: Étapes
-            label_singular: Étape
+          - name: menu
+            label: Onglets
+            label_singular: Onglet
             widget: list
-            hint: Autant d'étapes que tu veux. Sur téléphone, au-delà de 6, la carte du parcours défile en largeur.
-            summary: '{{fields.years}} · {{fields.title}}'
+            summary: '{{fields.label}}'
             fields:
-              - { name: tutorial, label: Niveau tutoriel, widget: boolean, default: false, required: false, hint: Coché pour la première étape (avant le BUT). }
-              - { name: years, label: Années, widget: string, hint: 'Par exemple 2025–2026.' }
-              - { name: title, label: Titre, widget: string }
-              - { name: text, label: Texte, widget: text }
-              - name: status
-                label: État
-                widget: select
-                options:
-                  - { label: Validé, value: done }
-                  - { label: En cours, value: current }
-                  - { label: À venir, value: next }
+              - { name: id, label: Identifiant, widget: string, hint: 'Minuscules et tirets. Ne pas changer sans raison.', pattern: ['^[a-z0-9-]+$', 'Minuscules, chiffres et tirets seulement'] }
+              - { name: label, label: Nom de l'onglet, widget: string }
+              - { name: title, label: Titre du panneau, widget: string }
+              - name: items
+                label: Éléments
+                label_singular: Élément
+                widget: list
+                summary: '{{fields.title}}'
+                fields:
+                  - { name: title, label: Titre, widget: string }
+                  - { name: text, label: Texte, widget: text }
+                  - { name: todo, label: À compléter, widget: boolean, default: false, required: false, hint: 'Coché : l''élément est marqué « à compléter » sur le site. Décocher une fois le vrai texte écrit.' }
 
+collections:
+  # ─────────────────────────────── Compétences
+  - name: competences
+    label: Compétences
+    icon: bolt
+    files:
       - name: skills
         label: Compétences (machine à sous et bandeau)
         file: src/data/skills.json

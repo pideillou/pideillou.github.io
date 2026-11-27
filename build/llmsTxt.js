@@ -2,6 +2,7 @@
 // Écrit au build dans dist/llms.txt par build/projectPages.js, à partir des mêmes JSON que le site.
 import { SITE_URL, pageUrl } from '../src/js/render/projectPage.js';
 import { projectContext } from '../src/js/utils/projectContext.js';
+import { visibleCv } from '../src/js/utils/profile.js';
 
 // Retours à la ligne retirés : une entrée de liste Markdown tient sur une ligne.
 const oneLine = (text = '') => String(text).replace(/\s+/g, ' ').trim();
@@ -26,7 +27,7 @@ export function renderLlmsTxt({ seo, profile, contact, projects, base }) {
 
   const links = [
     `- [Portfolio](${home}): page d’accueil, projets, parcours et formulaire de contact`,
-    ...(profile.cv ? [`- [CV (PDF)](${SITE_URL}${profile.cv})`] : []),
+    ...(visibleCv(profile) ? [`- [CV (PDF)](${SITE_URL}${visibleCv(profile)})`] : []),
     ...(contact.links ?? []).map(({ label, url }) => `- [${oneLine(label)}](${url})`),
   ];
 

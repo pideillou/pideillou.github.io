@@ -1,0 +1,20 @@
+{
+  "availability": {
+    "visible": true,
+    "label": "Ouvert aux opportunités"
+  },
+  "quote": {
+    "visible": true,
+    "text": "La simplicité est la sophistication suprême.",
+    "author": "Léonard de Vinci"
+  },
+  "lead": {
+    "schoolUrl": "https://www.iut.unilim.fr/les-formations/but/metiers-du-multimedia-et-de-linternet/",
+    "text": "Développement web, design UX, communication et création audiovisuelle."
+  },
+  "tagline": "Je transforme des idées en expériences utiles, lisibles et sensibles.",
+  "coordinates": "45.83°N 1.26°E",
+  "focus": "Développement web & design",
+  "featuredIntro": "De l’idée à la réalisation, je cherche le bon équilibre entre usage, forme et technique.",
+  "projectsIntro": "Une sélection de réalisations universitaires et personnelles. Chaque projet est une occasion de tester, rater proprement, puis mieux faire."
+}

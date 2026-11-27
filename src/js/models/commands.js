@@ -3,6 +3,7 @@
  * ce sont les secrets, chacun rapporte un jeton la première fois.
  * Les actions sur la page (défilement, effets…) sont fournies par le contrôleur.
  */
+import { visibleCv } from '../utils/profile.js';
 
 /**
  * Identifiants des secrets (pour le compteur « secrets »).
@@ -224,9 +225,10 @@ export function createCommands(ctx) {
       complete: () => ['cv.pdf', 'secrets.txt'],
       run: ([file]) => {
         if (file === 'cv.pdf') {
-          return profile.cv
-            ? [line('Télécharger le CV', 'accent', profile.cv)]
-            : [line('cv.pdf : bientôt disponible.', 'muted')];
+          // CV absent, ou masqué depuis le back-office (interrupteur « CV visible »)
+          return visibleCv(profile)
+            ? [line('Télécharger le CV', 'accent', visibleCv(profile))]
+            : [line('cv.pdf : sur demande, depuis la section Contact (cd contact).', 'muted')];
         }
         if (file === 'secrets.txt') {
           const next = nextSecretHint(tokens, !actions.hasMouse);

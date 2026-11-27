@@ -4,6 +4,7 @@
 // le JS ajoute la vérification des champs, l'enveloppe, les codes de récompense et le pigeon.
 // Fabriqué au build (build/contactSection.js) et refait dans l'aperçu du back-office (src/js/preview.js).
 import { escape, pad } from './html.js';
+import { visibleCv } from '../utils/profile.js';
 
 const FOCUS = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
 const LEGEND = 'flex items-center gap-3 font-mono text-xs tracking-widest text-muted uppercase';
@@ -229,8 +230,8 @@ export function renderFooter({ contact, profile, avatars = AVATARS }) {
       ({ label, url }) =>
         `<li><a href="${escape(url)}" target="_blank" rel="noopener noreferrer" class="${FOOTER_LINK}">${escape(label)}<span class="sr-only"> (nouvel onglet)</span> <span aria-hidden="true">↗</span></a></li>`,
     ),
-    ...(profile.cv
-      ? [`<li><a href="${escape(profile.cv)}" download class="${FOOTER_LINK}">Mon CV<span class="sr-only"> (PDF, téléchargement)</span> <span class="font-mono text-xs" aria-hidden="true">PDF</span></a></li>`]
+    ...(visibleCv(profile)
+      ? [`<li><a href="${escape(visibleCv(profile))}" download class="${FOOTER_LINK}">Mon CV<span class="sr-only"> (PDF, téléchargement)</span> <span class="font-mono text-xs" aria-hidden="true">PDF</span></a></li>`]
       : []),
     ...(contact.email ? [`<li><a href="mailto:${escape(contact.email)}" class="${FOOTER_LINK}">${escape(contact.email)}</a></li>`] : []),
     `<li><a href="#contact" class="${FOOTER_LINK}">Le formulaire, juste au-dessus</a></li>`,

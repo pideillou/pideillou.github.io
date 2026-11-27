@@ -3,6 +3,7 @@ import { changedTexts } from '../utils/changedTexts.js';
 import { renderProfile } from '../render/profileSection.js';
 import { renderEducation } from '../render/educationSection.js';
 import { renderContact, renderFooter } from '../render/contactSection.js';
+import { HOME_PARTS } from '../render/homeSection.js';
 import { renderBody, renderHead, sortProjects } from '../render/projectPage.js';
 // Avatars de la section Contact et du pied de page : Vite donne leur adresse publiée.
 import letter1x from '../../assets/avatar/letter-1x.webp';
@@ -123,8 +124,10 @@ export default class PreviewController {
     return true;
   }
 
-  #homePage({ profile, education, contact, seo }) {
+  #homePage({ profile, education, contact, seo, home }) {
     const html = {
+      // Textes de l'accueil : chaque morceau porte un attribut data-home (src/js/render/homeSection.js).
+      ...Object.fromEntries(Object.entries(HOME_PARTS).map(([name, render]) => [`[data-home="${name}"]`, render({ home, profile })])),
       '#profil': renderProfile({ profile }),
       '#parcours': renderEducation(education),
       '#contact': renderContact({ contact, profile, avatars: AVATARS }),

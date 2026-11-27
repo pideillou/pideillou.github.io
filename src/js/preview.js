@@ -10,6 +10,7 @@ import seo from '../data/seo.json';
 import credits from '../data/credits.json';
 import changelog from '../data/changelog.json';
 import rewards from '../data/rewards.json';
+import home from '../data/home.json';
 import PreviewService from './services/PreviewService.js';
 import StorageService from './services/StorageService.js';
 import PreviewView from './views/PreviewView.js';
@@ -26,7 +27,7 @@ export function startPreview(page) {
     new PreviewService(params.get('canal') ?? ''),
     new PreviewView(new StorageService('portfolio:apercu-scroll', { session: true })),
     {
-      data: { projects, profile, education, skills, contact, seo, credits, changelog, rewards },
+      data: { projects, profile, education, skills, contact, seo, credits, changelog, rewards, home },
       page,
       slug: location.pathname.match(/\/projets\/([a-z0-9-]+)/)?.[1],
       section: params.get('apercu'),

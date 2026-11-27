@@ -9,6 +9,7 @@
 
   // Fichiers de src/data/ (nom dans config.yml) et section de l'accueil montrée pour chacun.
   const SECTIONS = {
+    home: 'accueil',
     projects: 'projets',
     profile: 'profil',
     education: 'parcours',
