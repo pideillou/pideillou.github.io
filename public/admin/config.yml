@@ -36,8 +36,6 @@ media_libraries:
           quality: 82
           width: 2048
           height: 2048
-        svg:
-          optimize: true
 
 # Un champ facultatif laissé vide n'est pas écrit dans le JSON
 output:
@@ -57,7 +55,7 @@ singletons:
         widget: object
         hint: Pastille verte en haut de l'accueil et dans le menu.
         fields:
-          - { name: visible, label: Afficher la disponibilité, widget: boolean, default: true, required: false, hint: 'Coupé : la pastille disparaît de l''accueil et du menu.' }
+          - { name: visible, label: Afficher la disponibilité, widget: boolean, default: true, required: false, hint: 'Coupé : la pastille disparaît de l''accueil et du menu, et la ligne de la commande « whoami » du terminal aussi.' }
           - { name: label, label: Texte, widget: string, hint: 'Par exemple « Ouvert aux opportunités » ou « Cherche une alternance 2027 ». 40 caractères au plus.', pattern: ['^.{1,40}$', '40 caractères au plus'] }
       - name: quote
         label: Citation
@@ -167,7 +165,7 @@ singletons:
             collapsed: true
             hint: Sans visuel, une illustration est dessinée selon la catégorie. Format conseillé 16:10 (par exemple 1600 × 1000).
             fields:
-              - { name: src, label: Image, widget: image, required: false, media_folder: /public/images/projets, public_folder: /images/projets }
+              - { name: src, label: Image, widget: image, required: false, media_folder: /public/images/projets, public_folder: /images/projets, accept: 'image/jpeg,image/png,image/webp,image/avif' }
               - { name: alt, label: Description de l'image, widget: string, required: false, hint: 'Ce que montre l''image, pour les personnes qui ne la voient pas. Laisser vide si l''image est purement décorative.' }
               - name: srcset
                 label: Autres tailles (facultatif)
@@ -177,7 +175,7 @@ singletons:
                 hint: 'La même image en plus petit (par exemple 800 px de large), pour les téléphones. Indiquer aussi l''image principale avec sa largeur.'
                 summary: '{{fields.width}} px'
                 fields:
-                  - { name: src, label: Image, widget: image, media_folder: /public/images/projets, public_folder: /images/projets }
+                  - { name: src, label: Image, widget: image, media_folder: /public/images/projets, public_folder: /images/projets, accept: 'image/jpeg,image/png,image/webp,image/avif' }
                   - { name: width, label: Largeur en pixels, widget: number, value_type: int, min: 1 }
           - name: caseStudy
             label: Étude de cas (fiche projet)
@@ -223,7 +221,7 @@ singletons:
       - { name: city, label: Ville, widget: string }
       - { name: dev, label: Compétences en développement, label_singular: Compétence, widget: list, field: { name: skill, label: Compétence, widget: string } }
       - { name: design, label: Compétences en design, label_singular: Compétence, widget: list, field: { name: skill, label: Compétence, widget: string } }
-      - { name: whoami, label: Réponse à « whoami » dans le terminal, label_singular: Ligne, widget: list, field: { name: line, label: Ligne, widget: string }, hint: 'Si tu n''es plus disponible, retire aussi la ligne « Ouvert aux opportunités ».' }
+      - { name: whoami, label: Réponse à « whoami » dans le terminal, label_singular: Ligne, widget: list, field: { name: line, label: Ligne, widget: string }, hint: 'La disponibilité s''ajoute toute seule en dernière ligne, selon l''interrupteur de « Accueil et disponibilité ». Pas besoin de l''écrire ici.' }
       - { name: cv, label: CV (PDF), widget: file, required: false, media_folder: /public/fichiers, public_folder: /fichiers, accept: application/pdf, hint: 'Fichier PDF. Une fois déposé, un bouton « Télécharger mon CV » apparaît dans la section Profil, un lien dans le pied de page, et la commande « cat cv.pdf » du terminal le propose.' }
       - { name: cvVisible, label: CV visible sur le site, widget: boolean, default: true, required: false, hint: 'Coupé : le bouton « Télécharger mon CV », le lien du pied de page et la commande « cat cv.pdf » disparaissent. Le fichier reste en ligne pour qui a déjà son adresse : pour le retirer vraiment, supprime-le du champ ci-dessus.' }
       - name: about
@@ -280,8 +278,9 @@ collections:
                 required: false
                 media_folder: /public/images/logos
                 public_folder: /images/logos
-                accept: image/svg+xml,image/png,image/webp
-                hint: 'Glisse ici le fichier du logo (SVG, PNG ou WebP). Une seule couleur sur fond transparent : le site le teinte avec la couleur du thème. Il passe avant le logo intégré.'
+                # Pas de SVG : un SVG peut contenir du code, qui s'exécuterait sur le site si on ouvrait le fichier.
+                accept: image/png,image/webp
+                hint: 'Glisse ici le fichier du logo (PNG ou WebP, pas de SVG par sécurité). Une seule couleur sur fond transparent : le site le teinte avec la couleur du thème. Il passe avant le logo intégré.'
 
   # ─────────────────────────────── Contact et référencement
   - name: contact
